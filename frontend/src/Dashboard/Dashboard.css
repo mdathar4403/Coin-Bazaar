@@ -442,11 +442,10 @@ main .orders a{
 .right .sales-analytics #add_product div h3{
     font-weight: 600;
 }
-
 /* MEDIA- Queries */
 @media screen  and (max-width:1200px){
     .container{
-        width:94% ;
+        width:94%;
         grid-template-columns: 7rem auto 23rem;
     }
     aside .logo h2{
@@ -476,10 +475,10 @@ main .orders a{
     main orders table{
         width: 83vw;
     }
-    /* main table tbody tr td:last-child,
+    main table tbody tr td:last-child,
     main table tbody tr td:first-child{
         display: none;
-    }     */
+    }    
 }
 
 @media screen  and (max-width:760px){
