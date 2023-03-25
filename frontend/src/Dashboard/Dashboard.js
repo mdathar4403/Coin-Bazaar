@@ -14,7 +14,7 @@ const Dashboard = () => {
                 <div className="top">
                     <div className="logo1">
                         <img src={logo} alt="hero" />
-                        <h2>EGA<span className="danger">TOR</span></h2>
+                        <h2>Hack<span className="danger">Elite</span></h2>
                     </div>
                     <div className="close" id="close-btn">
                         <span className="material-icons-sharp">close</span>
