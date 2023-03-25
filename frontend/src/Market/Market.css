@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+
+.container2{
+    display: grid;
+    width: 96%;
+    /* margin: 0 auto; */
+    gap: 1.8rem;
+    grid-template-columns: 14rem auto 23rem;
+}
+
+.coin-app{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 64px;
+  color: #fff;
+}
+.coin-search{
+  margin-bottom: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.coin-text{
+  margin-bottom: 32px;
+  text-align: center;
+}
+.coin-input{
+  padding-left: 16px;
+  width: 500px;
+  height: 50px;
+  border-radius: 4px;
+  border: none;
+  background: #dedbdb;
+}
+.coin-input::placeholder{
+    color:var(--color-info-dark);
+}
+/************ SALES ANALYTICS *********/
+.sales-analytics{
+    margin-top: 5rem;
+}
+.sales-analytics h2{
+    margin-bottom: 0.8rem;
+}
+.sales-analytics .item{
+    background: var(--color-warning);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.7rem;
+    padding: 1.4rem var(--card-padding);
+    border-radius: 0.3rem;
+    box-shadow: var(--box-shadow);
+    transition: all 180ms ease;
+}
+.sales-analytics .item:hover{
+    box-shadow: none;
+}
+.sales-analytics .item .right{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin: 0;
+    width: 100%;
+}
+.sales-analytics .item .icon{
+    padding: 0.6rem;
+    color: var(--color-warning);
+    border-radius: 50%;
+    background: var(--color-primary);
+    display: flex;
+}
+.sales-analytics .item.offline .icon{
+    background:var(--color-danger);
+}
+.sales-analytics .item.customers .icon{
+    background:var(--color-success);
+}
+.sales-analytics #add_product{
+    background-color: transparent;
+    border: 2px dashed var(--color-primary);
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sales-analytics #add_product div{
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+.sales-analytics #add_product div h3{
+    font-weight: 600;
+}
+/* Top Coins */
+
+
+
+
+/* Loader */
+
