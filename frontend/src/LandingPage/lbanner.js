@@ -1,6 +1,11 @@
 import React from "react";
 import "./lbanner.css";
 import tradeimg from "./tradeimg.jpg";
+import oracle from './oracle.png'
+import samsung from './samsung.png'
+import zz from './zz.png'
+import segment from './segment.png'
+import protnet from './protnet.png'
 const Lbanner = () => {
   return (
     <>
@@ -29,13 +34,14 @@ const Lbanner = () => {
     </div>
     <div className="inverstors">
       <h3 style={{textAlign:"center" ,margin:"3vh"}}>Invest in their stock and be part of the business</h3>
-      <span className="investor-logo">logo1</span>
-      <span className="investor-logo">logo2</span>
-      <span className="investor-logo">logo3</span>
-      <span className="investor-logo">logo4</span>
-      <span className="investor-logo">logo5</span>
-      <span className="investor-logo">logo6</span>
-      <span className="investor-logo">logo7</span>
+      <div style={{textAlign:"center"}}>
+  <div className="investor-logo"><img src={oracle} style={{width:"90px"}}></img></div>
+      <div className="investor-logo"><img src={samsung} style={{width:"90px"}}></img></div>
+      <div className="investor-logo"><img src={zz} style={{width:"90px"}}></img></div>
+      <div className="investor-logo"><img src={protnet} style={{width:"90px"}}></img></div>
+      <div className="investor-logo"><img src={segment} style={{width:"90px"}}></img></div>
+
+    </div>
     </div>
     </>
   );
