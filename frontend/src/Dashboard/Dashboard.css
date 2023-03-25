@@ -117,11 +117,11 @@ aside .top{
     justify-content: space-between;
     margin-top: 1.4rem;
 }
-aside .logo{
+aside .logo1{
     display: flex;
-    gap: 0.8rem;
+    margin-left: 2rem;
 }
-aside .logo img{
+aside .logo1 img{
     width: 2rem;
     height: 2rem;
 }
@@ -453,7 +453,7 @@ main .orders a{
         width:100%;
         grid-template-columns: 7rem auto 23rem;
     }
-    aside .logo h2{
+    aside .logo1 h2{
         display: none;
     }
     aside .sidebar h3{
@@ -502,10 +502,10 @@ main .orders a{
         padding-right: var(--card-padding);
         display: none;
     }
-    aside .logo{
+    aside .logo1{
         margin-left: 1rem;
     }
-    aside .logo h2{
+    aside .logo1 h2{
         display: inline;
     }
     aside .sidebar h3{

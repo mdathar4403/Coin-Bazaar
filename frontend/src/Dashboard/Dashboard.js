@@ -12,7 +12,7 @@ const Dashboard = () => {
         <div className="container1">
             <aside>
                 <div className="top">
-                    <div className="logo">
+                    <div className="logo1">
                         <img src={logo} alt="hero" />
                         <h2>EGA<span className="danger">TOR</span></h2>
                     </div>
