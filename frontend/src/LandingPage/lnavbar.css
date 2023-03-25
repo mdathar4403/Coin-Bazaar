@@ -144,13 +144,6 @@
 		transition: transform 0.2s ease;
 	}
 
-	#menuToggle:checked + .menu-btn .menu:nth-child(1) {
-		/* transform: translate3d(0, 6px, 0) rotate(45deg);
-         */
-         
-
-	}
-
 	#menuToggle:checked ~ .nav-container {
 		z-index: 1;
 		display: flex;

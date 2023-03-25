@@ -51,11 +51,18 @@ text-align: center;
 }
 .investors{
     text-align: center;
-    
+    display: flex;
+    flex-direction: column;
 }
 .investor-logo{
     margin-top: 5vh;
-    padding: 50px;
+    padding: 30px;
+    width: 30px;
+    display: inline;
+}
+.investor-logo > img{
+    display: inline;
+    margin-top: 5vh;
 }
 
 @media screen and (max-width: 600px) {
