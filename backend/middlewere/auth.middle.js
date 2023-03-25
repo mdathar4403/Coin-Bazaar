@@ -1,11 +1,12 @@
 import jst from 'jsonwebtoken';
 import User from '../models/user.js';
 
+const SECRET_KEY = process.env.SECRET_KEY;
 
 const auth = async (req, res, next) => {
   try {
         const token = req.header('Authorization').replace('Bearer ', '');
-        const decoded = jwt.verify(token, 'appSecret');
+        const decoded = jwt.verify(token, SECRET_KEY);
         const user = await User.findOne({
             _id: decoded._id,
         });

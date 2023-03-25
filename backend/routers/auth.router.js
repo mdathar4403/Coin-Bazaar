@@ -1,5 +1,5 @@
 import express from "express";
-import User from "../models/user.js";
+import User from '../models/user.js'
 import jwt from "jsonwebtoken";
 import auth from "../middlewere/auth.middle.js";
 const router = express.Router();
@@ -58,6 +58,7 @@ router.post("/signup", async (req, res, next) => {
     phone,
     address,
     credits: 1000,
+    stocks: [],
   });
   newUser.save().then((result) => {
     console.log(result);
@@ -72,7 +73,7 @@ router.post("/signup", async (req, res, next) => {
       { expiresIn: "1h" }
     );
   } catch (err) {
-    const error = new Error("Error! Something went wrong.");
+    const error = new Error("Error! Something went wrong. 2");
     return next(error);
   }
   res.status(201).json({

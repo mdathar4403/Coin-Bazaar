@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import flash from "connect-flash";
 import bodyParser from 'body-parser';
 import authRouter from "./routers/auth.router.js"
+import userDataRouter from './routers/userData.router.js'
 /////////////////////////////////
 //DOTENV
 dotenv.config();
@@ -43,6 +44,7 @@ app.get('/api',(req,res)=>{
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/api/auth',authRouter);
+app.use('/api/user',userDataRouter);
 
 
 
