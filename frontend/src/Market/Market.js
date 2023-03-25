@@ -3,6 +3,7 @@ import Navbar from '../Navbar/Navbar'
 import './Market.css'
 import { useEffect, useState } from 'react';
 import axios from 'axios'
+import profile1 from '../assets/profile-1.jpg'
 import Coin from './Coin';
 
 const Market = () => {
@@ -49,7 +50,7 @@ const Market = () => {
                             marketcap={coin.market_cap}
                             price={coin.current_price}
                             pricechange={coin.price_change_percentage_24h}
-                            // volume={coin.total_volume}
+                        // volume={coin.total_volume}
                         />
                     );
                 })}
@@ -57,54 +58,77 @@ const Market = () => {
             </div>
 
             <div className="sales-analytics">
-                <h2>Top Coins</h2>
+                <div className="right1">
+                    <div className="top">
+                        <button id="menu-btn">
+                            <span className="material-icons-sharp">menu</span>
+                        </button>
+                        <div className="theme-toggler">
+                            <span className="material-icons-sharp" id="light">light_mode</span>
+                            <span className="material-icons-sharp">dark_mode</span>
+                        </div>
+                        <div className="profile">
+                            <div className="info">
+                                <p>Hey, <b>Athar</b></p>
+                                <small className="text-muted">Admin</small>
+                            </div>
+                            <div className="profile-photo">
+                                <img src={profile1} alt="hero" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="top-coins">
+                    <h2>Top Coins</h2>
 
-                <div className="item online">
-                    <div className="icon">
-                        <span className="material-icons-sharp">shopping_cart</span>
-                        {/* <img src={filteredCoins[0].image} alt="" /> */}
-                    </div>
-                    <div className="right">
-                        <div className="info">
-                            <h3>ONLINE ORDERS</h3>
-                            <small className="text-muted">Last 24 Hours</small>
+                    <div className="item online">
+                        <div className="icon">
+                            <span className="material-icons-sharp">shopping_cart</span>
+                            {/* <img src={filteredCoins[0].image} alt="" /> */}
                         </div>
-                        <div>
-                            <h5 className="success">55%</h5>
-                            <h3>2432</h3>
+                        <div className="right">
+                            <div className="info">
+                                <h3>ONLINE ORDERS</h3>
+                                <small className="text-muted">Last 24 Hours</small>
+                            </div>
+                            <div>
+                                <h5 className="success">55%</h5>
+                                <h3>2432</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item offline">
+                        <div className="icon">
+                            <span className="material-icons-sharp">local_mall</span>
+                        </div>
+                        <div className="right">
+                            <div className="info">
+                                <h3>OFFLINE ORDERS</h3>
+                                <small className="text-muted">Last 24 Hours</small>
+                            </div>
+                            <div>
+                                <h5 className="danger">-15%</h5>
+                                <h3>781</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="item customers">
+                        <div className="icon">
+                            <span className="material-icons-sharp">person</span>
+                        </div>
+                        <div className="right">
+                            <div className="info">
+                                <h3>NEW CUSTOMERS</h3>
+                                <small className="text-muted">Last 24 Hours</small>
+                            </div>
+                            <div>
+                                <h5 className="success">+25%</h5>
+                                <h3>1822</h3>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div className="item offline">
-                    <div className="icon">
-                        <span className="material-icons-sharp">local_mall</span>
-                    </div>
-                    <div className="right">
-                        <div className="info">
-                            <h3>OFFLINE ORDERS</h3>
-                            <small className="text-muted">Last 24 Hours</small>
-                        </div>
-                        <div>
-                            <h5 className="danger">-15%</h5>
-                            <h3>781</h3>
-                        </div>
-                    </div>
-                </div>
-                <div className="item customers">
-                    <div className="icon">
-                        <span className="material-icons-sharp">person</span>
-                    </div>
-                    <div className="right">
-                        <div className="info">
-                            <h3>NEW CUSTOMERS</h3>
-                            <small className="text-muted">Last 24 Hours</small>
-                        </div>
-                        <div>
-                            <h5 className="success">+25%</h5>
-                            <h3>1822</h3>
-                        </div>
-                    </div>
-                </div>
+
 
             </div>
         </div>
