@@ -60,7 +60,7 @@ img{
   display: block;
   width: 100%;
 }
-h1{
+/* h1{
   font-weight: 800;
   font-size: 1.8rem;
 }
@@ -78,7 +78,7 @@ h5{
 }
 small{
   font-size: 0.75rem;
-}
+} */
 .profile-photo{
   width: 2.8rem;
   height: 2.8rem;
