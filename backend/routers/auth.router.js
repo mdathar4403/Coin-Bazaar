@@ -1,7 +1,7 @@
 import express from "express";
 import User from "../models/user.js";
 import jwt from "jsonwebtoken";
-
+import auth from "../middlewere/auth.middle.js";
 const router = express.Router();
 
 
@@ -48,18 +48,21 @@ router.post("/login", async (req, res, next) => {
 
 // Handling post request
 router.post("/signup", async (req, res, next) => {
-  const { name, email, password } = req.body;
+  const { first_name, last_name, email, password, phone, address } = req.body;
 
   const newUser = await User({
-    name,
+    first_name,
+    last_name,
     email,
     password,
+    phone,
+    address,
+    credits: 1000,
   });
   newUser.save().then((result) => {
     console.log(result);
   }).catch((err) => {
-    // console.log(err);
-
+    console.log(err);
   });
   let token;
   try {
@@ -69,7 +72,7 @@ router.post("/signup", async (req, res, next) => {
       { expiresIn: "1h" }
     );
   } catch (err) {
-    const error = new Error("Error! Something went wrong. 2");
+    const error = new Error("Error! Something went wrong.");
     return next(error);
   }
   res.status(201).json({
@@ -78,5 +81,17 @@ router.post("/signup", async (req, res, next) => {
   });
 });
 
+
+router.delete('/logout',auth,async(req,res,next)=>{
+  try{
+    req.user.tokens = req.user.tokens.filter((token)=>{
+      return token.token != req.token;
+    })
+    await req.user.save();
+    res.send('Logged out successfully');
+  }catch(e){
+    res.status(500).send(e);
+  }
+});
 
 export default router;
