@@ -26,12 +26,11 @@ h1{
     width: 60%;
     height: 100vh;
 }
-.logo{
+/* .logo{
   margin-top: 3vh;
   width:20vw;
   margin-left: 5vw;
-  
-}
+} */
 .group{
     display: block;
     text-align: center;

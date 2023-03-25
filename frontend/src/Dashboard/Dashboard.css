@@ -46,10 +46,10 @@ body{
     overflow-x: hidden;
     color: var(--color-dark);
 }
-.container{
+.container1{
     display: grid;
     width: 96%;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     gap: 1.8rem;
     grid-template-columns: 14rem auto 23rem;
 }
@@ -107,8 +107,11 @@ b{
     color: var(--color-warning);
 }
 
+aside{
+    height: 100vh;
+}
 aside .top{
-    background: white;
+    /* background: white; */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -133,6 +136,7 @@ aside .sidebar{
     height: 86vh;
     position:relative;
     top: 3rem;
+    /* margin-left: -2rem; */
 }
 aside h3{
     font-weight: 500;
@@ -145,6 +149,7 @@ aside .sidebar a{
     gap: 1rem;
     align-items: center;
     position: relative;
+    text-decoration: none;
     height: 3.7rem;
     transition: all 300ms ease;
 }
@@ -444,8 +449,8 @@ main .orders a{
 }
 /* MEDIA- Queries */
 @media screen  and (max-width:1200px){
-    .container{
-        width:94%;
+    .container1{
+        width:100%;
         grid-template-columns: 7rem auto 23rem;
     }
     aside .logo h2{
@@ -472,17 +477,17 @@ main .orders a{
         transform: translateX(-50%);
         margin: 2rem 0 0 8.8rem;
     }
-    main orders table{
+    main .orders table{
         width: 83vw;
     }
-    main table tbody tr td:last-child,
+    /* main table tbody tr td:last-child,
     main table tbody tr td:first-child{
         display: none;
-    }    
+    }     */
 }
 
 @media screen  and (max-width:760px){
-    .container{
+    .container1{
         width: 100%;
         grid-template-columns: 1fr;
     }
