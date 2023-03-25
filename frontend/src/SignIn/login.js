@@ -1,35 +1,35 @@
 import React from "react";
-import "./login.css";
+import "./signup.css";
 import logo from "./logo.png";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 
 const Login = () => {
-  const [errorMessages, setErrorMessages] = useState({});
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  // const [errorMessages, setErrorMessages] = useState({});
+  // const [isSubmitted, setIsSubmitted] = useState(false);
   // Generate JSX code for error message
 
-  const renderErrorMessage = (name) =>
-    name === errorMessages.name && (
-      <div className="error">{errorMessages.message}</div>
-    );
+  // const renderErrorMessage = (name) =>
+  //   name === errorMessages.name && (
+  //     <div className="error">{errorMessages.message}</div>
+  //   );
   return (
-    <div className="sign">
-      {/* <h1> sign in</h1> */}
-      <div class=" signincont">
-        <div className="row">
-          <div class="  companyname">
-            <h2>
-              Need webdesign for your page? designspace will help you... text
-              for trading app
-            </h2>
-            <div style={{ textAlign: "center" }}>
-              <img src={logo} className="logo" alt="company name"></img>
-            </div>
+    <div class=" signincont">
+      <div class="  companyname">
+        <div className="innerdiv">
+          <h2>
+            Need webdesign for your page? designspace will help you... text for
+            trading app
+          </h2>
+          <div style={{ textAlign: "center" }}>
+            <img src={logo} className="logo" alt="company name"></img>
           </div>
+        </div>
+      </div>
 
-          <div className="mainsignin">
-          <div style={{paddingTop: "20vh"}}>
-            <h2 style={{textAlign:"center"}}>SIGN IN</h2>
+      <div className="mainsignin">
+        <div className="innerdiv">
+          <div style={{ paddingTop: "20vh" }}>
+            <h2 style={{ textAlign: "center" }}>SIGN IN</h2>
             <div className="group">
               <div>
                 <label htmlFor="email" className="label">
@@ -63,13 +63,14 @@ const Login = () => {
               </div>
             </div>
             <div className="group">
-            <button type="button" className="btner">
-              LOGIN
-            </button>
+              <button type="button" className="btner">
+                LOGIN
+              </button>
             </div>
-            <div style={{textAlign:"center"}}>don't have an account <a href="/signup">signup here</a></div>
+            <div style={{ textAlign: "center" }}>
+              don't have an account <a href="/signup">signup here</a>
+            </div>
           </div>
-        </div>
         </div>
       </div>
     </div>
