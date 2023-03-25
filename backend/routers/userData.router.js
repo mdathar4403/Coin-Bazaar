@@ -8,10 +8,11 @@ const router = express.Router();
 
 //Handling Get request
 router.get("/portfolio", async (req, res, next) => {
-  stockList = []
   const { userId } = req.body;
-  let userData = User.find({ userId: userId});
-  res.json(userData);
+  let userData =  await User.findById(userId);
+  console.log(userData);
+  console.log(userData.stocks);
+  res.json(userData.stocks);
 });
 
 // Add a Stock To User's Portfolio
@@ -39,10 +40,29 @@ router.post('/stock/add', async (req, res, next) => {
 });
 
 
-// // Remove a Stock From User's Portfolio
-// router.delete('/stocks', async (req, res, next) => {
-//   res.send("Stocks Deleted");
-// });
+// Remove a Stock From User's Portfolio
+router.delete('/stocks', async (req, res, next) => {
+  const {stockid,userId} = req.body;
+  User.findOneAndUpdate(
+    {
+      _id: userId,
+    },
+    {
+      $pull: {
+        stocks: {
+          id: stockid,
+        },
+      },
+    },
+    {
+      new: true,
+    }
+  );
+  let user = await User.findById({
+    _id: userId,
+  });
+  res.json(user);
+});
 
 
 // // Buy a Stock
