@@ -137,7 +137,7 @@ const Signup = () => {
             </button>
           </div>
           <div style={{ textAlign: "center" }}>
-            already have an account <a href="/login">login here</a>
+            already have an account <a href="/login"><strong>login here</strong></a>
           </div>
         </div>
       </div>
