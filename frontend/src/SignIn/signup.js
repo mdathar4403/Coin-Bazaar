@@ -16,7 +16,6 @@ const Signup = () => {
     <div className="sign">
       {/* <h1> sign in</h1> */}
       <div class=" signincont">
-        <div className="row">
           <div class="  companyname">
             <h2>
               Need webdesign for your page? designspace will help you... text
@@ -142,7 +141,7 @@ const Signup = () => {
           </div>
         </div>
       </div>
-    </div>
+    
   );
 };
 
