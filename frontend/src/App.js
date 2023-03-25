@@ -4,6 +4,7 @@ import LandingPage from "./LandingPage/LandingPage";
 import Dashboard from "./Dashboard/Dashboard";
 import Login from "./SignIn/login";
 import Signup from "./SignIn/signup";
+import Market from "./Market/Market";
 function App() {
   return (
     <div className="App">
@@ -38,6 +39,14 @@ function App() {
             element={
               <>
                 <Signup />
+              </>
+            }
+          />
+          <Route
+            path="/market"
+            element={
+              <>
+                <Market />
               </>
             }
           />
