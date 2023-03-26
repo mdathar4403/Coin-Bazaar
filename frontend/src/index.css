@@ -53,10 +53,14 @@ body{
   gap: 1.8rem;
   grid-template-columns: 14rem auto 23rem;
 }
-a{
+/* a{
   color: var(--color-dark);
-}
-img{
+} */
+/* img{
+  display: block;
+  width: 100%;
+} */
+.profile-photo img{
   display: block;
   width: 100%;
 }

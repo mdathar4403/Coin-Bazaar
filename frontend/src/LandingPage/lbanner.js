@@ -9,7 +9,7 @@ import protnet from './protnet.png'
 const Lbanner = () => {
   return (
     <>
-    <div className="banner">
+    <div className="banner-landPage">
       <div className="banner-content">
         <h3>smart investation</h3>
         <h1>
@@ -29,7 +29,7 @@ const Lbanner = () => {
         <span className="bannerspan">logo2</span>
       </div>
       <div className="banner-image">
-        <img className="main-image" src={tradeimg}></img>
+        <img className="main-image1" src={tradeimg}></img>
       </div>
     </div>
     <div className="inverstors">

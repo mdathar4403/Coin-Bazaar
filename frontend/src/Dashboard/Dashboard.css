@@ -56,10 +56,10 @@ body{
 a{
     color: var(--color-dark);
 }
-img{
+/* img{
     display: block;
     width: 100%;
-}
+} */
 h1{
     font-weight: 800;
     font-size: 1.8rem;
