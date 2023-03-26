@@ -17,7 +17,7 @@ router.get("/portfolio", async (req, res, next) => {
 
 // Add a Stock To User's Portfolio
 router.post('/stock/add', async (req, res, next) => {
-  const {userId,stock} = req.body;
+  const {userId,stock,current_price} = req.body;
   console.log(stock);
   let userData = await User.findOneAndUpdate(
     {
@@ -26,6 +26,9 @@ router.post('/stock/add', async (req, res, next) => {
     {
       $addToSet: {
         stocks: stock,
+      },
+      $inc: {
+        credits: -current_price,
       },
     },
     {
@@ -42,7 +45,7 @@ router.post('/stock/add', async (req, res, next) => {
 
 // Remove a Stock From User's Portfolio
 router.delete('/stocks', async (req, res, next) => {
-  const {stockid,userId} = req.body;
+  const {stockid,userId,current_price} = req.body;
   User.findOneAndUpdate(
     {
       _id: userId,
@@ -52,6 +55,9 @@ router.delete('/stocks', async (req, res, next) => {
         stocks: {
           id: stockid,
         },
+      },
+      $inc: {
+        credits: current_price,
       },
     },
     {
