@@ -11,8 +11,8 @@ const Lbanner = () => {
     <>
     <div className="banner-landPage">
       <div className="banner-content">
-        <h3>smart investation</h3>
-        <h1 style={{fontSize:"4vw"}}>
+        {/* <h3>smart investation</h3> */}
+        <h1>
           Invest Your Money With Us <br />
           and Get Amazing Profit
         </h1>
@@ -22,8 +22,8 @@ const Lbanner = () => {
           convenience and various features provided by Tradiant.
         </p>
       <div className="banner-button"> 
-        <button className="banner-b1">get started</button>
-        <button className="banner-b2">see how it works</button>
+        <button className="banner-b1">Get started</button>
+        <button className="banner-b2">See how it works</button>
         </div>
       </div>
       <div className="banner-image">

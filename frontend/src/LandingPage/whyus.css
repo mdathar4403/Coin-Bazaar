@@ -30,10 +30,11 @@
   .banner-b122{
     background-color: rgba(33, 150, 243, 1);
     border-radius: 10px;
-    width: 90px;
-    height: 30px;
-    margin: 20px ;
-    color:white;
+    /* width: 20vw; */
+    padding: 1rem 2rem;
+    /* height: 30px; */
+    margin: 30px;
+    color: white;
 }
 .ourfeature-image1{
   width: 50vw;
@@ -61,6 +62,30 @@
     padding-top: 15vw;
   }
 
-
-
+}
+@media screen and (max-width: 600px) {
+  .features{
+    display: grid;
+    grid-template-columns: 1fr;
+    /* width: 100vw; */
+    /* height: 50vw; */
+    background-color:  rgba(240, 243, 245, 1);
+    ;
+    /* padding:30px; */
+  }
+  .ourfeature-image1{
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    padding: 5vw;
+  }
+  .ourfeature-content1{
+    width: 100%;
+    /* margin-left: 50vw; */
+    text-align: center;
+    padding-top:10vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    display: inline-block;
+  }
 }
