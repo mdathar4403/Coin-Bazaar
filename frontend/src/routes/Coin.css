@@ -75,9 +75,9 @@ td, th {
     text-align: center;
 }
 
-/* th {
-    background-color: #333;
-} */
+.content th {
+    background-color: #eae9e9ef;
+}
 
 .stats {
     display: grid;
