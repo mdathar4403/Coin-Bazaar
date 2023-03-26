@@ -73,10 +73,11 @@ const Whyus = () => {
             {" "}
             <img src="https://images.unsplash.com/photo-1521139869420-edaae1bc7b9a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ" />
           </div>
-          </div>
-          <div className="features">
           <div className=" ourfeature-content1">
-            <h1>our features</h1>
+          <h2 style={{color: " rgba(33, 150, 243, 1)",}}>our features</h2>
+          <h1>Receive update market<br/>
+quickly everytime</h1>
+
             <p>
               Equipped with comprehensive analysis tools and Artificial
               Intelligent, it makes it easier and gives you a profitable
@@ -84,12 +85,26 @@ const Whyus = () => {
               is not too late to make the best investment decisions.
             </p>
             <button className="banner-b1">get started</button>
+            
           </div>
           </div>
-        </div>
-        <div>
-          <div className="features ourfeature-image2"></div>
-          <div className="features ourfeature-content2"></div>
+        <div className="features">
+          <div className="  ourfeature-content1">
+            {" "}
+            <h2 style={{color: " rgba(33, 150, 243, 1)",}}>our features</h2>
+            <h1>Easy Way to Invest <br/>
+and Get Profit </h1>
+            <p>
+            Using the Tradiant Application is an easy way to invest
+and benefit, equipped with comprehensive analysis tools and Artificial Intelligent (AI) that helps automation in monitoring and transactions.            </p>
+            <button className="banner-b1">get started</button>
+          </div>
+          <div className=" ourfeature-image1">
+
+            <img src="https://images.unsplash.com/photo-1521139869420-edaae1bc7b9a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ" />
+            
+          </div>
+          </div>
         </div>
       </div>
     
