@@ -3,11 +3,11 @@ import mongoose from 'mongoose';
 import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
 import dotenv from "dotenv";
-
+import auth from "../middlewere/auth.middle.js";
 const router = express.Router();
 
 //Handling Get request
-router.get("/portfolio", async (req, res, next) => {
+router.get("/portfolio",auth, async (req, res, next) => {
   const { userId } = req.body;
   let userData =  await User.findById(userId);
   console.log(userData);
@@ -16,7 +16,7 @@ router.get("/portfolio", async (req, res, next) => {
 });
 
 // Add a Stock To User's Portfolio
-router.post('/stock/add', async (req, res, next) => {
+router.post('/stock/add',auth, async (req, res, next) => {
   const {userId,stock,current_price} = req.body;
   console.log(stock);
   let userData = await User.findOneAndUpdate(
@@ -44,7 +44,7 @@ router.post('/stock/add', async (req, res, next) => {
 
 
 // Remove a Stock From User's Portfolio
-router.delete('/stocks', async (req, res, next) => {
+router.delete('/stocks',auth, async (req, res, next) => {
   const {stockid,userId,current_price} = req.body;
   User.findOneAndUpdate(
     {

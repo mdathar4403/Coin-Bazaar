@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Dashboard.css'
 // import logo from '../assets/logo.png'
 import profile1 from '../assets/profile-1.jpg'
@@ -6,9 +6,22 @@ import profile2 from '../assets/profile-2.jpg'
 import profile3 from '../assets/profile-3.jpg'
 import profile4 from '../assets/profile-4.jpg'
 import Navbar from '../Navbar/Navbar'
+import { redirect } from 'react-router-dom'
 
 
 const Dashboard = () => {
+    const [name,setName] = React.useState('Admin')
+    useEffect(() => {
+                if (!localStorage.getItem("token")) {
+                  window.location.href = "/";
+                }
+                console.log(localStorage.getItem("token"));
+        const name = window.localStorage.getItem('first_name');
+        console.log(name);
+        setName(name);
+
+    },[])
+
     return (
         <div className="container1">
             <div className="navbar-area">
@@ -157,7 +170,9 @@ const Dashboard = () => {
                     </div>
                     <div className="profile">
                         <div className="info">
-                            <p>Hey, <b>Athar</b></p>
+                            <p>Hey, <b>{
+                                name
+                                }</b></p>
                             <small className="text-muted">Admin</small>
                         </div>
                         <div className="profile-photo">

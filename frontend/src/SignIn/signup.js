@@ -1,8 +1,8 @@
 import React from "react";
 import "./signup.css";
 import logo from "./logo.png";
-import axios from "axios";
-import { useState, useEffect } from "react";
+// import axios from "axios";
+import { useState } from "react";
 
 const Signup = () => {
   const [firstname, setfirstname] = useState("");
@@ -23,29 +23,63 @@ const Signup = () => {
     e.preventDefault();
     console.log(phone);
     // Using Fetch API
-    axios.post("http://localhost:3000/api/auth/signup", {
+    // axios.post("http://localhost:5000/api/auth/signup", {
+    //   method: "POST",
+    //   body: JSON.stringify({
+    //     // Add parameters here
+    //     firstname,
+    //     lastname,
+    //     email,
+    //     password,
+    //     phone,
+    //     address,
+    //   }),
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     // Handle data
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.message);
+    //   });
+    fetch("http://localhost:5000/api/auth/signup", {
       method: "POST",
       body: JSON.stringify({
         // Add parameters here
-        firstname,
-        lastname,
-        email,
-        password,
-         phone,
-        address,
+        first_name: firstname,
+        last_name: lastname,
+        email: email,
+        password: password,
+        phone: phone,
+        address: address,
       }),
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
     })
+
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+        data = data.data
+        localStorage.setItem("token", data.token);
+        window.localStorage.setItem("userId", JSON.stringify(data.userId));
+        window.localStorage.setItem("email", data.email);
+        window.localStorage.setItem("first_name", data.first_name);
+        window.localStorage.setItem("last_name", data.last_name);
+        window.location.href = "/dashboard";
         // Handle data
-      })
+      }
+      )
       .catch((err) => {
         console.log(err.message);
-      });
+      }
+      );
+
   };
   return (
     <div className=" signincont">

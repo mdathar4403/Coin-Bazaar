@@ -4,6 +4,14 @@ import logo from '../assets/logo.png'
 import './Navbar.css'
 
 const Navbar = () => {
+    const logOut = () => {
+        localStorage.removeItem('token');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('email');
+        localStorage.removeItem('first_name');
+        window.location.href = '/'
+    }
+
   return (
     <div className='navbar-container'>
       <aside>
@@ -48,7 +56,7 @@ const Navbar = () => {
                         <span className="material-icons-sharp">add</span>
                         <h3>Add Products</h3>
                     </a>
-                    <a href="/">
+                    <a onClick={logOut}>
                         <span className="material-icons-sharp">logout</span>
                         <h3>logout</h3>
                     </a>

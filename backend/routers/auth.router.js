@@ -39,9 +39,11 @@ router.post("/login", async (req, res, next) => {
   res.status(200).json({
     success: true,
     data: {
-      userId: existingUser.id,
-      email: existingUser.email,
+      userId: newUser.id,
+      email: newUser.email,
       token: token,
+      first_name: newUser.first_name,
+      last_name: newUser.last_name,
     },
   });
 });
@@ -78,7 +80,7 @@ router.post("/signup", async (req, res, next) => {
   }
   res.status(201).json({
     success: true,
-    data: { userId: newUser.id, email: newUser.email, token: token },
+    data: { userId: newUser.id, email: newUser.email, token: token,first_name: newUser.first_name, last_name: newUser.last_name }
   });
 });
 

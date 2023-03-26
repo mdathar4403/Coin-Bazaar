@@ -7,6 +7,7 @@ import flash from "connect-flash";
 import bodyParser from 'body-parser';
 import authRouter from "./routers/auth.router.js"
 import userDataRouter from './routers/userData.router.js'
+import cors from 'cors';
 /////////////////////////////////
 //DOTENV
 dotenv.config();
@@ -24,8 +25,8 @@ mongoose
     wtimeoutMS: 2500,
   })
   .then(() => {
-    app.listen("3000", () => {
-      console.log("Server is listening on port 3000");
+    app.listen(PORT, () => {
+      console.log("Server is listening on port: ",PORT);
     });
   })
   .catch((err) => {
@@ -33,7 +34,7 @@ mongoose
   });
 
 app.use(flash());
-
+app.use(cors());
 
 
 
