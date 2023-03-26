@@ -48,8 +48,8 @@ const Signup = () => {
       });
   };
   return (
-    <div class=" signincont">
-      <div class="  companyname">
+    <div className=" signincont">
+      <div className="  companyname">
         <div className="innerdiv">
           <h2>
             Need webdesign for your page? designspace will help you... text for
