@@ -5,7 +5,15 @@
     gap: 1.8rem;
     grid-template-columns: 14rem auto 23rem;
 }
-
+.coin-search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+.purple{
+    color: var(--color-primary);
+}
 .heading {
     display: flex;
     justify-content: space-between;
@@ -16,6 +24,7 @@
     margin: 2rem 1rem;
     padding: .7rem 1rem;
     font-weight: 700;
+    /* border-bottom: 1px solid #d7d7d7; */
 }
 
 .coin-name {
@@ -32,6 +41,7 @@
     border-radius: 8px;
     margin: 2rem 1rem;
     padding: .7rem 1rem;
+    border-bottom: 1px solid #d7d7d7;
 }
 
 .coin-row:hover {
