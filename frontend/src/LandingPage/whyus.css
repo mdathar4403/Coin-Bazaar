@@ -27,12 +27,12 @@
     ;
     /* padding:30px; */
   }
-  .banner-b1{
+  .banner-b122{
     background-color: rgba(33, 150, 243, 1);
     border-radius: 10px;
     width: 90px;
     height: 30px;
-    margin: 30px ;
+    margin: 20px ;
     color:white;
 }
 .ourfeature-image1{
@@ -49,6 +49,10 @@
   padding-left: 5vw;
   padding-right: 5vw;
   display: inline-block;
+}
+.features img{
+  width: 40vw;
+
 }
 
 

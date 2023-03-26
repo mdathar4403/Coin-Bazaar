@@ -12,7 +12,7 @@ const Lbanner = () => {
     <div className="banner-landPage">
       <div className="banner-content">
         <h3>smart investation</h3>
-        <h1>
+        <h1 style={{fontSize:"4vw"}}>
           Invest Your Money With Us <br />
           and Get Amazing Profit
         </h1>
@@ -21,19 +21,17 @@ const Lbanner = () => {
           <br />
           convenience and various features provided by Tradiant.
         </p>
-
+      <div className="banner-button"> 
         <button className="banner-b1">get started</button>
         <button className="banner-b2">see how it works</button>
-        <p>registered and supervised by</p>
-        <span className="bannerspan">logo1</span>
-        <span className="bannerspan">logo2</span>
+        </div>
       </div>
       <div className="banner-image">
         <img className="main-image1" src={tradeimg}></img>
       </div>
     </div>
     <div className="inverstors">
-      <h3 style={{textAlign:"center" ,margin:"3vh"}}>Invest in their stock and be part of the business</h3>
+      <h3 style={{textAlign:"center" ,margin:"3vh", fontSize:"3vw"}}>Invest in their stock and be part of the business</h3>
       <div style={{textAlign:"center"}}>
   <div className="investor-logo"><img src={oracle} style={{width:"90px"}}></img></div>
       <div className="investor-logo"><img src={samsung} style={{width:"90px"}}></img></div>

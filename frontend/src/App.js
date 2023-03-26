@@ -9,6 +9,7 @@ import Coin from "./routes/Coin";
 import Coins from "./Market/Coins";
 import axios from "axios";
 import React, { useState, useEffect } from 'react'
+import Aboutus from "./aboutus/aboutus";
 
 function App() {
   const [coins, setCoins] = useState([])
@@ -59,6 +60,14 @@ function App() {
             element={
               <>
                 <Signup />
+              </>
+            }
+          />
+          <Route
+            path="/aboutus"
+            element={
+              <>
+                <Aboutus />
               </>
             }
           />
