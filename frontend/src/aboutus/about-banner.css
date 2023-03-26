@@ -1,0 +1,12 @@
+.about-banner{
+    background-image:url('./aboutbanner.png');
+    height: 65vh;
+}
+.banner-b123{
+    background-color: rgba(33, 150, 243, 1);
+    border-radius: 10px;
+    width: 90px;
+    height: 30px;
+    margin: 20px ;
+    color:white;
+}
