@@ -75,7 +75,7 @@ const Whyus = () => {
           </div>
           <div className=" ourfeature-content1">
           <h2 style={{color: " rgba(33, 150, 243, 1)",}}>our features</h2>
-          <h1>Receive update market<br/>
+          <h1 style={{fontSize:"2vw",margin:"10px 0px"}}>Receive update market<br/>
 quickly everytime</h1>
 
             <p>
@@ -84,7 +84,7 @@ quickly everytime</h1>
               experience in the form of market updates quickly everytime, so it
               is not too late to make the best investment decisions.
             </p>
-            <button className="banner-b1">get started</button>
+            <button className="banner-b122">get started</button>
             
           </div>
           </div>
@@ -92,12 +92,12 @@ quickly everytime</h1>
           <div className="  ourfeature-content1">
             {" "}
             <h2 style={{color: " rgba(33, 150, 243, 1)",}}>our features</h2>
-            <h1>Easy Way to Invest <br/>
+            <h1 style={{fontSize:"2vw",margin:"10px 0px"}}>Easy Way to Invest <br/>
 and Get Profit </h1>
             <p>
             Using the Tradiant Application is an easy way to invest
 and benefit, equipped with comprehensive analysis tools and Artificial Intelligent (AI) that helps automation in monitoring and transactions.            </p>
-            <button className="banner-b1">get started</button>
+            <button className="banner-b122">get started</button>
           </div>
           <div className=" ourfeature-image1">
 

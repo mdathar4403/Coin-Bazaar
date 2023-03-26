@@ -12,8 +12,8 @@ const Lnavbar = () => {
     </div>
     <nav>
         <input className="hidden" type="checkbox" id="menuToggle"/>
-           <div className="nav-tab abs abs1"><button  className="navbutton with">sign in</button></div>
-                <div className="nav-tab abs abs2"><button className="navbutton with ">sign up</button></div>
+           <div className="nav-tab abs abs1"><button  className="navbutton with"><a href="/login">sign in </a></button></div>
+                <div className="nav-tab abs abs2"><button className="navbutton with "><a href="/signup">sign up</a></button></div>
         <label className="menu-btn" for="menuToggle">
 
            <div className="menu menu1 "> 
