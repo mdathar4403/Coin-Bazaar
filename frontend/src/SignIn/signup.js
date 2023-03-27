@@ -1,9 +1,24 @@
-import React from "react";
+
 import "./signup.css";
 import logo from "./logo.png";
+import React from "react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
+import { useGLTF, Stage, PresentationControls } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+
 // import axios from "axios";
 import { useState } from "react";
+function Model(props) {
+  const { scene } = useGLTF("/ethereum/scene.gltf");
 
+  // Add a rotation animation to the model using useFrame hook
+  useFrame(({ clock }) => {
+    scene.rotation.y = Math.sin(clock.getElapsedTime() * 1) * 0.3;
+  });
+
+  return <primitive object={scene} {...props} />;
+}
 const Signup = () => {
   const [firstname, setfirstname] = useState("");
   const [lastname, setlastname] = useState("");
@@ -82,9 +97,9 @@ const Signup = () => {
 
   };
   return (
-    <div className=" signincont">
-      <div className="  companyname">
-        <div className="innerdiv">
+    <div className="Login_PAGE flex flex-row bg-[#2f2f2f] h-[100%]">
+      {/* <div className="  companyname"> */}
+        {/* <div className="innerdiv">
           <h2>
             Need webdesign for your page? designspace will help you... text for
             trading app
@@ -92,141 +107,205 @@ const Signup = () => {
           <div style={{ textAlign: "center" }}>
             <img src={logo} className="logo" alt="company name"></img>
           </div>
-        </div>
+        </div> */}
+        <div className="a3d-model w-[50%]">
+        {/* rotate the 3d model */}
+        <Canvas
+          dpr={[1, 2]}
+          camera={{ fav: 45 }}
+          style={{
+            position: "relative",
+            backgroundColor: "black",
+            height: "100vh",
+          }}
+        >
+          <PresentationControls
+            speed={1.5}
+            global
+            zoom={0.2}
+            polar={[-0.1, Math.PI / 4]}
+          >
+            <Stage environment={null}>
+              <Model scale={0.005} />
+            </Stage>
+          
+          </PresentationControls>
+          
+        </Canvas>
+      {/* </div> */}
+
       </div>
 
-      <div className="mainsignin">
-        <div className="innerdiv">
-          <h2 style={{ textAlign: "center" }}>SIGN UP</h2>
 
-          <form action="http://localhost:5000/api/auth/signup" method="POST" onSubmit={onSubmitHandler}>
-          <div className="group">
-            <div>
-              <label htmlFor="first_name" className="label">
-                First Name
-              </label>
-            </div>
-            <div>
-              <input
+      <div className="form-container w-[50%] flex flex-col justify-center">
+        <div className="form-body w-[80%] md:w-[80%] lg:w-[60%] m-auto">
+          <div className="form-header">
+            <h1 className="text-5xl p-5 font-bold text-white">Sign Up</h1>
+          </div>
+
+        <form action="http://localhost:5000/api/auth/signup" method="POST" onSubmit={onSubmitHandler}>
+          <div className="form-input">
+            <input
                 placeholder="first name"
                 type="text"
-                size="30"
-                className="input"
-                name="first_name"
+                
                 onChange={(e) => setfirstname(e.target.value)}
                 value={firstname}
-                required
-              />
-            </div>
-          </div>
-          <div className="group">
-            <div>
-              <label htmlFor="last_name" className="label">
-                Last Name
-              </label>
-            </div>
-            <div>
-              <input
+                name="first_name"
+
+              className="firstname m-5 "
+              required
+              style={{
+                width: "100%",
+                height: "50px",
+                borderRadius: "10px",
+                border: "none",
+                outline: "none",
+                paddingLeft: "20px",
+                fontSize: "20px",
+                color: "white",
+                backgroundColor: "#454343",
+              }}
+            />
+            <input
                 placeholder="last name"
                 type="text"
-                size="30"
-                className="input"
-                name="last_name"
+                
                 onChange={(e) => setlastname(e.target.value)}
                 value={lastname}
-                required
-              />
-            </div>
-          </div>
-          <div className="group">
-            <div>
-              <label htmlFor="email" className="label">
-                Email
-              </label>
-            </div>
-            <div>
-              <input
-                placeholder="abc@gmail.com"
+                name="last_name"
+
+              className="lastname m-5 "
+              required
+              style={{
+                width: "100%",
+                height: "50px",
+                borderRadius: "10px",
+                border: "none",
+                outline: "none",
+                paddingLeft: "20px",
+                fontSize: "20px",
+                color: "white",
+                backgroundColor: "#454343",
+              }}
+            />
+            <input
+                placeholder="email"
                 type="email"
-                size="30"
-                className="input"
-                name="email"
+                
                 onChange={(e) => setemail(e.target.value)}
                 value={email}
-                required
-              />
-            </div>
-          </div>
-          <div className="group">
-            <div>
-              <label htmlFor="phone" className="label">
-                Phone
-              </label>
-            </div>
-            <div>
-              <input
-                placeholder="1234567890"
+                name="email"
+
+              className="email m-5 "
+              required
+              style={{
+                width: "100%",
+                height: "50px",
+                borderRadius: "10px",
+                border: "none",
+                outline: "none",
+                paddingLeft: "20px",
+                fontSize: "20px",
+                color: "white",
+                backgroundColor: "#454343",
+              }}
+            />
+            <input
+                placeholder="phone"
                 type="tel"
                 pattern="[0-9]{10}"
-                className="input"
-                name="phone"
+
                 onChange={(e) => setphone(e.target.value)}
                 value={phone}
-                required
-              />
-            </div>
-          </div>
-          <div className="group">
-            <div>
-              <label htmlFor="lastname" className="label">
-                address
-              </label>
-            </div>
-            <div>
-              <input
+                name="phone"
+
+              className="phone m-5 "
+              required
+              style={{
+                width: "100%",
+                height: "50px",
+                borderRadius: "10px",
+                border: "none",
+                outline: "none",
+                paddingLeft: "20px",
+                fontSize: "20px",
+                color: "white",
+                backgroundColor: "#454343",
+              }}
+            />
+            <input
                 placeholder="address"
                 type="text"
-                size="30"
-                className="input"
-                name="address"
+
                 onChange={(e) => setaddress(e.target.value)}
                 value={address}
-                required
-              />
-            </div>
-          </div>
-          <div className="group">
-            <div>
-              <label htmlFor="password" className="label">
-                Password
-              </label>
-            </div>
-            <div>
-              <input
-                placeholder="********"
+                name="address"
+
+              className="address m-5 "
+              required
+              style={{
+                width: "100%",
+                height: "50px",
+                borderRadius: "10px",
+                border: "none",
+                outline: "none",
+                paddingLeft: "20px",
+                fontSize: "20px",
+                color: "white",
+                backgroundColor: "#454343",
+              }}
+            />
+            <input
+                placeholder="password"
                 type="password"
-                minLength="8"
-                className="input"
-                name="password"
+
                 onChange={(e) => setpassword(e.target.value)}
                 value={password}
-                required
-              />
-            </div>
+                name="password"
+
+              className="password m-5 "
+              required
+              style={{
+                width: "100%",
+                height: "50px",
+                borderRadius: "10px",
+                border: "none",
+                outline: "none",
+                paddingLeft: "20px",
+                fontSize: "20px",
+                color: "white",
+                backgroundColor: "#454343",
+              }}
+            />
+            
           </div>
-          <div className="group">
-            <button type="submit" className="btner">
-              Sign-Up
+          <div className="form-button">
+            <button
+            type="submit"
+              className="login-button m-5"
+              style={{
+                width: "100%",
+                height: "50px",
+                borderRadius: "10px",
+                border: "none",
+                outline: "none",
+                fontSize: "20px",
+                color: "white",
+                backgroundColor: "#0CB1CA",
+              }}
+            >
+              Sign up
             </button>
           </div>
-          </form>
-          <div style={{ textAlign: "center" }}>
+        </form>
+        <div style={{ textAlign: "center" ,color:"white"}}>
             already have an account{" "}
             <a href="/login">
-              <strong>login here</strong>
+              <strong style={{color:"#0CB1CA"}}>login here</strong>
             </a>
           </div>
-        </div>
+      </div>
       </div>
     </div>
   );

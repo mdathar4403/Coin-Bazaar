@@ -1,63 +1,13 @@
 
-.signincont{
-    display: grid;
-    grid-template-columns: 40% 60%;
-    position: absolute;
-    top :0vh;
-    left:0vw;
-    width: 100vw;
-    height: 100vh;
-    background-color: white;
-}
-.companyname{
-    background-color:rgba(171,193 ,242 ,1);
-    width: 100%;
-    height: 100vh;
-    padding: 2%;
-    text-align: center;
-    display: inline-block;
-}
-.mainsignin{
-    background-color:white;
-    width: 100%;
-    height: 100vh;
-    display: inline-block;
-}
-.row{
-    display: inline;
-}
-.innerdiv{ 
-    padding-top: 20vh;
-}
-.logo{
-  margin-top: 3vh;
-  width:20vw;
-  margin-left: 5vw;
-}
-.group{
-    display: block;
-    text-align: center;
-    margin: 3vh;
-}
-
-input{
-    border-style: solid;
-    border-width: medium;
-}
-.btner{
-    background-color:rgba(171,193 ,242 ,1);
-    width: 200px;
-    border-radius: 10%;
-}
-
 @media screen and (max-width: 600px) {
-    .companyname{
+    .a3d-model{
 display: none;
     }
-    .mainsignin{
+    .form-container{
         /* background-color:white; */
         text-align: center;
         width: 100vw;
+        height: 100vh;
     }
 
 
