@@ -79,13 +79,13 @@
 
 @media screen and (max-width: 800px) {
     
-	.nav-container {
+	.nav-container123 {
 		position: fixed;
 		display: none;
 		overflow-y: auto;
 		z-index: -1;
 		top: 0;
-		right: 0;
+		left: 0;
 		width: 280px;
 		height: 100%;
 		background: #fff;
@@ -146,14 +146,14 @@
 		transition: transform 0.2s ease;
 	}
 
-	#menuToggle:checked ~ .nav-container {
+	#menuToggle:checked ~ .nav-container123 {
 		z-index: 1;
 		display: flex;
-		animation: menu-slide-left 0.3s ease;
+		animation: menu-slide-right 0.3s ease;
 	}
-	@keyframes menu-slide-left {
+	@keyframes menu-slide-right {
 		0% {
-			transform: translateX(200px);
+			transform: translateX(-200px);
 		}
 		to {
 			transform: translateX(0);
@@ -188,9 +188,9 @@ display: flex;
     .with{
         width:50px;
     }
-	/* .menu123{
+	.menu123{
 		position: fixed;
-    right: 40px;
-    z-index: 10;
-	} */
+    left: 40px;
+    z-index: 100;
+	}
 }

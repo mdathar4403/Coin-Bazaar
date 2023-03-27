@@ -2,7 +2,7 @@ import React from 'react'
 // import '../Dashboard/Dashboard.css'
 import logo from '../assets/logo.png'
 import './Navbar.css'
-
+import Mnavbar from './mnavbar'
 const Navbar = () => {
     const logOut = () => {
         localStorage.removeItem('token');
@@ -13,6 +13,10 @@ const Navbar = () => {
     }
 
   return (
+    <>
+    <div className='mobile'>
+    <Mnavbar />
+    </div>
     <div className='navbar-container'>
       <aside>
                 <div className="top">
@@ -63,6 +67,7 @@ const Navbar = () => {
                 </div>
             </aside>
     </div>
+    </>
   )
 }
 
