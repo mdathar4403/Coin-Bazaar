@@ -1,5 +1,4 @@
 
-
 import "./signup.css";
 
 
@@ -12,11 +11,15 @@ import { useFrame } from "@react-three/fiber";
 function Model(props) {
   const { scene } = useGLTF("/ethereum/scene.gltf");
 
+  // Add a rotation animation to the model using useFrame hook
+  useFrame(({ clock }) => {
+    scene.rotation.y = Math.sin(clock.getElapsedTime() * 1) * 0.3;
+  });
 
-
+  return <primitive object={scene} {...props} />;
+}
 const Login = () => {
   return (
-
     // <div className="flex flex-row bg-[#2f2f2f] h-[100%]">
     <div className="Login_PAGE flex flex-row bg-[#2f2f2f] h-[100%]">
       <div className="a3d-model w-[50%]">
@@ -112,9 +115,8 @@ const Login = () => {
 
         </div>
       </div>
-
     </div>
   );
-}
+};
 
 export default Login;
