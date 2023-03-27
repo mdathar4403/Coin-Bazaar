@@ -12,16 +12,40 @@
     box-shadow:0rem 2rem 3rem var(--color-light);
     
 }
+.content h1{
+    font-size: 1.6rem;
+    color: #504d4d;
+}
 .btn-store{
     display: flex;
     justify-content: flex-end;
     gap: 2rem;
 }
+.btn-store h2{
+    margin-right: 3rem;
+    /* justify-content: center; */
+    display: flex;
+    align-items: center;
+}
+/* .buy-amount{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+} */
+.buy-amount input[type=number] {
+    /* width: 100%; */
+    padding: 8px 16px;
+    margin: 8px 0;
+    box-sizing: border-box;
+  }
+
 .btn-buy{
     background-color:rgb(105, 237, 17);
     padding: 1rem;
     border-radius: 5px;
     width: 100px;
+    margin-left: 1.5rem;
+    cursor: pointer;
     /* color: #d3d3d3; */
 }
 .btn-sell{
