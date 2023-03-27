@@ -10,6 +10,7 @@ import Coins from "./Market/Coins";
 import axios from "axios";
 import React, { useState, useEffect } from 'react'
 import Aboutus from "./aboutus/aboutus";
+// import Cart from "./Cart/Cart";
 
 function App() {
   const [coins, setCoins] = useState([])
@@ -71,6 +72,7 @@ function App() {
               </>
             }
           />
+         
           <Route path='/market' element={<Coins coins={coins} />} />
           <Route path='/coin' element={<Coin />}>
             <Route path=':coinId' element={<Coin />} />

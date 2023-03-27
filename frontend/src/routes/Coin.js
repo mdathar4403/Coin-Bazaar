@@ -9,6 +9,7 @@ const Coin = () => {
 
     const params = useParams()
     const [coin, setCoin] = useState({})
+    const [value, setValue] = useState();
 
     const url = `https://api.coingecko.com/api/v3/coins/${params.coinId}`
 
@@ -21,14 +22,37 @@ const Coin = () => {
         })
     }, [])
 
+    function submitAmount(data) {
+        data.preventDefault();
+        setValue(value);
+        console.log(data.target[0].value)
+    }
+
     return (
         <div>
             <div className='coin-container'>
                 <div className='content'>
                     <h1>{coin.name}</h1>
                     <div className="btn-store">
-                        <button className='btn-buy'>Buy</button>
-                        <button className='btn-sell'>Sell</button>
+                        <h2>Amount:</h2>
+                        <div className="buy-amount">
+                            <form onSubmit={submitAmount}>
+                                <input
+                                    type="number"
+                                    placeholder='Stock'
+                                    // value={value}
+                                    min='1'
+                                    max='1000'
+                                    step='1'
+                                    defaultValue='1'
+                                />
+                                {/* </label> */}
+                                <input className='btn-buy' type="submit" value="Buy" style={{ border: "1px green" }} />
+                            </form>
+                        </div>
+
+                        {/* <button className='btn-buy'>Buy</button> */}
+                        {/* <button className='btn-sell'>Sell</button> */}
                     </div>
 
                 </div>
