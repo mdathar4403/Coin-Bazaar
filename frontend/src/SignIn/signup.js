@@ -99,7 +99,7 @@ const Signup = () => {
         <div className="innerdiv">
           <h2 style={{ textAlign: "center" }}>SIGN UP</h2>
 
-          <form action="http://localhost:3000/api/auth/signup" method="POST" onSubmit={onSubmitHandler}>
+          <form action="http://localhost:5000/api/auth/signup" method="POST" onSubmit={onSubmitHandler}>
           <div className="group">
             <div>
               <label htmlFor="first_name" className="label">
