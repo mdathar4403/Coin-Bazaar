@@ -37,6 +37,7 @@
     padding: 8px 16px;
     margin: 8px 0;
     box-sizing: border-box;
+    border: 1px solid #504d4d;
   }
 
 .btn-buy{
