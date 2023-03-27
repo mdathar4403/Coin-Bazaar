@@ -1,9 +1,9 @@
 import React from 'react';
 import './footer.css';
-
+import logo from './../SignIn/logo.png'
 const Footer = () => {
   return (
-    <div>
+    <div id='footer-id'>
 <div className="pg-footer">
     <footer className="footer">
       <svg className="footer-wave-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 100" preserveAspectRatio="none">
@@ -14,7 +14,8 @@ const Footer = () => {
           <div className="footer-logo">
             <a className="footer-logo-link" href="#">
               <span className="hidden-link-text">LOGO</span>
-              <h1>LOGO</h1>
+              <div><img className="nav-logo" src={logo} alt="Logo" />
+</div><strong style={{fontSize:"20px" ,color:"white",padding:"20px 0"}}>HackElites</strong>
             </a>
           </div>
           <div className="footer-menu">
