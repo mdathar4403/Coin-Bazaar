@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import Navbar from '../Navbar/Navbar'
 import './Coins.css'
 import profile1 from '../assets/profile-1.jpg'
+import AChart from '../chart/chart'
 
 
 const Coins = (props) => {
@@ -57,7 +58,7 @@ const Coins = (props) => {
                         </div>
                     </div>
                 </div>
-
+{/* hi */}
                 {/* <!----------- END OF RECENT UPDATES -------> */}
                 <div className="sales-analytics1">
                     <h2>Sales Analytics</h2>
@@ -108,6 +109,8 @@ const Coins = (props) => {
                         </div>
                     </div>
                 </div>
+                {/* hi */}
+                <AChart/>
             </div>
         </div>
     )
