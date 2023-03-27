@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 2rem;
+    margin-top: 4.5rem;
 }
 .purple{
     color: var(--color-primary);
