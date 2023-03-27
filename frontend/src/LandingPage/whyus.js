@@ -1,6 +1,7 @@
 import React from "react";
 import "./whyus.css";
-
+import image2 from './image2.png'
+import image1 from './image1.png'
 const Whyus = () => {
   return (
     <div id="why-us">
@@ -74,7 +75,7 @@ const Whyus = () => {
         <div className="features">
           <div className="  ourfeature-image1">
             {" "}
-            <img src="https://images.unsplash.com/photo-1521139869420-edaae1bc7b9a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ" />
+            <img src={image1} />
           </div>
           <div className=" ourfeature-content1">
             <h2 style={{ color: " rgba(33, 150, 243, 1)", }}>our features</h2>
@@ -104,7 +105,7 @@ const Whyus = () => {
           </div>
           <div className=" ourfeature-image1">
 
-            <img src="https://images.unsplash.com/photo-1521139869420-edaae1bc7b9a?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ" />
+            <img src={image2} />
 
           </div>
         </div>
