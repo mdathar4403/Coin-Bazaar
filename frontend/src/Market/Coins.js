@@ -59,7 +59,7 @@ const Coins = (props) => {
                 </div>
 
                 {/* <!----------- END OF RECENT UPDATES -------> */}
-                <div className="sales-analytics">
+                <div className="sales-analytics1">
                     <h2>Sales Analytics</h2>
 
                     <div className="item online">
