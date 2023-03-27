@@ -30,7 +30,7 @@ const Lnavbar = () => {
             <ul className="nav-tabs">
               <li className="nav-tab"><a href="/">Home </a></li>
               <li className="nav-tab"><a href="/aboutus">About US</a></li>
-              <li className="nav-tab"><a href="/#why-us">Why US</a></li>
+              <li className="nav-tab"><a href="/Market">Market</a></li>
               <li className="nav-tab"><a href="#footer-id">Contacts</a></li>
               <li className="nav-tab"><button className="navbutton navsign"><a href="/login">sign in </a></button></li>
               <li className="nav-tab"><button className="navbutton navsign"><a href="/signup">sign up</a></button></li>

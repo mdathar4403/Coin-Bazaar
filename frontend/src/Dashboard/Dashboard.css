@@ -468,7 +468,7 @@ main .orders a{
         background: var(--color-warning);
         width: 100%;
         margin: 0;
-        z-index: 2;
+        z-index: 1;
         box-shadow: 0 1rem 1rem var(--color-light);
     }
     .right .top .theme-toggler{
