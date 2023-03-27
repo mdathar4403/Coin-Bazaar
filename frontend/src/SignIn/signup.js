@@ -23,9 +23,9 @@ const Signup = () => {
   const [firstname, setfirstname] = useState("");
   const [lastname, setlastname] = useState("");
   const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
   const [address, setaddress] = useState("");
   const [phone, setphone] = useState("");
-  const [password, setpassword] = useState("");
   // const [errorMessages, setErrorMessages] = useState({});
   // const [isSubmitted, setIsSubmitted] = useState(false);
   // Generate JSX code for error message
