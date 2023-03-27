@@ -8,7 +8,7 @@ const Lnavbar = () => {
     <>
       <div className="nav-wrapper">
         <div className="logo-container">
-          <img className="nav-logo" src={logo} alt="Logo" /><strong>hackelites</strong>
+          <img className="nav-logo" src={logo} alt="Logo" /><strong style={{fontSize:"20px"}}>HackElites</strong>
         </div>
         <nav>
           <input className="hidden" type="checkbox" id="menuToggle" />
@@ -28,10 +28,10 @@ const Lnavbar = () => {
           </label>
           <div className="nav-container">
             <ul className="nav-tabs">
-              <li className="nav-tab">Home</li>
-              <li className="nav-tab">About Us</li>
-              <li className="nav-tab">Services</li>
-              <li className="nav-tab">FAQ</li>
+              <li className="nav-tab"><a href="/">Home </a></li>
+              <li className="nav-tab"><a href="/aboutus">About US</a></li>
+              <li className="nav-tab"><a href="/#why-us">Why US</a></li>
+              <li className="nav-tab"><a href="#footer-id">Contacts</a></li>
               <li className="nav-tab"><button className="navbutton navsign"><a href="/login">sign in </a></button></li>
               <li className="nav-tab"><button className="navbutton navsign"><a href="/signup">sign up</a></button></li>
             </ul>

@@ -40,7 +40,7 @@ const Login = () => {
                 <input
                   type="text"
                   size="30"
-                  className="input"
+                  className="input" 
                   name="email"
                   required
                 />

@@ -3,7 +3,7 @@ import "./whyus.css";
 
 const Whyus = () => {
   return (
-    <div>
+    <div id="why-us">
       <h3
         style={{
           textAlign: "center",
