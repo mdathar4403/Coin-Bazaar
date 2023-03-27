@@ -8,8 +8,8 @@ import Signup from "./SignIn/signup";
 import Coin from "./routes/Coin";
 import Coins from "./Market/Coins";
 import axios from "axios";
-import React, { useState, useEffect } from 'react'
 import Aboutus from "./aboutus/aboutus";
+import React, { useState, useEffect } from 'react'
 
 function App() {
   const [coins, setCoins] = useState([])
