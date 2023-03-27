@@ -13,7 +13,7 @@ const Dashboard = () => {
     const [name,setName] = React.useState('Admin')
     useEffect(() => {
                 if (!localStorage.getItem("token")) {
-                //   window.location.href = "/";
+
                 }
                 console.log(localStorage.getItem("token"));
         const name = window.localStorage.getItem('first_name');
