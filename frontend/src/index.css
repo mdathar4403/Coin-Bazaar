@@ -1,5 +1,7 @@
 @import url('http://fonts:googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 :root{
     --color-primary:#7380ec;
     --color-danger:#ff7782;
