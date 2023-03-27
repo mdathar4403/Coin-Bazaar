@@ -83,6 +83,7 @@ import React from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { useGLTF, Stage, PresentationControls } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 // function Box() {
 //   return (
 //     <mesh>
@@ -106,20 +107,24 @@ import { useGLTF, Stage, PresentationControls } from "@react-three/drei";
 // );
 // }
 
-// import { Input } from "@material-tailwind/react";
 function Model(props) {
   const { scene } = useGLTF("/ethereum/scene.gltf");
+
+  // Add a rotation animation to the model using useFrame hook
+  useFrame(({ clock }) => {
+    scene.rotation.y = Math.sin(clock.getElapsedTime() * 1) * 0.3;
+  });
+
   return <primitive object={scene} {...props} />;
 }
-
 const Login = () => {
   return (
     // <div className="flex flex-row bg-[#2f2f2f] h-[100%]">
     <div className="Login_PAGE flex flex-row bg-[#2f2f2f] h-[100%]">
       <div className="3d-model w-[50%]">
+        {/* rotate the 3d model */}
         <Canvas
           dpr={[1, 2]}
-          shadows
           camera={{ fav: 45 }}
           style={{
             position: "relative",
@@ -136,7 +141,9 @@ const Login = () => {
             <Stage environment={null}>
               <Model scale={0.005} />
             </Stage>
+          
           </PresentationControls>
+          
         </Canvas>
       </div>
       <div className="form-container w-[50%] flex flex-col justify-center">
