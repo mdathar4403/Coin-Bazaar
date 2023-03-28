@@ -52,6 +52,19 @@ router.post("/login", async (req, res, next) => {
 router.post("/signup", async (req, res, next) => {
   const { first_name, last_name, email, password, phone, address } = req.body;
 
+  User.findOne({
+    email: email 
+  }).then((user) => {
+    if (user) {
+      return res.status(400).json({
+        success: false,
+        message: "Email already exists",
+      });
+    }
+  });
+  
+
+
   const newUser = await User({
     first_name,
     last_name,
