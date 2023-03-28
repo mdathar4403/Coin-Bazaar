@@ -5,9 +5,10 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const GAChart = (props) => {
-    const [data, setdata] = useState([]);
-    // const [arr,setarr]
-    let arr = [];
+  const [data, setdata] = useState([]);
+  // const [arr,setarr]
+  let arr = [];
+  var day = Number(Math.random() * 10 + 1);
   useEffect(() => {
     // var newUser = { name: 'Ankur Agrawal', email: 'ankur.agrawal.ece20@itbhu.ac.in', college: 'IIT BHU', year: 'Part III', phone: '1234567890', referral: 'default#EES-10000', radianite_points: 0, token: 'd221d7afdf288fc097ff321d77154de4b3b6a24e' };
     // window.sessionStorage.setItem('profileData', newUser);
@@ -53,50 +54,52 @@ const GAChart = (props) => {
     //         'X-RapidAPI-Host': 'alpha-vantage.p.rapidapi.com'
     //     }
     // };
-    
+
     // fetch('https://alpha-vantage.p.rapidapi.com/query?function=DIGITAL_CURRENCY_MONTHLY&market=CNY&symbol=BTC', options)
     //     .then(response => response.json())
     //     .then(response => console.log(response))
     //     .catch(err => console.error(err));
 
-
-
+    // let day=Number(Math.random()*20);
+    // console.log(day);
 
     const func = async () => {
-      const url = `https://alpha-vantage.p.rapidapi.com/query?function=DIGITAL_CURRENCY_MONTHLY&market=CNY&symbol=BTC&interval=5min&outputsize=full&apikey=eb4e760030mshd131a038e7f942fp1bf55ejsn02b7f392f922`;
+      const url = `https://api.coingecko.com/api/v3/exchanges/binance/volume_chart?days=${day}`;
       const response = await fetch(url);
       const parseData = await response.json();
       // setdata(parseData["Time Series (5min)"]);
       // console.log(parseData["Time Series (5min)"]);
-      console.log(parseData["Monthly Time Series"]);
-      for (const [key, value] of Object.entries(
-        parseData["Monthly Time Series"]
-      )) {
-        console.log(`${key}: ${value}`);
-        let year = Number(key.split("-")[0]);
-        let month = Number(key.split("-")[1]);
-        let day = Number(key.split("-")[2]);
-        console.log(month);
-        let temp = [];
-        for (const [key2, value2] of Object.entries(value)) {
-          if (temp.length < 4) {
-            temp.push(value2);
-          }
-        }
-        let person3 = { x: key, y: temp };
-
-        console.log(temp);
-        arr.push(person3);
-        setdata(arr);
+      console.log(parseData);
+      for (let i = 1; i < parseData.length && i < 50; i++) {
+        arr.push(parseData[i][1]);
       }
+      // for (const [key, value] of Object.entries(
+      //   parseData["Monthly Time Series"]
+      // )) {
+      //   console.log(`${key}: ${value}`);
+      //   let year = Number(key.split("-")[0]);
+      //   let month = Number(key.split("-")[1]);
+      //   let day = Number(key.split("-")[2]);
+      //   console.log(month);
+      //   let temp = [];
+      //   for (const [key2, value2] of Object.entries(value)) {
+      //     if (temp.length < 4) {
+      //       temp.push(value2);
+      //     }
+      //   }
+      //   let person3 = { x: key, y: temp };
+
+      //   console.log(temp);
+      //   arr.push(person3);
+      setdata(arr);
+      // }
     };
     func();
   }, []);
 
-
   return (
     <div>
-      <Chart
+      {/* <Chart
         type="candlestick"
         width={800}
         height={400}
@@ -118,6 +121,32 @@ const GAChart = (props) => {
           },
 
 
+        }}
+      /> */}
+      <Chart
+        type="line"
+        width={800}
+        height={400}
+        series={[
+          {
+            name: "product",
+            data: data,
+          },
+        ]}
+        options={{
+          title: { text: "Token Allocation" },
+          // plotOptions: {
+          //   candlestick: {
+          //     colors: {
+          //       upward: "#3C90EB",
+          //       downward: "#DF7D46",
+          //     },
+          //   },
+          // },
+          xaxis: {
+            title: { text: "production sell for today (volumes)" },
+            // categories:['1','2','3','4','5','6']
+          },
         }}
       />
     </div>
