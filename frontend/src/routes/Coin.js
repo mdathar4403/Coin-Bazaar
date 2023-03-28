@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import DOMPurify from 'dompurify'
 
 import './Coin.css'
+import GAChart from '../chart/graph'
 
 const Coin = () => {
 
@@ -30,6 +31,7 @@ const Coin = () => {
 
     return (
         <div>
+        <GAChart symbol={"MFST"}/>
             <div className='coin-container'>
                 <div className='content'>
                     <h1>{coin.name}</h1>

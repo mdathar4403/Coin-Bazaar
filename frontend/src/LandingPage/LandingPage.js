@@ -17,11 +17,13 @@
 
 // export default LandingPage;
 import React from 'react';
+import GAChart from '../chart/graph';
 
 
 const LandingPage = () => {
   return (
     <>
+    <GAChart/>
       <div className="fixed flex-col justify-center h-[100%] w-[100%] bg-[#ffffff]">
         <div className="endsignupButton flex flex-row justify-between mx-[12%] my-8">
           <div className="heading">
