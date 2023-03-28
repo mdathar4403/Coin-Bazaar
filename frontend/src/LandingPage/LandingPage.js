@@ -32,7 +32,7 @@ const LandingPage = () => {
           </div>
           <div className="signup_button my-auto">
             <button className="bg-[#0ce9da] text-[#ffffff] font-bold text-[1.5rem] p-5 rounded-full">
-              SignUp
+              <a href='/signup'>Sign Up</a>
             </button>
           </div>
         </div>
@@ -54,7 +54,7 @@ const LandingPage = () => {
             </div>
             <div className="getStartedButton text-end px-8 relative right-[18%]">
               <button className="bg-[#0ce9da] text-[#ffffff] font-bold text-[1.5rem] p-5 rounded-full">
-                Get Started
+              <a href='/login'>Get Started</a>
               </button>
             </div>
           </div>
