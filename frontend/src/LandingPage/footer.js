@@ -82,6 +82,15 @@ const Footer = () => {
                     <a href="#">Reviews</a>
                   </li>
                 </ul>
+                <div class="footer-col">
+                  {/* <h4>follow us</h4> */}
+                  <div class="social-links">
+                    {/* <a href="#"><i class="fab fa-facebook-f"></i></a> */}
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="footer-content-column">
@@ -95,7 +104,7 @@ const Footer = () => {
                 <p className="footer-call-to-action-link-wrapper"> <a className="footer-call-to-action-link" href="tel:0124-64XXXX" target="_self"> 0124-64XXXX </a></p>
               </div>
             </div>
-           
+
           </div>
           <div className="footer-copyright">
             <div className="footer-copyright-wrapper">
