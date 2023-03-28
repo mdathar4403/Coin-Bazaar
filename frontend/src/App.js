@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./LandingPage/LandingPage";
 import Dashboard from "./Dashboard/Dashboard";
-import Login from "./SignIn/Login";
+import Login from "./SignIn/login";
 import Signup from "./SignIn/signup";
 // import Market from "./Market/Market";
 import Coin from "./routes/Coin";
