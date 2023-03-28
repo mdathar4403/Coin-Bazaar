@@ -31,7 +31,7 @@
     /* padding:30px; */
   }
   .banner-b122{
-    background-color: rgba(33, 150, 243, 1);
+    background-color: var(--color-primary);
     border-radius: 10px;
     /* width: 20vw; */
     padding: 1rem 2rem;

@@ -71,7 +71,7 @@ const Aboutrem = () => {
         </div>
       </div>
       <div style={{textAlign:'center'}}>
-      <h1 style={{textAlign:"center",fontSize:"3vw" }}>All of this and much more dedicated from <strong style={{color:" rgba(33, 150, 243, 1)"}}>HackElites</strong> to your success</h1>
+      <h1 style={{textAlign:"center",fontSize:"3vw" }}>All of this and much more dedicated from <strong style={{color:" #7380ec"}}>HackElites</strong> to your success</h1>
       <button className="banner-b1234">Trade with us</button>
 </div>
     </div>

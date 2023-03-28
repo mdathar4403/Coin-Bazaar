@@ -9,7 +9,7 @@
   
   
   .footer {
-      background-color: #004658;
+      background-color: var(--color-dark);
       color: #fff;
   }
   .footer-wave-svg {
@@ -76,17 +76,18 @@
   .footer-call-to-action-description {
       color: #fffff2;
       margin-top: 10px;
+      /* font-family: 'Poppins'; */
       margin-bottom: 20px;
   }
   .footer-call-to-action-button:hover {
       background-color: #fffff2;
-      color: #00bef0;
+      color: #7380ec;
   }
   .button:last-of-type {
       margin-right: 0;
   }
   .footer-call-to-action-button {
-      background-color: #027b9a;
+      background-color: var(--color-primary);
       border-radius: 21px;
       color: #fffff2;
       display: inline-block;
@@ -177,9 +178,9 @@
       border: 0;
       top: 50%;
   }
-  
   .footer-social-icon-svg {
       display: block;
+
   }
   
   .footer-social-icon-path {
@@ -209,7 +210,7 @@
   }
   
   .footer-copyright {
-      background-color: #027b9a;
+      background-color: var(--color-primary);
       color: #fff;
       padding: 15px 30px;
     text-align: center;

@@ -12,17 +12,23 @@
     /* max-width: 300px; */
     text-align: center;
     border-radius: 10px;
+    
     /* box-shadow: 10px 10px 30px #BDBDBD; */
     display: inline-block;
     width: 30vw;
-
   }
+  /* .carderabout img{
+    filter: contrast(2.3);
+  } */
   .batman-boxabout{
     text-align: center;
   }
   .card__imageabout {
     /* border-radius: 10px 10px 0 0; */
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    /* text-align: center; */
     /* max-height: 200px; */
     width: 30vw;
   }
@@ -43,7 +49,7 @@
   }
   .banner-b1234{
     /* text-align: center; */
-    background-color: rgba(33, 150, 243, 1);
+    background-color: var(--color-primary);
     border-radius: 10px;
     padding: 1rem 2rem;
     color: white;
