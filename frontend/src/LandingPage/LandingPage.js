@@ -33,13 +33,13 @@ const LandingPage = () => {
   return (
     <>
 
-    <GAChart/>
-      <div className="fixed flex-col justify-center h-[100%] w-[100%] bg-[#ffffff]">
+    {/* <GAChart/> */}
+      {/* <div className="fixed flex-col justify-center h-[100%] w-[100%] bg-[#ffffff]">
         <div className="endsignupButton flex flex-row justify-between mx-[12%] my-8">
           <div className="heading">
             <div className="text-[#000000] text-[4rem] font-bold m-0">
               Crypto
-              <span className="text-[#ff0000]">Trade</span>
+              <span className="text-[#ff0000]">Trade</span> */}
 
       {/* <Lnavbar /> */}
       <section className="text-gray-600 body-font" style={{background:"#fff"}}>

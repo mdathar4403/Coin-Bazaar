@@ -28,26 +28,6 @@ const Coin = () => {
         setValue(value);
         console.log(data.target[0].value)
     }
-    const handleBuy = (e) => {
-        e.preventDefault();
-        console.log("Going To Buy",value);
-        console.log(coin);
-        fetch('http://localhost:5000/api/user/buy', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + localStorage.getItem('token')
-            },
-            body: JSON.stringify({
-                coinId: coin.id,
-                coinName: coin.name,
-                coinSymbol: coin.symbol,
-                coinPrice: coin.market_data.current_price.inr,
-                coinAmount: value
-            })
-        })
-        
-    }
 
     return (
         <div>
@@ -69,7 +49,7 @@ const Coin = () => {
                                     defaultValue='1'
                                 />
                                 {/* </label> */}
-                                <input className='btn-buy' type="submit" value="Buy" style={{ border: "1px green" }}  onClick={handleBuy}/>
+                                <input className='btn-buy' type="submit" value="Buy" style={{ border: "1px green" }} />
                             </form>
                         </div>
 
