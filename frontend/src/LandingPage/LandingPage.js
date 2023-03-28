@@ -17,6 +17,9 @@
 
 // export default LandingPage;
 import React from 'react';
+
+import GAChart from '../chart/graph';
+
 import Aboutrem from '../aboutus/about-rem';
 import Footer from './footer';
 import phone1 from './images/phone.png'
@@ -29,6 +32,15 @@ import Oracle from './images/oracle.png'
 const LandingPage = () => {
   return (
     <>
+
+    <GAChart/>
+      <div className="fixed flex-col justify-center h-[100%] w-[100%] bg-[#ffffff]">
+        <div className="endsignupButton flex flex-row justify-between mx-[12%] my-8">
+          <div className="heading">
+            <div className="text-[#000000] text-[4rem] font-bold m-0">
+              Crypto
+              <span className="text-[#ff0000]">Trade</span>
+
       {/* <Lnavbar /> */}
       <section className="text-gray-600 body-font" style={{background:"#fff"}}>
         <div className="max-w-7xl mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
@@ -53,6 +65,7 @@ const LandingPage = () => {
               >
                 <span className="justify-center">Sign In</span>
               </a>
+
             </div>
           </div>
           <div className="xl:mr-44 sm:mr-0 sm:mb-28 mb-0 lg:mb-0 mr-48 md:pl-10">
