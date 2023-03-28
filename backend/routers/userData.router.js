@@ -1,40 +1,67 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import jwt from 'jsonwebtoken';
-import User from '../models/user.js';
+import express from "express";
+import mongoose from "mongoose";
+import jwt from "jsonwebtoken";
+import User from "../models/user.js";
 import dotenv from "dotenv";
 import auth from "../middlewere/auth.middle.js";
 const router = express.Router();
 
 //Handling Get request
-router.get("/portfolio",auth, async (req, res, next) => {
+router.get("/portfolio", auth, async (req, res, next) => {
   const { userId } = req.body;
-  let userData =  await User.findById(userId);
+  let userData = await User.findById(userId);
   console.log(userData);
   console.log(userData.stocks);
   res.json(userData.stocks);
 });
 
 // Add a Stock To User's Portfolio
-router.post('/stock/add', async (req, res, next) => {
-  const {userId,stock,current_price,quantity} = req.body;
-  console.log(stock);
-  let userData = await User.findOneAndUpdate(
-    {
-      _id: userId,
-    },
-    {
-      $addToSet: {
-        stocks: stock,
+router.post("/stock/add", async (req, res, next) => {
+  const { userId, stockId, current_price, quantity } = req.body;
+  // console.log(stock);
+  const user = await User.findOne({
+    _id: userId,
+    stocks: { $elemMatch: { stockId: stockId } },
+  });
+
+  if (user) {
+    // If the stock already exists, update the quantity
+    await User.updateOne(
+      {
+        _id: userId,
+        stocks: { $elemMatch: { stockId: stockId } },
       },
-      $inc: {
-        credits: -current_price*quantity,
+      {
+        $inc: {
+          "stocks.$.quantity": quantity,
+          "credits": -current_price * quantity,
+          "stocks.$.total_amount": current_price * quantity,
+        },
+      }
+    );
+  } else {
+    // If the stock doesn't exist, add a new object
+    let userData = await User.findOneAndUpdate(
+      {
+        _id: userId,
       },
-    },
-    {
-      new: true,
-    }
-  );
+      {
+        $addToSet: {
+          stocks: {
+            stockId: stockId,
+            quantity: quantity,
+            total_amount: current_price * quantity,
+          },
+        },
+        $inc: {
+          credits: -current_price * quantity,
+        },
+      },
+      {
+        new: true,
+      }
+    );
+  }
   const updatedUser = await User.findById({
     _id: userId,
   });
@@ -42,32 +69,44 @@ router.post('/stock/add', async (req, res, next) => {
   res.json(updatedUser);
 });
 
-
-// Remove a Stock From User's Portfolio
-router.delete('/stocks',auth, async (req, res, next) => {
-  const {stockid,userId,current_price,quantity} = req.body;
-  User.findOneAndUpdate(
-    {
-      _id: userId,
-    },
-    {
-      $pull: {
-        stocks: {
-          id: stockid,
-        },
-      },
-      $inc: {
-        credits: current_price*quantity,
-      },
-    },
-    {
-      new: true,
-    }
-  );
-  let user = await User.findById({
+router.post("/stock/remove", async (req, res, next) => {
+  const { userId, stockId, current_price, quantity } = req.body;
+  const user = await User.findOne({
     _id: userId,
+    stocks: { $elemMatch: { stockId: stockId } },
   });
-  res.json(user);
+
+  if (user) {
+    const stock = user.stocks.find((s) => s.stockId === stockId);
+    const newQuantity = stock.quantity - quantity;
+    const newTotalAmount = stock.total_amount - current_price * quantity;
+    if (newQuantity > 0) {
+      await User.updateOne(
+        {
+          _id: userId,
+          stocks: { $elemMatch: { stockId: stockId } },
+        },
+        {
+          $set: {
+            "stocks.$.quantity": newQuantity,
+            "stocks.$.total_amount": newTotalAmount,
+          },
+          $inc: {
+            credits: current_price * quantity,
+          },
+        }
+      );
+    } else {
+      res.status(404).json({ message: "Stock not found." });
+    }
+    const updatedUser = await User.findById({
+      _id: userId,
+    });
+    console.log(updatedUser);
+    res.json(updatedUser);
+    } else {
+    res.status(404).json({ message: "User or stock not found." });
+  }
 });
 
 
@@ -80,9 +119,4 @@ router.delete('/stocks',auth, async (req, res, next) => {
 //   res.send("Stocks Bought");
 // }
 
-
-
-
-
 export default router;
-

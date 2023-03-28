@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import React, { useState, useEffect } from 'react'
 import DOMPurify from 'dompurify'
-
+import {toast} from 'react-toastify'
 import './Coin.css'
 import GAChart from '../chart/graph'
 
@@ -28,6 +28,37 @@ const Coin = () => {
         setValue(value);
         console.log(data.target[0].value)
     }
+    const handleBuy = (e) => {
+        e.preventDefault();
+        console.log("Going To Buy",value);
+        console.log(coin);
+        {
+//   "userId": "642320e39c4caae6ef96f944",
+//   "stockId":"BTC",
+//   "quantity":3.5,
+//   "current_price":100
+}
+        fetch("http://localhost:5000/api/user/buy", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+          body: JSON.stringify({
+            userId: localStorage.getItem("userId"),
+            stockId: coin.symbol,
+            quantity: coin.market_data?.current_price / data.target[0].value,
+            current_price: data.target[0].value,
+          }),
+        }).then((response) => {
+          if (response.status === 200) {
+            toast.success("Stock Bought Successfully");
+            console.log(response);
+          } else {
+            toast.error("Please try again later");
+          }
+        });
+    }
 
     return (
         <div>
@@ -49,7 +80,7 @@ const Coin = () => {
                                     defaultValue='1'
                                 />
                                 {/* </label> */}
-                                <input className='btn-buy' type="submit" value="Buy" style={{ border: "1px green" }} />
+                                <input className='btn-buy' type="submit" value="Buy" style={{ border: "1px green" }}  onClick={handleBuy}/>
                             </form>
                         </div>
 
