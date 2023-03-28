@@ -27,7 +27,7 @@ router.post("/login", async (req, res, next) => {
     //Creating jwt token
     token = jwt.sign(
       { userId: existingUser.id, email: existingUser.email },
-      SECRET_KEY,
+        'secretkeyappearshere',
       { expiresIn: "1h" }
     );
   } catch (err) {
@@ -35,6 +35,7 @@ router.post("/login", async (req, res, next) => {
     const error = new Error("Error! Something went wrong.");
     return next(error);
   }
+  var newUser = await User.findById(existingUser.id);
 
   res.status(200).json({
     success: true,
@@ -54,47 +55,48 @@ router.post("/signup", async (req, res, next) => {
 
   User.findOne({
     email: email 
-  }).then((user) => {
+  }).then(async (user) => {
     if (user) {
+      console.log(user);
+      console.log('user already exists');
       return res.status(400).json({
         success: false,
-        message: "Email already exists",
+        data:{
+          message: "User already exists"
+        }
       });
-    }
-  });
-  
-
-
-  const newUser = await User({
-    first_name,
-    last_name,
-    email,
-    password,
-    phone,
-    address,
-    credits: 1000,
-    stocks: [],
-  });
-  newUser.save().then((result) => {
-    console.log(result);
-  }).catch((err) => {
-    console.log(err);
-  });
-  let token;
-  try {
-    token = jwt.sign(
-      { userId: newUser.id, email: newUser.email },
-      "secretkeyappearshere",
-      { expiresIn: "1h" }
-    );
-  } catch (err) {
-    const error = new Error("Error! Something went wrong. 2");
-    return next(error);
-  }
-  res.status(201).json({
-    success: true,
-    data: { userId: newUser.id, email: newUser.email, token: token,first_name: newUser.first_name, last_name: newUser.last_name }
-  });
+    }else{
+      const newUser = await User({
+                          first_name,
+                          last_name,
+                          email,
+                          password,
+                          phone,
+                          address,
+                          credits: 1000000,
+                          stocks: [],
+                        });
+            newUser.save().then((result) => {
+              console.log(result);
+            }).catch((err) => {
+              console.log(err);
+            });
+            let token;
+            try {
+              token = jwt.sign(
+                { userId: newUser.id, email: newUser.email },
+                "secretkeyappearshere",
+                { expiresIn: "1h" }
+              );
+            } catch (err) {
+              const error = new Error("Error! Something went wrong. 2");
+              return next(error);
+            }
+            res.status(201).json({
+              success: true,
+              data: { userId: newUser.id, email: newUser.email, token: token,first_name: newUser.first_name, last_name: newUser.last_name }
+            });
+          }
 });
 
 
@@ -108,6 +110,7 @@ router.delete('/logout',auth,async(req,res,next)=>{
   }catch(e){
     res.status(500).send(e);
   }
+  });
 });
 
 export default router;
