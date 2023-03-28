@@ -22,76 +22,99 @@ const Coin = () => {
 
   const url = `https://api.coingecko.com/api/v3/coins/${params.coinId}`;
 
-  useEffect(() => {
-    axios
-      .get(url)
-      .then((res) => {
-        setCoin(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    useEffect(() => {
+        axios.get(url).then((res) => {
+            setCoin(res.data)
+        }).catch((error) => {
+            console.log(error)
+        })
+    }, [])
+    const handleBuy = (e) => {
+        e.preventDefault();
+        console.log("Going To Buy",value);
+        console.log(coin.market_data?.current_price.inr);
+//         {
+// //   "userId": "642320e39c4caae6ef96f944",
+// //   "stockId":"BTC",
+// //   "quantity":3.5,
+// //   "current_price":100
+// }
+        if(!value){
+            toast.error("Please Enter Amount");
+            console.log("Please Enter Amount");
+            return;
+        }
+        const userId = localStorage.getItem("userId");
+        console.log(userId);
+        fetch("http://localhost:5000/api/user/stock/add", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+          body: JSON.stringify({
+            userId: userId,
+            stockId: coin.symbol,
+            quantity: value / coin.market_data?.current_price.inr,
+            current_price: value,
+          })
+        }).then((response) => response.json())
+        .then((response) => {
+          if (response.status === 200) {
+            toast.success("Stock Bought Successfully");
+            console.log(response);
+          } else {
+            toast.error("Please try again later");
+          }
+        });
+    }
 
-  function submitAmount(data) {
-    data.preventDefault();
-    setValue(value);
-    console.log(data.target[0].value);
-  }
+    return (
+        <div>
+        <GAChart symbol={"MFST"}/>
+            <div className='coin-container'>
+                <div className='content'>
+                    <h1>{coin.name}</h1>
+                    <div className="btn-store">
+                        <h2>Amount:</h2>
+                        <div className="buy-amount">
+                            <form>
+                                <input
+                                    type="number"
+                                    placeholder='Stock'
+                                    // value={value}
+                                    min='1'
+                                    max='1000'
+                                    step='50'
+                                    defaultValue='1'
+                                    onChange={(e) => setValue(e.target.value)}
+                                />
+                                {/* </label> */}
+                                <input className='btn-buy' type="submit" value="Buy" style={{ border: "1px green" }}  onClick={handleBuy}/>
+                            </form>
+                        </div>
 
-  return (
-    <div>
-      <div className="coin-container">
-        <div className="content">
-          <h1>{coin.name}</h1>
-          <div className="btn-store">
-            <h2>Amount:</h2>
-            <div className="buy-amount">
-              <form onSubmit={submitAmount}>
-                <input
-                  type="number"
-                  placeholder="Stock"
-                  // value={value}
-                  min="1"
-                  max="1000"
-                  step="1"
-                  defaultValue="1"
-                />
-                {/* </label> */}
-                <input
-                  className="btn-buy"
-                  type="submit"
-                  value="Buy"
-                  style={{ border: "1px green" }}
-                />
-              </form>
-            </div>
-            {/* <button className='btn-buy'>Buy</button> */}
-            {/* <button className='btn-sell'>Sell</button> */}
-          </div>
-        </div>
-        <div className="content">
-          <div className="rank">
-            <span className="rank-btn">Rank # {coin.market_cap_rank}</span>
-          </div>
-          <div className="info">
-            <div className="coin-heading">
-              {coin.image ? <img src={coin.image.small} alt="" /> : null}
-              <p>{coin.name}</p>
-              {coin.symbol ? <p>{coin.symbol.toUpperCase()}/INR</p> : null}
-            </div>
-            <div className="coin-price">
-              {coin.market_data?.current_price ? (
-                <h1>
-                  Rs{" "}
-                  {coin.market_data.current_price.inr
-                    .toFixed(1)
-                    .toLocaleString()}
-                </h1>
-              ) : null}
-            </div>
-          </div>
-        </div>
+                        {/* <button className='btn-buy'>Buy</button> */}
+                        {/* <button className='btn-sell'>Sell</button> */}
+                    </div>
+
+                </div>
+                <div className='content'>
+                    <div className='rank'>
+                        <span className='rank-btn'>Rank # {coin.market_cap_rank}</span>
+                    </div>
+                    <div className='info'>
+                        <div className='coin-heading'>
+                            {coin.image ? <img src={coin.image.small} alt='' /> : null}
+                            <p>{coin.name}</p>
+                            {coin.symbol ? <p>{coin.symbol.toUpperCase()}/INR</p> : null}
+
+                        </div>
+                        <div className='coin-price'>
+                            {coin.market_data?.current_price ? <h1>Rs {coin.market_data.current_price.inr.toFixed(1).toLocaleString()}</h1> : null}
+                        </div>
+                    </div>
+                </div>
 
         <div className="content">
           <table>

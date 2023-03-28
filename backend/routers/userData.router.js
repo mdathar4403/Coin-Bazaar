@@ -7,7 +7,7 @@ import auth from "../middlewere/auth.middle.js";
 const router = express.Router();
 
 //Handling Get request
-router.get("/portfolio", auth, async (req, res, next) => {
+router.get("/portfolio", async (req, res, next) => {
   const { userId } = req.body;
   let userData = await User.findById(userId);
   console.log(userData);
@@ -17,13 +17,16 @@ router.get("/portfolio", auth, async (req, res, next) => {
 
 // Add a Stock To User's Portfolio
 router.post("/stock/add", async (req, res, next) => {
-  const { userId, stockId, current_price, quantity } = req.body;
-  // console.log(stock);
+  var { userId, stockId, current_price, quantity } = req.body;
+  // console.log(userId);
+  //remove single quote from object id
+  userId = userId.replace(/['"]+/g, "");
+  console.log(userId); 
   const user = await User.findOne({
     _id: userId,
     stocks: { $elemMatch: { stockId: stockId } },
   });
-
+ 
   if (user) {
     // If the stock already exists, update the quantity
     await User.updateOne(
@@ -61,7 +64,7 @@ router.post("/stock/add", async (req, res, next) => {
         new: true,
       }
     );
-  }
+  } 
   const updatedUser = await User.findById({
     _id: userId,
   });
