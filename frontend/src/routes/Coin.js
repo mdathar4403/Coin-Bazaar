@@ -6,13 +6,13 @@ import DOMPurify from "dompurify";
 
 import "./Coin.css";
 import GAChart from "../chart/graph";
-import axios from 'axios'
-import { useParams } from 'react-router-dom'
-import React, { useState, useEffect } from 'react'
-import DOMPurify from 'dompurify'
-import {toast} from 'react-toastify'
-import './Coin.css'
-import GAChart from '../chart/graph'
+// import axios from 'axios'
+// import { useParams } from 'react-router-dom'
+// import React, { useState, useEffect } from 'react'
+// import DOMPurify from 'dompurify'
+// import {toast} from 'react-toastify'
+// import './Coin.css'
+// import GAChart from '../chart/graph'
 
 
 const Coin = () => {
