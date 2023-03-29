@@ -35,6 +35,17 @@ router.post("/stock/add", auth,async (req, res, next) => {
   userId = userId.replace(/['"]+/g, "");
   console.log(userId); 
   current_price = parseFloat(current_price);
+  const myUser  = await User.findById(userId);
+  if(myUser.credits-current_price<0){
+    res.status(400).json({
+      success: false,
+      data: {
+        message: "Insufficient Credits",
+      }
+    });
+    return;
+  }
+  console.log(myUser);
   const user = await User.findOne({
     _id: userId,
     stocks: { $elemMatch: { stockId: stockId } },
@@ -82,7 +93,13 @@ router.post("/stock/add", auth,async (req, res, next) => {
     _id: userId,
   });
   console.log(updatedUser);
-  res.json(updatedUser);
+  res.status(200).json({
+    success: true,
+    data: {
+      stocks: updatedUser.stocks,
+      credits: updatedUser.credits,
+    }
+  });
 });
 
 router.post("/stock/remove",auth,async (req, res, next) => {
