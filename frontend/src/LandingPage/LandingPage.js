@@ -94,8 +94,8 @@ const LandingPage = () => {
             ></img>
           </div>
         </div>
-        <section className="mx-auto">
-          <div className="container px-5 mx-auto lg:px-24 ">
+        <section className="mx-auto" style={{display:'block'}}>
+          <div className="px-5 mx-auto lg:px-24 ">
             <div className="flex flex-col w-full mb-4 text-left lg:text-center">
             </div>
             <div className="grid grid-cols-2 gap-16 mb-16 text-center lg:grid-cols-4">
