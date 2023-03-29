@@ -57,10 +57,12 @@
     /* color: #d3d3d3; */
 }
 .btn-sell{
-    background-color:rgb(246, 69, 15);
+    background-color:rgb(250, 64, 7);
     padding: 1rem;
     border-radius: 5px;
     width: 100px;
+    margin-left: 1.5rem;
+    cursor: pointer;
     /* color: var(--color-warning); */
 }
 

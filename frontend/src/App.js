@@ -10,7 +10,10 @@ import Coins from "./Market/Coins";
 import axios from "axios";
 import Aboutus from "./aboutus/aboutus";
 import React, { useState, useEffect } from 'react'
-
+import Coin_sell from "./routes/Coin_sell";
+import { ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
+  import "react-toastify/dist/ReactToastify.css";
 function App() {
   const [coins, setCoins] = useState([])
 
@@ -21,14 +24,14 @@ function App() {
       setCoins(response.data)
       console.log(response.data)
     }).catch((error) => {
-      console.log(error)
+      console.log(error);
+      toast.error("Something Went Wrong");
     })
   }, [])
 
-
-
   return (
     <div className="App">
+      <ToastContainer />
       <Router>
         <Routes>
           <Route
@@ -68,6 +71,14 @@ function App() {
             element={
               <>
                 <Aboutus />
+              </>
+            }
+          />
+          <Route
+            path="/dashboard/sell"
+            element={
+              <>
+                <Coin_sell />
               </>
             }
           />

@@ -8,6 +8,7 @@ import { OrbitControls } from "@react-three/drei";
 import { useGLTF, Stage, PresentationControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 function Model(props) {
 
@@ -80,12 +81,17 @@ const Login = () => {
         window.localStorage.setItem("email", data.email);
         window.localStorage.setItem("first_name", data.first_name);
         window.localStorage.setItem("last_name", data.last_name);
-        window.location.href = "/dashboard";
+        toast.success("Login Successfull");
+        setTimeout(() => {
+          window.location.href = "/dashboard";
+        }, 2000);
+
         // Handle data
       }
       )
       .catch((err) => {
         console.log(err.message);
+        toast.error("Something Went Wrong");
       }
       );
 

@@ -8,11 +8,13 @@ import profile3 from "../assets/profile-3.jpg";
 import profile4 from "../assets/profile-4.jpg";
 import Navbar from "../Navbar/Navbar";
 import { redirect } from "react-router-dom";
+
 import axios from "axios";
 import Single from "./singlediv";
 import { setConfig } from "dompurify";
 
-
+import { toast } from "react-toastify";
+import DataStats from "../DataStats/DataStats";
 
 
 
@@ -26,6 +28,7 @@ function RenderingArrayOfObjects(props) {
   const [currentcoins,setcurrentcoins]=useState([]);
   const [listItems,setlistItems]=useState([]);
 
+
   const getdata = () => {
     const token = localStorage.getItem("token");
     var userId = localStorage.getItem("userId");
@@ -36,10 +39,10 @@ function RenderingArrayOfObjects(props) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
+        "Authorization": "Bearer " + token,
       },
       body: JSON.stringify({
-        userId: userId
+        userId: userId,
       }),
     })
       .then((res) => {
@@ -80,6 +83,7 @@ function RenderingArrayOfObjects(props) {
       })
       .catch((err) => {
         console.log(err);
+        toast.error("Something went wrong");
       });
   }; 
 //   getdata();
@@ -272,6 +276,12 @@ const [alldivs,setalldivs]=useState([]);
           </div>
           {/* <!-- END OF INCOME --> */}
         </div>
+         {/* <!----------- Data Stats-------------> */}
+         <h2>Recent Coins</h2>
+         <DataStats/>
+
+
+
         {/* <!----------- END OF INSIGHTS -------------> */}
 
         <div className="orders">

@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import DOMPurify from "dompurify";
 import { toast } from "react-toastify";
 import "./Coin.css";
-import GAChart from "../chart/graph";
+// import GAChart from "../chart/graph";
 // import axios from 'axios'
 // import { useParams } from 'react-router-dom'
 // import React, { useState, useEffect } from 'react'
@@ -15,18 +15,17 @@ import GAChart from "../chart/graph";
 // import GAChart from '../chart/graph'
 
 
-const Coin = () => {
+const Coin_sell = () => {
   const params = useParams();
   const [coin, setCoin] = useState({});
   const [value, setValue] = useState();
-  // const url =`https://api.coingecko.com/api/v3/coins/${params.coinId}?localization=false&tickers=true&market_data=true&community_data=true&developer_data=true&sparkline=true`
-  const url = `https://api.coingecko.com/api/v3/coins/${params.coinId}?localization=false&tickers=true&market_data=true&community_data=false&developer_data=false&sparkline=false`
-  // const url = `https://api.coingecko.com/api/v3/coins/${params.coinId}`;
+  let bitcoin = "bitcoin"
+
+  const url = `https://api.coingecko.com/api/v3/coins/bitcoin`;
 
     useEffect(() => {
         axios.get(url).then((res) => {
             setCoin(res.data)
-            console.log(res.data)
         }).catch((error) => {
             console.log(error)
         })
@@ -46,13 +45,9 @@ const Coin = () => {
             console.log("Please Enter Amount");
             return;
         }
-        if(!coin){
-          toast.error("Please Try Again Later");
-          return;
-        }
         const userId = localStorage.getItem("userId");
         console.log(userId);
-        fetch("https://crytotrade-app.onrender.com/api/user/stock/add", {
+        fetch("http://localhost:5000/api/user/stock/add", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -60,20 +55,17 @@ const Coin = () => {
           },
           body: JSON.stringify({
             userId: userId,
-            stockId: coin.id,
+            stockId: coin.symbol,
             quantity: value / coin.market_data?.current_price.inr,
             current_price: value,
           })
         }).then((response) => response.json())
         .then((response) => {
-          console.log(response);
-          if (response.success) {
+          if (response.status === 200) {
             toast.success("Stock Bought Successfully");
-            toast.success("Credits Left: " + response.data.credits);
-            // console.log(response);
+            console.log(response);
           } else {
-            toast.error(response.data.message);
-            // toast.error("Please try again later");
+            toast.error("Please try again later");
           }
         });
     }
@@ -97,7 +89,7 @@ const Coin = () => {
                                     onChange={(e) => setValue(e.target.value)}
                                 />
                                 {/* </label> */}
-                                <input className='btn-buy' type="submit" value="Buy" style={{ border: "1px green" }}  onClick={handleBuy}/>
+                                <input className='btn-sell' type="submit" value="Buy" style={{ border: "1px green" }}  onClick={handleBuy}/>
                             </form>
                         </div>
 
@@ -249,12 +241,12 @@ const Coin = () => {
             ></p>
           </div>
         </div>
-        <div className="graph">
+        {/* <div className="graph">
           <GAChart />
-        </div>
+        </div> */}
       </div>
     </div>
   );
 };
 
-export default Coin;
+export default Coin_sell;
