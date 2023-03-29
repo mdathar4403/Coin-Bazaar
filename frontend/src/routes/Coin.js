@@ -44,6 +44,10 @@ const Coin = () => {
             console.log("Please Enter Amount");
             return;
         }
+        if(!coin){
+          toast.error("Please Try Again Later");
+          return;
+        }
         const userId = localStorage.getItem("userId");
         console.log(userId);
         fetch("http://localhost:5000/api/user/stock/add", {
@@ -60,11 +64,14 @@ const Coin = () => {
           })
         }).then((response) => response.json())
         .then((response) => {
-          if (response.status === 200) {
+          console.log(response);
+          if (response.success) {
             toast.success("Stock Bought Successfully");
-            console.log(response);
+            toast.success("Credits Left: " + response.data.credits);
+            // console.log(response);
           } else {
-            toast.error("Please try again later");
+            toast.error(response.data.message);
+            // toast.error("Please try again later");
           }
         });
     }
