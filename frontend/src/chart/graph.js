@@ -64,12 +64,12 @@ const GAChart = (props) => {
     // console.log(day);
 
     const func = async () => {
-      const url = `https://api.coingecko.com/api/v3/exchanges/binance/volume_chart?days=${day}`;
+      const url = `https://api.coingecko.com/api/v3/exchanges/binance/volume_chart?days=${Number(day)}`;
       const response = await fetch(url);
       const parseData = await response.json();
       // setdata(parseData["Time Series (5min)"]);
       // console.log(parseData["Time Series (5min)"]);
-      console.log(parseData);
+      // console.log(parseData);
       for (let i = 1; i < parseData.length && i < 50; i++) {
         arr.push(Number(parseData[i][1]));
       }
