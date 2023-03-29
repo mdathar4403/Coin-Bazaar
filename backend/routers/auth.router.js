@@ -2,8 +2,10 @@ import express from "express";
 import User from '../models/user.js'
 import jwt from "jsonwebtoken";
 import auth from "../middlewere/auth.middle.js";
+import dotenv from "dotenv";
 const router = express.Router();
-
+dotenv.config();
+const SECRET_KEY = process.env.SECRET_KEY;
 
 
 
@@ -27,7 +29,7 @@ router.post("/login", async (req, res, next) => {
     //Creating jwt token
     token = jwt.sign(
       { userId: existingUser.id, email: existingUser.email },
-        'secretkeyappearshere',
+      SECRET_KEY,
       { expiresIn: "1h" }
     );
   } catch (err) {
@@ -85,7 +87,7 @@ router.post("/signup", async (req, res, next) => {
             try {
               token = jwt.sign(
                 { userId: newUser.id, email: newUser.email },
-                "secretkeyappearshere",
+                SECRET_KEY,
                 { expiresIn: "1h" }
               );
             } catch (err) {

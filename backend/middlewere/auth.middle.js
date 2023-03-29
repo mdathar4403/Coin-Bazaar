@@ -1,12 +1,14 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
+import dotenv from 'dotenv';
 
+dotenv.config();
 const SECRET_KEY = process.env.SECRET_KEY;
 
 const auth = async (req, res, next) => {
   try {
         const token = req.header('Authorization').replace('Bearer ', '');
-        const decoded = jwt.verify(token, "secretkeyappearshere");
+        const decoded = jwt.verify(token, SECRET_KEY);
         console.log(decoded);
         const user = await User.findOne({
             _id: decoded.userId,

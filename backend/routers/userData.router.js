@@ -5,10 +5,15 @@ import User from "../models/user.js";
 import dotenv from "dotenv";
 import auth from "../middlewere/auth.middle.js";
 const router = express.Router();
+dotenv.config();
+const SECRET_KEY = process.env.SECRET_KEY;
 
 //Handling Get request
-router.get("/portfolio",auth, async (req, res, next) => {
+router.post("/portfolio", async (req, res, next) => {
   const { userId } = req.body;
+  // console.log(req);
+  // const userId = req.params.userId;
+  console.log(userId);
   let userData = await User.findById(userId);
   console.log(userData);
   console.log(userData.stocks);
@@ -17,6 +22,7 @@ router.get("/portfolio",auth, async (req, res, next) => {
 
 // Add a Stock To User's Portfolio
 router.post("/stock/add", auth,async (req, res, next) => {
+  console.log(SECRET_KEY);
   var { userId, stockId, current_price, quantity } = req.body;
   // console.log(userId);
   //remove single quote from object id
