@@ -83,7 +83,7 @@ const Coin_sell = () => {
                                     placeholder='Stock'
                                     // value={value}
                                     min='1'
-                                    max='1000'
+                                    max='2000'
                                     step='50'
                                     defaultValue='0'
                                     onChange={(e) => setValue(e.target.value)}
