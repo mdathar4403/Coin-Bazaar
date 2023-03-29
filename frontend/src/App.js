@@ -75,7 +75,7 @@ function App() {
             }
           />
           <Route
-            path="/sell"
+            path="/dashboard/sell"
             element={
               <>
                 <Coin_sell />
