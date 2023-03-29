@@ -68,9 +68,9 @@ const LandingPage = () => {
 
             </div>
           </div>
-          <div className="xl:mr-44 sm:mr-0 sm:mb-28 mb-0 lg:mb-0 mr-48 md:pl-10">
+          <div className="xl:mr-44 sm:mr-0 sm:mb-28 mb-0 lg:mb-0 mr-4 md:pl-10">
             <img
-              className="w-80 md:ml-1 ml-22 py-[-10%]"
+              className="w-80  py-[-10%]"
               alt="iPhone-12"
               src="/119081-cryptocurrency-lottie-animation.gif"
             ></img>
@@ -79,9 +79,6 @@ const LandingPage = () => {
         <section className="mx-auto">
           <div className="container px-5 mx-auto lg:px-24 ">
             <div className="flex flex-col w-full mb-4 text-left lg:text-center">
-              {/* <h1 className="mb-8 text-2xl Avenir font-semibold text-black">
-              Trusted by top-tier product companies
-            </h1> */}
             </div>
             <div className="grid grid-cols-2 gap-16 mb-16 text-center lg:grid-cols-4">
               <div className="flex items-center justify-center">
