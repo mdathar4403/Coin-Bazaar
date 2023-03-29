@@ -46,7 +46,7 @@ const Coin = () => {
         }
         const userId = localStorage.getItem("userId");
         console.log(userId);
-        fetch("http://localhost:5000/api/user/stock/add", {
+        fetch("https://crytotrade-app.onrender.com/api/user/stock/add", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -54,7 +54,7 @@ const Coin = () => {
           },
           body: JSON.stringify({
             userId: userId,
-            stockId: coin.symbol,
+            stockId: coin.id,
             quantity: value / coin.market_data?.current_price.inr,
             current_price: value,
           })

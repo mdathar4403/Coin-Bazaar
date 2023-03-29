@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Dashboard.css";
 // import logo from '../assets/logo.png'
 
@@ -8,24 +8,31 @@ import profile3 from "../assets/profile-3.jpg";
 import profile4 from "../assets/profile-4.jpg";
 import Navbar from "../Navbar/Navbar";
 import { redirect } from "react-router-dom";
+import axios from "axios";
+import Single from "./singlediv";
+import { setConfig } from "dompurify";
 
-const Dashboard = () => {
-  const [name, setName] = React.useState("Admin");
-  useEffect(() => {
-    if (!localStorage.getItem("token")) {
-    }
-    console.log(localStorage.getItem("token"));
-    const name = window.localStorage.getItem("first_name");
-    console.log(name);
-    setName(name);
-  }, []);
+
+
+
+
+
+
+
+
+
+
+function RenderingArrayOfObjects(props) {
+  const [currentcoins,setcurrentcoins]=useState([]);
+  const [listItems,setlistItems]=useState([]);
+
   const getdata = () => {
     const token = localStorage.getItem("token");
     var userId = localStorage.getItem("userId");
     console.log(userId);
     userId = userId.replace(/['"]+/g, "");
     console.log(userId);
-    fetch("http://localhost:5000/api/user/portfolio", {
+    fetch("https://crytotrade-app.onrender.com/api/user/portfolio", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -40,13 +47,125 @@ const Dashboard = () => {
       })
       .then((res) => {
         console.log(res);
+        let newarr=[];
+        console.log("hi");
+        res=res.data.stocks;
+        for(let i=0;i<res.length;i++){
+
+            const url = `https://api.coingecko.com/api/v3/coins/${res[i].stockId}`;
+
+            axios.get(url).then((resa) => {
+                res[i].imagesmall=resa.data.image.small;
+                res[i].current_market_price=resa.data.market_data.current_price.inr;
+            }).catch((error) => {
+                console.log(error)
+            })
+        }
+        console.log(res);
+        return res;
+        
+      })
+      .then((res)=>{
+        // showdata(res)
+        setcurrentcoins(res);
+        
+      })
+      .then(()=>{
+        return showdata(currentcoins);
+        
+      })
+      .then((lists)=>{
+        setlistItems(lists)
+        
       })
       .catch((err) => {
         console.log(err);
       });
-  };
+  }; 
+//   getdata();
   useEffect(() => {
     getdata();
+  }, [currentcoins]);
+
+  // const data = {currentcoins};
+  // console.log(data);
+  // let listItems=[];
+const showdata=(datas)=>{
+ let listItems1 = datas.map(
+      (element) => {
+          return (
+<Single key={element.sto} stockId={element.stockId} imagesmall={element.imagesmall} total_amount={element.total_amount} current_market_price={element.current_market_price}/>       
+
+)
+      }
+  )
+return listItems1;
+    }
+
+
+  return (
+      <div>
+          {listItems}
+      </div>
+  )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const Dashboard = () => {
+
+  const [name, setName] = React.useState("Admin");
+
+const [alldivs,setalldivs]=useState([]);
+
+// const currentdata=(coinobj,id,index)=>{
+//   const url = `https://api.coingecko.com/api/v3/coins/${id}`;
+
+//         axios.get(url).then((res) => {
+//             let dummy=coinobj;
+//             dummy.imagesmall=res.data.image.small;
+//             dummy.current_market_price=res.data.market_data.current_price.inr;
+
+            
+//             console.log(dummy);
+//             return dummy;
+//             // setCoin(res.data)
+//         }).catch((error) => {
+//             console.log(error)
+//         })
+
+// }
+
+
+
+
+
+
+
+  useEffect(() => {
+    if (!localStorage.getItem("token")) {
+    }
+    console.log(localStorage.getItem("token"));
+    const name = window.localStorage.getItem("first_name");
+    console.log(name);
+    setName(name);
   }, []);
 
 
@@ -63,6 +182,38 @@ const Dashboard = () => {
         <div className="date">{/* <input type="date"> */}</div>
 
         <div className="insights">
+
+ <RenderingArrayOfObjects  />
+
+
+{/* 
+          <div className="sales">
+            <img src={currentcoins[0].imagesmall}></img>
+            <span className="material-icons-sharp">analytics</span>
+
+            <div className="middle">
+              <div className="left">
+                <h3>{currentcoins[0].stockId}</h3>
+                <h1>Rs {currentcoins[0].total_amount}</h1>
+                <h1>Rs {currentcoins[0].current_market_price}</h1>
+              </div>
+              <div className="progress">
+        
+                <img src={currentcoins[0].imagesmall}></img>
+                <div className="number">
+                  <p>81%</p>
+                </div>
+              </div>
+            </div>
+            <small className="text-muted">Last 24 Hours</small>
+          </div>
+ */}
+
+
+
+
+
+
           <div className="sales">
             <span className="material-icons-sharp">analytics</span>
             <div className="middle">
