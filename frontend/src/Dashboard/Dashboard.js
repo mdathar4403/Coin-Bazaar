@@ -25,14 +25,14 @@ const Dashboard = () => {
     console.log(userId);
     userId = userId.replace(/['"]+/g, "");
     console.log(userId);
-    fetch("http://localhost:5000/api/user/portfolio", {
+    fetch("https://crytotrade-app.onrender.com/api/user/portfolio", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
+        "Authorization": "Bearer " + token,
       },
       body: JSON.stringify({
-        userId: userId
+        userId: userId,
       }),
     })
       .then((res) => {

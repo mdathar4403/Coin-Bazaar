@@ -17,7 +17,13 @@ router.post("/portfolio", async (req, res, next) => {
   let userData = await User.findById(userId);
   console.log(userData);
   console.log(userData.stocks);
-  res.json(userData.stocks);
+  res.status(200).json({
+    success: true,
+    data: {
+      stocks: userData.stocks,
+      credits: userData.credits,
+    }
+  });
 });
 
 // Add a Stock To User's Portfolio
@@ -28,11 +34,12 @@ router.post("/stock/add", auth,async (req, res, next) => {
   //remove single quote from object id
   userId = userId.replace(/['"]+/g, "");
   console.log(userId); 
+  current_price = parseFloat(current_price);
   const user = await User.findOne({
     _id: userId,
     stocks: { $elemMatch: { stockId: stockId } },
   });
- 
+
   if (user) {
     // If the stock already exists, update the quantity
     await User.updateOne(
@@ -43,8 +50,8 @@ router.post("/stock/add", auth,async (req, res, next) => {
       {
         $inc: {
           "stocks.$.quantity": quantity,
-          "credits": -current_price * quantity,
-          "stocks.$.total_amount": current_price * quantity,
+          "credits": -current_price,
+          "stocks.$.total_amount": current_price,
         },
       }
     );
@@ -59,11 +66,11 @@ router.post("/stock/add", auth,async (req, res, next) => {
           stocks: {
             stockId: stockId,
             quantity: quantity,
-            total_amount: current_price * quantity,
+            total_amount: current_price,
           },
         },
         $inc: {
-          credits: -current_price * quantity,
+          credits: -current_price,
         },
       },
       {
