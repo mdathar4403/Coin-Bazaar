@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import DOMPurify from "dompurify";
 import { toast } from "react-toastify";
 import "./Coin.css";
-import GAChart from "../chart/graph";
+// import GAChart from "../chart/graph";
 // import axios from 'axios'
 // import { useParams } from 'react-router-dom'
 // import React, { useState, useEffect } from 'react'
@@ -15,12 +15,13 @@ import GAChart from "../chart/graph";
 // import GAChart from '../chart/graph'
 
 
-const Coin = () => {
+const Coin_sell = () => {
   const params = useParams();
   const [coin, setCoin] = useState({});
   const [value, setValue] = useState();
+  let bitcoin = "bitcoin"
 
-  const url = `https://api.coingecko.com/api/v3/coins/${params.coinId}`;
+  const url = `https://api.coingecko.com/api/v3/coins/bitcoin`;
 
     useEffect(() => {
         axios.get(url).then((res) => {
@@ -88,7 +89,7 @@ const Coin = () => {
                                     onChange={(e) => setValue(e.target.value)}
                                 />
                                 {/* </label> */}
-                                <input className='btn-buy' type="submit" value="Buy" style={{ border: "1px green" }}  onClick={handleBuy}/>
+                                <input className='btn-sell' type="submit" value="Buy" style={{ border: "1px green" }}  onClick={handleBuy}/>
                             </form>
                         </div>
 
@@ -240,12 +241,12 @@ const Coin = () => {
             ></p>
           </div>
         </div>
-        <div className="graph">
+        {/* <div className="graph">
           <GAChart />
-        </div>
+        </div> */}
       </div>
     </div>
   );
 };
 
-export default Coin;
+export default Coin_sell;

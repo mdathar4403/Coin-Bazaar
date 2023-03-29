@@ -10,6 +10,7 @@ import Coins from "./Market/Coins";
 import axios from "axios";
 import Aboutus from "./aboutus/aboutus";
 import React, { useState, useEffect } from 'react'
+import Coin_sell from "./routes/Coin_sell";
 import { ToastContainer } from "react-toastify";
 import { toast } from "react-toastify";
   import "react-toastify/dist/ReactToastify.css";
@@ -70,6 +71,14 @@ function App() {
             element={
               <>
                 <Aboutus />
+              </>
+            }
+          />
+          <Route
+            path="/sell"
+            element={
+              <>
+                <Coin_sell />
               </>
             }
           />
