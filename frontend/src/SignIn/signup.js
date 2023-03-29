@@ -9,6 +9,7 @@ import { useFrame } from "@react-three/fiber";
 
 // import axios from "axios";
 import { useState } from "react";
+import { toast } from "react-toastify";
 function Model(props) {
   const { scene } = useGLTF("/ethereum/scene.gltf");
 
@@ -86,12 +87,15 @@ const Signup = () => {
         window.localStorage.setItem("email", data.email);
         window.localStorage.setItem("first_name", data.first_name);
         window.localStorage.setItem("last_name", data.last_name);
+        toast.success("Signup Successfull");
         window.location.href = "/dashboard";
         // Handle data
       }
       )
       .catch((err) => {
-        console.log(err.message);
+        console.log(err.message)
+        ;
+        toast.error(err.message);
       }
       );
 

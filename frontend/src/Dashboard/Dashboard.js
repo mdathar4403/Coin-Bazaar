@@ -8,6 +8,7 @@ import profile3 from "../assets/profile-3.jpg";
 import profile4 from "../assets/profile-4.jpg";
 import Navbar from "../Navbar/Navbar";
 import { redirect } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Dashboard = () => {
   const [name, setName] = React.useState("Admin");
@@ -43,6 +44,7 @@ const Dashboard = () => {
       })
       .catch((err) => {
         console.log(err);
+        toast.error("Something went wrong");
       });
   };
   useEffect(() => {
