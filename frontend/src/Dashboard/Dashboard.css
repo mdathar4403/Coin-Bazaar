@@ -134,6 +134,7 @@ main .insights{
     border-radius: var(--card-border-radius);
     margin-top: 1rem;
     box-shadow:0rem 2rem 3rem var(--color-light);
+    margin-bottom: 1rem;
 }
 div .insights > div:hover{
     box-shadow: none;

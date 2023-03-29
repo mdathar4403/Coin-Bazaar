@@ -9,6 +9,7 @@ import profile4 from "../assets/profile-4.jpg";
 import Navbar from "../Navbar/Navbar";
 import { redirect } from "react-router-dom";
 import { toast } from "react-toastify";
+import DataStats from "../DataStats/DataStats";
 
 const Dashboard = () => {
   const [name, setName] = React.useState("Admin");
@@ -123,6 +124,12 @@ const Dashboard = () => {
           </div>
           {/* <!-- END OF INCOME --> */}
         </div>
+         {/* <!----------- Data Stats-------------> */}
+         <h2>Recent Coins</h2>
+         <DataStats/>
+
+
+
         {/* <!----------- END OF INSIGHTS -------------> */}
 
         <div className="orders">
