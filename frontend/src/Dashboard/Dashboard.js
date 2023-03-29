@@ -98,7 +98,7 @@ const showdata=(datas)=>{
  let listItems1 = datas.map(
       (element) => {
           return (
-<Single key={element.sto} stockId={element.stockId} imagesmall={element.imagesmall} total_amount={element.total_amount} current_market_price={element.current_market_price}/>       
+<Single key={element.sto} stockId={element.stockId} imagesmall={element.imagesmall} total_amount={element.total_amount} current_market_price={element.current_market_price} current_cost={element.quantity*element.current_market_price}/>       
 
 )
       }
@@ -187,7 +187,6 @@ const [alldivs,setalldivs]=useState([]);
 
         <div className="insights">
 
- <RenderingArrayOfObjects  />
 
 
 {/* 
@@ -280,6 +279,7 @@ const [alldivs,setalldivs]=useState([]);
          <h2>Recent Coins</h2>
          <DataStats/>
 
+ <RenderingArrayOfObjects  />
 
 
         {/* <!----------- END OF INSIGHTS -------------> */}
