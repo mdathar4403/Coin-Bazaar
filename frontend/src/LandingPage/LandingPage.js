@@ -18,7 +18,7 @@
 // export default LandingPage;
 import React from 'react';
 
-import GAChart from '../chart/graph';
+// import GAChart from '../chart/graph';
 
 import Aboutrem from '../aboutus/about-rem';
 import Footer from './footer';
@@ -28,12 +28,15 @@ import Shopify from './images/Shopify-Logo.svg'
 import PayPal from './images/PayPal-Logo.png'
 import Oracle from './images/oracle.png'
 // import Lnavbar from './lnavbar';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 
 const LandingPage = () => {
   return (
     <>
 
-    {/* <GAChart/> */}
+      {/* <GAChart/> */}
       {/* <div className="fixed flex-col justify-center h-[100%] w-[100%] bg-[#ffffff]">
         <div className="endsignupButton flex flex-row justify-between mx-[12%] my-8">
           <div className="heading">
@@ -42,9 +45,19 @@ const LandingPage = () => {
               <span className="text-[#ff0000]">Trade</span> */}
 
       {/* <Lnavbar /> */}
-      <section className="text-gray-600 body-font" style={{background:"#fff"}}>
+      <section className="text-gray-600 body-font"
+        style={{ background: "#fff" }}
+      >
         <div className="max-w-7xl mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-          <div className="lg:flex-grow md:w-1/2 md:ml-24 pt-6 flex flex-col md:items-start md:text-left mb-40 items-center text-center">
+          <div className="lg:flex-grow md:w-1/2 md:ml-24 pt-6 flex flex-col md:items-start md:text-left mb-40 items-center text-center"
+            data-aos="fade-right"
+            data-aos-offset="-100"
+            data-aos-delay="50"
+            data-aos-once="false"
+            data-aos-duration="1000"
+            data-aos-mirror="true"
+            data-aos-easing="ease-in-out"
+          >
             <h1 className="mb-5 sm:text-6xl text-5xl items-center Avenir xl:w-2/2 text-gray-900">
               The World's Fastest Growing Cryto Web App
             </h1>
@@ -60,7 +73,7 @@ const LandingPage = () => {
               </a>
               <a
                 className="inline-flex items-center mx-2 px-5 py-3 mt-2 font-medium text-black transition duration-500 ease-in-out transform bg-white border rounded-lg bg-gray-900"
-                style={{border:"1px solid gray"}}
+                style={{ border: "1px solid gray" }}
                 href="/login"
               >
                 <span className="justify-center">Sign In</span>
@@ -68,7 +81,12 @@ const LandingPage = () => {
 
             </div>
           </div>
-          <div className="xl:mr-44 sm:mr-0 sm:mb-28 mb-0 lg:mb-0 mr-4 md:pl-10">
+          <div className="xl:mr-44 sm:mr-0 sm:mb-28 mb-0 lg:mb-0 mr-4 md:pl-10"
+            data-aos="fade-left"
+            data-aos-offset="100"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out">
             <img
               className="w-80  py-[-10%]"
               alt="iPhone-12"
@@ -81,28 +99,52 @@ const LandingPage = () => {
             <div className="flex flex-col w-full mb-4 text-left lg:text-center">
             </div>
             <div className="grid grid-cols-2 gap-16 mb-16 text-center lg:grid-cols-4">
-              <div className="flex items-center justify-center">
+              <div className="flex items-center justify-center"
+                data-aos="fade-up"
+
+                data-aos-anchor-placement="top-center"
+                data-aos-duration="1000"
+              >
                 <img
                   src={phone1}
                   alt="Google Logo"
                   className="block object-contain h-16 greyC"
                 ></img>
               </div>
-              <div className="flex items-center justify-center">
+              <div className="flex items-center justify-center"
+                data-aos="fade-up"
+                data-aos-anchor-placement="top-center"
+                // data-aos-offset="300"
+                data-aos-delay="50"
+                data-aos-easing="ease-in-out"
+                data-aos-duration="800"
+              >
                 <img
                   src={Shopify}
                   alt="Shopify Logo"
                   className="block object-contain h-16 greyC"
                 ></img>
               </div>
-              <div className="flex items-center justify-center">
+              <div className="flex items-center justify-center"
+                data-aos="fade-up"
+                data-aos-anchor-placement="top-center"
+                // data-aos-offset="300"
+                data-aos-delay="50"
+                data-aos-easing="ease-in-out"
+                data-aos-duration="1000">
                 <img
                   src={Oracle}
                   alt="Cloudflare Logo"
                   className="block object-contain h-16 greyC"
                 ></img>
               </div>
-              <div className="flex items-center justify-center">
+              <div className="flex items-center justify-center"
+                data-aos="fade-up"
+                data-aos-anchor-placement="top-center"
+                // data-aos-offset="300"
+                data-aos-delay="100"
+                data-aos-easing="ease-in-out"
+                data-aos-duration="1500">
                 <img
                   src={PayPal}
                   alt="Paypal Logo"
@@ -118,8 +160,15 @@ const LandingPage = () => {
 
 
         <Aboutrem />
+
         <section className="relative">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 text-center"
+            data-aos="zoom-in"
+            data-aos-offset="100"
+            data-aos-delay="50"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"
+          >
             <div className="py-24 md:py-36">
               <h1 className="mb-5 text-6xl Avenir font-semibold text-gray-900">
                 Subscribe to our newsletter
