@@ -82,12 +82,16 @@ const Login = () => {
         window.localStorage.setItem("first_name", data.first_name);
         window.localStorage.setItem("last_name", data.last_name);
         toast.success("Login Successfull");
-        window.location.href = "/dashboard";
+        setTimeout(() => {
+          window.location.href = "/dashboard";
+        }, 2000);
+
         // Handle data
       }
       )
       .catch((err) => {
         console.log(err.message);
+        toast.error("Something Went Wrong");
       }
       );
 

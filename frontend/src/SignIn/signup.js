@@ -9,7 +9,7 @@ import { useFrame } from "@react-three/fiber";
 
 // import axios from "axios";
 import { useState } from "react";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 function Model(props) {
   const { scene } = useGLTF("/ethereum/scene.gltf");
 
@@ -81,27 +81,44 @@ const Signup = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        data = data.data
-        localStorage.setItem("token", data.token);
-        window.localStorage.setItem("userId", JSON.stringify(data.userId));
-        window.localStorage.setItem("email", data.email);
-        window.localStorage.setItem("first_name", data.first_name);
-        window.localStorage.setItem("last_name", data.last_name);
-        toast.success("Signup Successfull");
-        window.location.href = "/dashboard";
+        if(data.success){
+                  data = data.data;
+                  localStorage.setItem("token", data.token);
+                  window.localStorage.setItem(
+                    "userId",
+                    JSON.stringify(data.userId)
+                  );
+                  window.localStorage.setItem("email", data.email);
+                  window.localStorage.setItem("first_name", data.first_name);
+                  window.localStorage.setItem("last_name", data.last_name);
+                  toast.success("Signup Successfull");
+                  setTimeout(() => {
+                    window.location.href = "/dashboard";
+                  }
+                  , 2000);
+        }else{
+          toast.error(data.data.message);
+          console.log(data.data.message);
+        }
+        // window.location.href = "/dashboard";
         // Handle data
       }
       )
       .catch((err) => {
         console.log(err.message)
         ;
-        toast.error(err.message);
+        toast(err.message);
+        setTimeout(() => {
+          window.location.href = "/signup";
+        }
+        , 2000);
       }
       );
 
   };
   return (
     <div className="Login_PAGE flex flex-row bg-[#2f2f2f] h-[100%]">
+      {/* <ToastContainer /> */}
       {/* <div className="  companyname"> */}
         {/* <div className="innerdiv">
           <h2>

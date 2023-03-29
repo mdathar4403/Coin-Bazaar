@@ -12,6 +12,7 @@ import Aboutus from "./aboutus/aboutus";
 import React, { useState, useEffect } from 'react'
 import { ToastContainer } from "react-toastify";
 import { toast } from "react-toastify";
+  import "react-toastify/dist/ReactToastify.css";
 function App() {
   const [coins, setCoins] = useState([])
 
@@ -26,8 +27,6 @@ function App() {
       toast.error("Something Went Wrong");
     })
   }, [])
-
-
 
   return (
     <div className="App">
