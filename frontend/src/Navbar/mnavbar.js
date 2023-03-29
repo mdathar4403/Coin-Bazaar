@@ -22,11 +22,11 @@ const Mnavbar = () => {
           <div className="nav-container123">
             <ul className="nav-tabs">
               <li className="nav-tab"><a href="/">Home </a></li>
-              <li className="nav-tab"><a href="/">About US</a></li>
-              <li className="nav-tab"><a href="/#why-us">Why US</a></li>
+              <li className="nav-tab"><a href="/dashboard">DashBoard</a></li>
+              {/* <li className="nav-tab"><a href="/#why-us">Why </a></li> */}
               <li className="nav-tab"><a href="/market">Market</a></li>
-              <li className="nav-tab"><button className="navbutton navsign"><a href="/login">sign in </a></button></li>
-              <li className="nav-tab"><button className="navbutton navsign"><a href="/signup">sign up</a></button></li>
+              <li className="nav-tab"><button className="navbutton navsign"><a href="/logout">logout</a></button></li>
+              {/* <li className="nav-tab"><button className="navbutton navsign"><a href="/signup">sign up</a></button></li> */}
             </ul>
           </div>
         </nav>

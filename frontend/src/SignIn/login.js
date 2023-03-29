@@ -57,7 +57,7 @@ const Login = () => {
     //   .catch((err) => {
     //     console.log(err.message);
     //   });
-    fetch("http://localhost:5000/api/auth/login", {
+    fetch("https://crytotrade-app.onrender.com/api/auth/login", {
       method: "POST",
       body: JSON.stringify({
         // Add parameters here
@@ -130,7 +130,7 @@ const Login = () => {
           <div className="form-header">
             <h1 className="text-5xl p-5 font-bold text-white">Sign In</h1>
           </div>
-          <form action="http://localhost:5000/api/auth/login" method="POST" onSubmit={onSubmitHandler}>
+          <form action="https://crytotrade-app.onrender.com/api/auth/login" method="POST" onSubmit={onSubmitHandler}>
 
           <div className="form-input">
           <input

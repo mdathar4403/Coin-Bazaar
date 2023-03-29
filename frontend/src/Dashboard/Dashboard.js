@@ -7,7 +7,7 @@ import profile3 from '../assets/profile-3.jpg'
 import profile4 from '../assets/profile-4.jpg'
 import Navbar from '../Navbar/Navbar'
 import { redirect } from 'react-router-dom'
-
+import axios from 'axios'
 
 const Dashboard = () => {
     const [name,setName] = React.useState('Admin')
@@ -19,6 +19,23 @@ const Dashboard = () => {
         const name = window.localStorage.getItem('first_name');
         console.log(name);
         setName(name);
+        const url = `https://crytotrade-app.onrender.com/api/user/portfolio`;
+
+        
+        axios
+        .get('https://crytotrade-app.onrender.com/api/user/portfolio',
+         { headers: {
+            "Content-Type": "application/json",
+            "Authorization":"Bearer "+localStorage.getItem("token"),
+          }, })
+        .then((res) => {
+          console.log(res);
+          console.log("hi");
+          // console.log(teamData);
+        })
+        .catch((error) => console.log(error));
+      
+        
 
     },[])
 
