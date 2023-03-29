@@ -71,7 +71,7 @@ const Coin = () => {
 
     return (
         <div>
-        <GAChart symbol={"MFST"}/>
+        {/* <GAChart symbol={"MFST"}/> */}
             <div className='coin-container'>
                 <div className='content'>
                     <h1>{coin.name}</h1>
