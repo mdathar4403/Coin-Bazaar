@@ -1,14 +1,17 @@
-import jst from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 import User from '../models/user.js';
+import dotenv from 'dotenv';
 
+dotenv.config();
 const SECRET_KEY = process.env.SECRET_KEY;
 
 const auth = async (req, res, next) => {
   try {
         const token = req.header('Authorization').replace('Bearer ', '');
         const decoded = jwt.verify(token, SECRET_KEY);
+        console.log(decoded);
         const user = await User.findOne({
-            _id: decoded._id,
+            _id: decoded.userId,
         });
         if(!user) throw new Error('please authenticate');
         req.token = token ;

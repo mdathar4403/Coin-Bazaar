@@ -5,10 +5,15 @@ import User from "../models/user.js";
 import dotenv from "dotenv";
 import auth from "../middlewere/auth.middle.js";
 const router = express.Router();
+dotenv.config();
+const SECRET_KEY = process.env.SECRET_KEY;
 
 //Handling Get request
-router.get("/portfolio", auth, async (req, res, next) => {
+router.post("/portfolio", async (req, res, next) => {
   const { userId } = req.body;
+  // console.log(req);
+  // const userId = req.params.userId;
+  console.log(userId);
   let userData = await User.findById(userId);
   console.log(userData);
   console.log(userData.stocks);
@@ -16,14 +21,18 @@ router.get("/portfolio", auth, async (req, res, next) => {
 });
 
 // Add a Stock To User's Portfolio
-router.post("/stock/add", async (req, res, next) => {
-  const { userId, stockId, current_price, quantity } = req.body;
-  // console.log(stock);
+router.post("/stock/add", auth,async (req, res, next) => {
+  console.log(SECRET_KEY);
+  var { userId, stockId, current_price, quantity } = req.body;
+  // console.log(userId);
+  //remove single quote from object id
+  userId = userId.replace(/['"]+/g, "");
+  console.log(userId); 
   const user = await User.findOne({
     _id: userId,
     stocks: { $elemMatch: { stockId: stockId } },
   });
-
+ 
   if (user) {
     // If the stock already exists, update the quantity
     await User.updateOne(
@@ -61,7 +70,7 @@ router.post("/stock/add", async (req, res, next) => {
         new: true,
       }
     );
-  }
+  } 
   const updatedUser = await User.findById({
     _id: userId,
   });
@@ -69,7 +78,7 @@ router.post("/stock/add", async (req, res, next) => {
   res.json(updatedUser);
 });
 
-router.post("/stock/remove", async (req, res, next) => {
+router.post("/stock/remove",auth,async (req, res, next) => {
   const { userId, stockId, current_price, quantity } = req.body;
   const user = await User.findOne({
     _id: userId,
