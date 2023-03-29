@@ -71,7 +71,7 @@ const GAChart = (props) => {
       // console.log(parseData["Time Series (5min)"]);
       console.log(parseData);
       for (let i = 1; i < parseData.length && i < 50; i++) {
-        arr.push(parseData[i][1]);
+        arr.push(Number(parseData[i][1]));
       }
       // for (const [key, value] of Object.entries(
       //   parseData["Monthly Time Series"]

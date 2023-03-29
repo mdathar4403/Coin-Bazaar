@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "./Dashboard.css";
 // import logo from '../assets/logo.png'
+
 import profile1 from "../assets/profile-1.jpg";
 import profile2 from "../assets/profile-2.jpg";
 import profile3 from "../assets/profile-3.jpg";
@@ -47,6 +48,7 @@ const Dashboard = () => {
   useEffect(() => {
     getdata();
   }, []);
+
 
   return (
     <div className="container1">
