@@ -5,8 +5,9 @@ import React, { useState, useEffect } from "react";
 function Single(props) {
   return (
     <>
-
+<a href={"/dashboard/sell/".concat(props.stockId)}>
       {props.current_cost >= props.total_amount && (
+        
         <div className="flex items-center p-4 bg-white rounded my-3">
           <div className="flex flex-shrink-0 items-center justify-center bg-white h-16 w-16 rounded">
             <img src={props.imagesmall} />
@@ -121,6 +122,7 @@ function Single(props) {
       </div>
       <small className="text-muted">Last 24 Hours</small>
     </div> */}
+    </a>
     </>
   );
 }
