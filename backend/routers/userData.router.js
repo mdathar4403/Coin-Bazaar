@@ -101,7 +101,6 @@ router.post("/stock/add", auth, async (req, res, next) => {
     },
   });
 });
-
 router.post("/stock/remove", auth, async (req, res, next) => {
   var { userId, stockId, current_price, quantity } = req.body;
   userId = userId.replace(/['"]+/g, "");
@@ -115,7 +114,8 @@ router.post("/stock/remove", auth, async (req, res, next) => {
     const stock = user.stocks.find((s) => s.stockId === stockId);
     const newQuantity = stock.quantity - quantity;
     const newTotalAmount = stock.total_amount - current_price;
-    if (newQuantity > 0 && newTotalAmount > 10) {
+    console.log(newQuantity, newTotalAmount);
+    if (newQuantity > 0 && newTotalAmount > 5) {
       await User.updateOne(
         {
           _id: userId,
@@ -132,20 +132,23 @@ router.post("/stock/remove", auth, async (req, res, next) => {
         }
       );
     } else {
-      console.log("Removing stock");
-      User.updateOne(
+      console.log("Removing stock", stockId);
+      await User.updateOne(
         {
           _id: userId,
         },
         {
+          $inc: {
+            credits: current_price,
+          },
           $pull: {
             stocks: {
               stockId: stockId,
             },
           },
-          $inc: {
-            credits: current_price,
-          },
+        },
+        {
+          new: true,
         }
       );
     }
