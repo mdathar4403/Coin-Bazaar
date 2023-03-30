@@ -278,8 +278,8 @@ const Dashboard = () => {
         {/* <!----------- Data Stats-------------> */}
         <h2>Recent Coins</h2>
         {/* <DataStats/> */}
-            <RenderingArrayOfObjects />
-            {/* <RenderingArrayOfObjects /> */}
+        <RenderingArrayOfObjects />
+        {/* <RenderingArrayOfObjects /> */}
 
 
         {/* <!----------- END OF INSIGHTS -------------> */}
@@ -362,7 +362,7 @@ const Dashboard = () => {
               <p>
                 Hey, <b>{name}</b>
               </p>
-              <small className="text-muted">Admin</small>
+              <small className="text-muted" style={{ margin: "auto" }}>Admin</small>
             </div>
             <div className="profile-photo">
               <img src={profile1} alt="hero" />

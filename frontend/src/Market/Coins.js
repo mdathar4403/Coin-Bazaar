@@ -51,15 +51,19 @@ const Coins = (props) => {
                     <div className="profile">
                         <div className="info">
                             <p>Hey, <b>Athar</b></p>
-                            <small className="text-muted">Admin</small>
+                            <small className="text-muted" style={{ margin: "auto" }}>Admin</small>
                         </div>
                         <div className="profile-photo">
                             <img src={profile1} alt="hero" />
                         </div>
                     </div>
                 </div>
-{/* hi */}
+                {/* hi */}
                 {/* <!----------- END OF RECENT UPDATES -------> */}
+                <div className="updates">
+                <AChart />
+                </div>
+                
                 <div className="sales-analytics1">
                     <h2>Sales Analytics</h2>
 
@@ -110,7 +114,7 @@ const Coins = (props) => {
                     </div>
                 </div>
                 {/* hi */}
-                <AChart/>
+                
             </div>
         </div>
     )

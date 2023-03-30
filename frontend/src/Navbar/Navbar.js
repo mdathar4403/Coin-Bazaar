@@ -35,7 +35,7 @@ const Navbar = () => {
                         <span className="material-icons-sharp">grid_view</span>
                         <h3>Home</h3>
                     </a>
-                    <a href="/dashboard" className="active">
+                    <a href="/dashboard" >
                         <span className="material-icons-sharp">person_outline</span>
                         <h3>Dashboard</h3>
                     </a>
@@ -43,7 +43,7 @@ const Navbar = () => {
                         <span className="material-icons-sharp">insights</span>
                         <h3>Market</h3>
                     </a>
-                    <a href="/">
+                    <a href="/messages">
                         <span className="material-icons-sharp">mail_outline</span>
                         <h3>Messages</h3>
                         <span className="message-count">26</span>
