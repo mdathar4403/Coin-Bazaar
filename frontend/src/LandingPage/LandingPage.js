@@ -48,7 +48,7 @@ const LandingPage = () => {
       <section className="text-gray-600 body-font"
         style={{ background: "#fff" }}
       >
-        <div className="max-w-7xl mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+        <div className="max-w-7xl mx-auto flex px-5 py-32 md:flex-row flex-col items-center">
           <div className="lg:flex-grow md:w-1/2 md:ml-24 pt-6 flex flex-col md:items-start md:text-left mb-40 items-center text-center"
             data-aos="fade-right"
             data-aos-offset="-100"
@@ -66,17 +66,17 @@ const LandingPage = () => {
             </p>
             <div className="flex justify-center">
               <a
-                className="inline-flex items-center px-5 py-3 mt-2 font-medium text-white transition duration-500 ease-in-out transform bg-black border rounded-lg bg-gray-900"
+                className="inline-flex items-center px-5 py-3 mt-5 font-medium text-white hover:bg-slate-600 transition duration-500 ease-in-out transform border rounded-lg bg-gray-900"
                 href="/signup"
               >
                 <span className="justify-center">Sign Up</span>
               </a>
               <a
-                className="inline-flex items-center mx-2 px-5 py-3 mt-2 font-medium text-black transition duration-500 ease-in-out transform bg-white border rounded-lg bg-gray-900"
+                className="inline-flex items-center mx-8 px-5 py-3 mt-5 font-medium text-black hover:bg-slate-300 transition duration-500 ease-in-out transform bg-white border rounded-lg bg-gray-900"
                 style={{ border: "1px solid gray" }}
                 href="/login"
               >
-                <span className="justify-center">Sign In</span>
+                <span className="justify-center hover:bg-white-700">Sign In</span>
               </a>
 
             </div>
