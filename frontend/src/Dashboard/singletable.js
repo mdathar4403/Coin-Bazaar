@@ -5,10 +5,9 @@ import React, { useState, useEffect } from "react";
 function Singletable(props) {
   return (
 
-<a href={"/dashboard/sell/".concat(props.stockId)}>
 
-        <tbody>
-              <tr style={{display:'flex',justifyContent:"space-between" }}>
+        <tbody style={{width:"100vw"}}>
+              <tr >
                 <td>{props.stockId}</td>
                 {/* <td>{Math.round(Math.random()*10000+1)}</td> */}
                 <td>{Math.round(props.total_amount)}</td>
@@ -16,7 +15,6 @@ function Singletable(props) {
                 <td className="primary">Details</td>
               </tr>
         </tbody>
-</a>
   );
 }
 
