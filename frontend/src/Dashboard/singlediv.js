@@ -32,6 +32,20 @@ function Single(props) {
                   ).toFixed(2)}
                   %
                 </span>
+                <span>
+                  <Link
+                    to={"/dashboard/sell/".concat(props.stockId)}
+                    state={{
+                      stockId: props.stockId,
+                      total_amount: props.total_amount,
+                      current_cost: props.current_cost,
+                      quantity: props.quantity,
+                    }}
+                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mx-7"
+                  >
+                    Sell
+                  </Link>
+                </span>
               </div>
             </div>
           </div>
@@ -64,7 +78,12 @@ function Single(props) {
                 <span>
                   <Link
                     to={"/dashboard/sell/".concat(props.stockId)}
-                    state={{ stockId: props.stockId, total_amount: props.total_amount, current_cost: props.current_cost,quantity:props.quantity }}
+                    state={{
+                      stockId: props.stockId,
+                      total_amount: props.total_amount,
+                      current_cost: props.current_cost,
+                      quantity: props.quantity,
+                    }}
                     className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mx-7"
                   >
                     Sell

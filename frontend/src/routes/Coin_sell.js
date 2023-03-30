@@ -28,7 +28,6 @@ const Coin_sell = () => {
   useEffect(() => {
     setQuantity(location.state.quantity);
     var x = quantity * coin.market_data?.current_price.inr;
-    x = Math.round((x + Number.EPSILON) * 100) / 100;
     setAvl(x);
   }, [coin]);
   
@@ -107,11 +106,15 @@ const Coin_sell = () => {
           <div className="content">
             <div className="coin_name flex flex-row justify-between">
               <h1>{coin.name}</h1>
-              <p>Available To Sell : {avl}</p>
+              <p>
+                Available To Sell :{" "}
+                {Math.round((avl + Number.EPSILON) * 100) / 100}
+              </p>
             </div>
             {message ? (
               <p className="text-red-500">
-                You Have Only {coin.name}s of value {avl} to sell
+                You Have Only {coin.name}s of value{" "}
+                {Math.round((avl + Number.EPSILON) * 100) / 100} to sell
               </p>
             ) : null}
 
