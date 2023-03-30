@@ -278,12 +278,8 @@ const Dashboard = () => {
         {/* <!----------- Data Stats-------------> */}
         <h2>Recent Coins</h2>
         {/* <DataStats/> */}
-        <div>
-          <div class="grid lg:grid-cols-3 md:grid-row-1 gap-6 w-full max-w-6xl">
             <RenderingArrayOfObjects />
             {/* <RenderingArrayOfObjects /> */}
-          </div>
-        </div>
 
 
         {/* <!----------- END OF INSIGHTS -------------> */}

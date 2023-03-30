@@ -11,15 +11,15 @@ function Single(props) {
         <div className="flex flex-shrink-0 items-center justify-center bg-white h-16 w-16 rounded">
             <img src={props.imagesmall} />
         </div>
-        <div className="flex-grow flex flex-row ml-4">
+        <div className="flex-grow justify-between flex flex-row ml-4">
           <span className="text-xl font-bold">
             Rs {Math.round(props.total_amount)}
           </span>
-            {/* <span class="text-gray-500 text-sm">Buy price</span> */}
+            <span class="text-gray-500 text-sm">Buy price</span>
           <span className="text-xl font-bold">
             Rs {Math.round(props.current_cost)}
           </span>
-            {/* <span class="text-gray-500 text-sm">Current price</span> */}
+            <span class="text-gray-500 text-sm">Current price</span>
           <div className="flex items-center justify-between">
             {/* <img src={props.imagesmall}></img>{" "} */}
             <span class="text-gray-500">{props.stockId}</span>
