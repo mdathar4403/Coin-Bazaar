@@ -41,9 +41,9 @@ function RenderingArrayOfObjects(props) {
         return res.json();
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         let newarr = [];
-        console.log("hi");
+        // console.log("hi");
         // setbalance(Math.round(res.data.credits))
         res = res.data.stocks;
         for (let i = 0; i < res.length; i++) {
@@ -60,7 +60,7 @@ function RenderingArrayOfObjects(props) {
               console.log(error);
             });
         }
-        console.log(res);
+        // console.log(res);
         return res;
       })
       .then((res) => {
@@ -94,6 +94,7 @@ function RenderingArrayOfObjects(props) {
           stockId={element.stockId}
           imagesmall={element.imagesmall}
           total_amount={element.total_amount}
+          quantity={element.quantity}
           current_market_price={element.current_market_price}
           current_cost={element.quantity * element.current_market_price}
         />
@@ -130,8 +131,6 @@ function RenderingArrayOfLists(props) {
       .then((res) => {
         console.log(res);
         let newarr = [];
-        console.log("hi");
-        // setbalance(Math.round(res.data.credits))
         res = res.data.stocks;
         for (let i = 0; i < res.length; i++) {
           const url = `https://api.coingecko.com/api/v3/coins/${res[i].stockId}`;
@@ -168,19 +167,19 @@ function RenderingArrayOfLists(props) {
   //   getdata();
   useEffect(() => {
     getdata();
-  }, [currentcoins]);
+  }, []);
 
-  // const data = {currentcoins};
-  // console.log(data);
-  // let listItems=[];
   const showdata = (datas) => {
-    let listItems1 = datas.map((element) => {
+    console.log("showdata");
+    console.log(datas);
+    let listItems1 = datas.map((element) => { 
       return (
         <Singletable
           key={element.sto}
           stockId={element.stockId}
           imagesmall={element.imagesmall}
           total_amount={element.total_amount}
+          quantity={element.quantity}
           current_market_price={element.current_market_price}
           current_cost={element.quantity * element.current_market_price}
         />
