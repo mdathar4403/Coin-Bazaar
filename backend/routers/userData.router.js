@@ -115,7 +115,7 @@ router.post("/stock/remove", auth, async (req, res, next) => {
     const stock = user.stocks.find((s) => s.stockId === stockId);
     const newQuantity = stock.quantity - quantity;
     const newTotalAmount = stock.total_amount - current_price;
-    // if (newQuantity > 0) {
+    if (newQuantity > 0 && newTotalAmount > 10) {
       await User.updateOne(
         {
           _id: userId,
@@ -131,9 +131,24 @@ router.post("/stock/remove", auth, async (req, res, next) => {
           },
         }
       );
-    // } else {
-    //   res.status(404).json({ message: "Stock not found." });
-    // }
+    } else {
+      console.log("Removing stock");
+      User.updateOne(
+        {
+          _id: userId,
+        },
+        {
+          $pull: {
+            stocks: {
+              stockId: stockId,
+            },
+          },
+          $inc: {
+            credits: current_price,
+          },
+        }
+      );
+    }
     const updatedUser = await User.findById({
       _id: userId,
     });
@@ -146,6 +161,7 @@ router.post("/stock/remove", auth, async (req, res, next) => {
         amount_left: newTotalAmount,
       },
     });
+    return;
   } else {
     res.status(404).json({ message: "User or stock not found." });
   }
