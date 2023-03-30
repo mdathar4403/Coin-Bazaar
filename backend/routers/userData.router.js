@@ -22,26 +22,26 @@ router.post("/portfolio", async (req, res, next) => {
     data: {
       stocks: userData.stocks,
       credits: userData.credits,
-    }
+    },
   });
 });
 
 // Add a Stock To User's Portfolio
-router.post("/stock/add", auth,async (req, res, next) => {
+router.post("/stock/add", auth, async (req, res, next) => {
   console.log(SECRET_KEY);
   var { userId, stockId, current_price, quantity } = req.body;
   // console.log(userId);
   //remove single quote from object id
   userId = userId.replace(/['"]+/g, "");
-  console.log(userId); 
+  console.log(userId);
   current_price = parseFloat(current_price);
-  const myUser  = await User.findById(userId);
-  if(myUser.credits-current_price<0){
+  const myUser = await User.findById(userId);
+  if (myUser.credits - current_price < 0) {
     res.status(400).json({
       success: false,
       data: {
         message: "Insufficient Credits",
-      }
+      },
     });
     return;
   }
@@ -61,7 +61,7 @@ router.post("/stock/add", auth,async (req, res, next) => {
       {
         $inc: {
           "stocks.$.quantity": quantity,
-          "credits": -current_price,
+          credits: -current_price,
           "stocks.$.total_amount": current_price,
         },
       }
@@ -88,7 +88,7 @@ router.post("/stock/add", auth,async (req, res, next) => {
         new: true,
       }
     );
-  } 
+  }
   const updatedUser = await User.findById({
     _id: userId,
   });
@@ -98,12 +98,14 @@ router.post("/stock/add", auth,async (req, res, next) => {
     data: {
       stocks: updatedUser.stocks,
       credits: updatedUser.credits,
-    }
+    },
   });
 });
 
-router.post("/stock/remove",auth,async (req, res, next) => {
-  const { userId, stockId, current_price, quantity } = req.body;
+router.post("/stock/remove", auth, async (req, res, next) => {
+  var { userId, stockId, current_price, quantity } = req.body;
+  userId = userId.replace(/['"]+/g, "");
+  console.log(userId);
   const user = await User.findOne({
     _id: userId,
     stocks: { $elemMatch: { stockId: stockId } },
@@ -112,8 +114,8 @@ router.post("/stock/remove",auth,async (req, res, next) => {
   if (user) {
     const stock = user.stocks.find((s) => s.stockId === stockId);
     const newQuantity = stock.quantity - quantity;
-    const newTotalAmount = stock.total_amount - current_price * quantity;
-    if (newQuantity > 0) {
+    const newTotalAmount = stock.total_amount - current_price;
+    // if (newQuantity > 0) {
       await User.updateOne(
         {
           _id: userId,
@@ -125,23 +127,29 @@ router.post("/stock/remove",auth,async (req, res, next) => {
             "stocks.$.total_amount": newTotalAmount,
           },
           $inc: {
-            credits: current_price * quantity,
+            credits: current_price,
           },
         }
       );
-    } else {
-      res.status(404).json({ message: "Stock not found." });
-    }
+    // } else {
+    //   res.status(404).json({ message: "Stock not found." });
+    // }
     const updatedUser = await User.findById({
       _id: userId,
     });
     console.log(updatedUser);
-    res.json(updatedUser);
-    } else {
+    res.status(200).json({
+      success: true,
+      data: {
+        stocks: updatedUser.stocks,
+        credits: updatedUser.credits,
+        amount_left: newTotalAmount,
+      },
+    });
+  } else {
     res.status(404).json({ message: "User or stock not found." });
   }
 });
-
 
 // // Buy a Stock
 // router.post('/buy/stocks', async (req, res, next) => {
