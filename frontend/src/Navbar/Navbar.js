@@ -11,6 +11,7 @@ const Navbar = () => {
         localStorage.removeItem('first_name');
         window.location.href = '/'
     }
+    
 
   return (
     <>
