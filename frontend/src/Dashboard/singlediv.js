@@ -5,37 +5,66 @@ import React, { useState, useEffect } from "react";
 function Single(props) {
   return (
     <>
-    
-     {props.current_cost >= props.total_amount && (
-      <div className="flex items-center p-4 bg-white rounded my-3">
-        <div className="flex flex-shrink-0 items-center justify-center bg-white h-16 w-16 rounded">
+
+      {props.current_cost >= props.total_amount && (
+        <div className="flex items-center p-4 bg-white rounded my-3">
+          <div className="flex flex-shrink-0 items-center justify-center bg-white h-16 w-16 rounded">
             <img src={props.imagesmall} />
-        </div>
-        <div className="flex-grow justify-between flex flex-row ml-4">
-          <span className="text-xl font-bold">
-            Rs {Math.round(props.total_amount)}
-          </span>
+          </div>
+          <div className="flex-grow justify-between flex flex-row ml-4">
             <span class="text-gray-500 text-sm">Buy price</span>
-          <span className="text-xl font-bold">
-            Rs {Math.round(props.current_cost)}
-          </span>
-            <span class="text-gray-500 text-sm">Current price</span>
-          <div className="flex items-center justify-between">
-            {/* <img src={props.imagesmall}></img>{" "} */}
-            <span class="text-gray-500">{props.stockId}</span>
-            <span className="text-green-500 text-sm font-semibold ml-2">
-             +{(
-                ((props.current_cost - props.total_amount) /
-                  props.total_amount) *
-                100
-              ).toFixed(2)}
-              %
+            <span className="text-gray-900 text-md">
+              Rs {Math.round(props.total_amount)}
             </span>
+            <span class="text-gray-500 text-sm">Current price</span>
+            <span className="text-gray-900 text-md">
+              Rs {Math.round(props.current_cost)}
+            </span>
+            <div className="flex items-center justify-between">
+              {/* <img src={props.imagesmall}></img>{" "} */}
+              <span class="text-gray-500">{props.stockId}</span>
+              <span className="text-green-500 text-sm font-semibold ml-2">
+                +{(
+                  ((props.current_cost - props.total_amount) /
+                    props.total_amount) *
+                  100
+                ).toFixed(2)}
+                %
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-     )}
+      )}
       {props.current_cost < props.total_amount && (
+        <div className="flex items-center p-4 bg-white rounded my-3">
+          <div className="flex flex-shrink-0 items-center justify-center bg-white h-16 w-16 rounded">
+            <img src={props.imagesmall} />
+          </div>
+          <div className="flex-grow justify-between flex flex-row ml-4">
+            <span class="text-gray-500 text-sm">Buy price</span>
+            <span className="text-gray-900 text-md">
+              Rs {Math.round(props.total_amount)}
+            </span>
+            <span class="text-gray-500 text-sm">Current price</span>
+            <span className="text-gray-900 text-md">
+              Rs {Math.round(props.current_cost)}
+            </span>
+            <div className="flex items-center justify-between">
+              {/* <img src={props.imagesmall}></img>{" "} */}
+              <span class="text-gray-500">{props.stockId}</span>
+              <span className="text-red-500 text-sm font-semibold ml-2">
+                {(
+                  ((props.current_cost - props.total_amount) /
+                    props.total_amount) *
+                  100
+                ).toFixed(2)}
+                %
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* {props.current_cost < props.total_amount && (
         <div class="flex items-center p-4 bg-white rounded">
           <div class="flex flex-shrink-0 items-center justify-center bg-red-200 h-16 w-16 rounded">
             <svg
@@ -72,7 +101,7 @@ function Single(props) {
             </div>
           </div>
         </div>
-      )}
+      )} */}
 
       {/* <div className="sales">
       <img src={props.imagesmall}></img>
