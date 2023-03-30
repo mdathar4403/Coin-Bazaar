@@ -34,12 +34,6 @@ const Coin_sell = () => {
         e.preventDefault();
         console.log("Going To Buy",value);
         console.log(coin.market_data?.current_price.inr);
-//         {
-// //   "userId": "642320e39c4caae6ef96f944",
-// //   "stockId":"BTC",
-// //   "quantity":3.5,
-// //   "current_price":100
-// }
         if(!value){
             toast.error("Please Enter Amount");
             console.log("Please Enter Amount");

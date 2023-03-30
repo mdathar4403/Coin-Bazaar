@@ -20,14 +20,16 @@ function App() {
   const url = 'https://api.coingecko.com/api/v3/coins/'
 
   useEffect(() => {
-    axios.get(url).then((response) => {
-      setCoins(response.data)
-      console.log(response.data)
-    }).catch((error) => {
-      console.log(error);
-      toast.error("Something Went Wrong");
-    })
-  }, [])
+    axios
+      .get(url)
+      .then((response) => {
+        setCoins(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <div className="App">
