@@ -22,7 +22,7 @@ const Navbar = () => {
                 <div className="top">
                     <div className="logo1">
                         <img src={logo} alt="hero" />
-                        <h2>Hack<span className="danger">Elite</span></h2>
+                        <h2>Crypto<span className="danger">Light</span></h2>
                     </div>
                     <div className="close" id="close-btn">
                         <span className="material-icons-sharp">close</span>
@@ -45,21 +45,21 @@ const Navbar = () => {
                     </a>
                     <a href="/messages">
                         <span className="material-icons-sharp">mail_outline</span>
-                        <h3>News(Updates)</h3>
+                        <h3>News Info</h3>
                         <span className="message-count">26</span>
                     </a>
-                    <a href="/">
+                    {/* <a href="/">
                         <span className="material-icons-sharp">inventory</span>
                         <h3>Wallet</h3>
-                    </a>
+                    </a> */}
                     <a href="/">
                         <span className="material-icons-sharp">settings</span>
                         <h3>Settings</h3>
                     </a>
-                    <a href="/">
+                    {/* <a href="/">
                         <span className="material-icons-sharp">add</span>
                         <h3>Add Products</h3>
-                    </a>
+                    </a> */}
                     <a onClick={logOut}>
                         <span className="material-icons-sharp">logout</span>
                         <h3>logout</h3>

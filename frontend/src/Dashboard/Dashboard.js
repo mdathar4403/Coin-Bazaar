@@ -16,6 +16,7 @@ import { setConfig } from "dompurify";
 import { toast } from "react-toastify";
 import DataStats from "../DataStats/DataStats";
 import Singletable from "./singletable";
+import AChart from "../chart/chart";
 
 function RenderingArrayOfObjects(props) {
   const [currentcoins, setcurrentcoins] = useState([]);
@@ -300,8 +301,6 @@ const Dashboard = () => {
       <main>
         <h1>DashBoard</h1>
 
-        <div className="date">{/* <input type="date"> */}</div>
-
         <div className="insights">
           {/* 
           <div className="sales">
@@ -330,7 +329,7 @@ const Dashboard = () => {
             <span className="material-icons-sharp">analytics</span>
             <div className="middle">
               <div className="left">
-                <h3>Balance Reamaining</h3>
+                <h3>Balance Remaining</h3>
                 <h1>₹{balance}</h1>
               </div>
               <div className="progress">
@@ -338,8 +337,7 @@ const Dashboard = () => {
                   <circle cx="38" cy="38" r="36"></circle>
                 </svg>
                 <div className="number">
-
-                  <p>{balance / 10000}%</p>
+                  <p>{(balance / 10000).toFixed(2)} %</p>
                 </div>
               </div>
             </div>
@@ -357,9 +355,9 @@ const Dashboard = () => {
                 <svg>
                   <circle cx="38" cy="38" r="36"></circle>
                 </svg>
-                % investments 
+                % investments
                 <div className="number">
-                  <p> {((1000000-balance)/balance).toFixed(2)}%</p>
+                  <p> {((1000000 - balance) / balance).toFixed(2)}%</p>
                 </div>
               </div>
             </div>
@@ -370,21 +368,21 @@ const Dashboard = () => {
             <span className="material-icons-sharp">stacked_line_chart</span>
             <div className="middle">
               <div className="left">
-                <h3>Current Price Of Investments</h3>
+                <h3>Current Price</h3>
                 <h1>₹{temp}</h1>
               </div>
               {/* <p>
                  {((temp / (1000000 - balance)) * 100).toFixed(2)}%
                 </p> */}
-                <div className="progress">
+              <div className="progress">
                 <svg>
                   <circle cx="38" cy="38" r="36"></circle>
                 </svg>
-                % Profits
+                {(((temp / (1000000 - balance)) * 100 - 100).toFixed(2) >= 0) ? "% Profits" : "%Loss"}
                 <div className="number">
-                <p>
-                 {((temp / (1000000 - balance)) * 100-100).toFixed(2)}%
-                </p>
+                  <p>
+                    {((temp / (1000000 - balance)) * 100 - 100).toFixed(2)}%
+                  </p>
                 </div>
               </div>
             </div>
@@ -499,7 +497,7 @@ const Dashboard = () => {
               <div className="message">
                 <p>
                   <b>
-                    Mike <b>received his order of Night lion tech GPS drone</b>
+                    Mike <b>Crypto Faces a Banking Crisis. For Some, It’s a Conspiracy</b>
                   </b>
                 </p>
                 <small className="text-muted">2 Minutes Ago</small>
@@ -512,10 +510,10 @@ const Dashboard = () => {
               <div className="message">
                 <p>
                   <b>
-                    Mike <b>received his order of Night lion tech GPS drone</b>
+                    Rhea <b>Biden Budget Plan Would Close Crypto Tax Loss Harvesting Loophole </b>
                   </b>
                 </p>
-                <small className="text-muted">2 Minutes Ago</small>
+                <small className="text-muted">3 Minutes Ago</small>
               </div>
             </div>
             <div className="update">
@@ -525,15 +523,19 @@ const Dashboard = () => {
               <div className="message">
                 <p>
                   <b>
-                    Mike <b>received his order of Night lion tech GPS drone</b>
+                    Zoya <b>More pain for the crypto industry means a chance for startups to pivot</b>
                   </b>
                 </p>
-                <small className="text-muted">2 Minutes Ago</small>
+                <small className="text-muted">5 Minutes Ago</small>
               </div>
             </div>
           </div>
           {/* <!----------- END OF RECENT UPDATES -------> */}
-          <div className="sales-analytics">
+          <div style={{ marginTop: "10px" }} >
+            <AChart />
+          </div>
+
+          {/* <div className="sales-analytics">
             <h2>Sales Analytics</h2>
 
             <div className="item online">
@@ -587,8 +589,8 @@ const Dashboard = () => {
                 <span className="material-icons-sharp">add</span>
                 <h3>Add Product</h3>
               </div>
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
         </div>
       </div>
     </div>

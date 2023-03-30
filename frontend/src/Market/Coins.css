@@ -123,7 +123,12 @@
     margin-bottom: 1rem;
 } */
 /************ SALES ANALYTICS *********/
-
+.red{
+    color: #f00606;
+}
+.green{
+    color: #11d811;
+}
 .right .sales-analytics1{
     margin-top: 2rem;
 }

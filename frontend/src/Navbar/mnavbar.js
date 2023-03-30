@@ -25,6 +25,7 @@ const Mnavbar = () => {
               <li className="nav-tab"><a href="/dashboard">DashBoard</a></li>
               {/* <li className="nav-tab"><a href="/#why-us">Why </a></li> */}
               <li className="nav-tab"><a href="/market">Market</a></li>
+              <li className="nav-tab"><a href="/messages">News-Info</a></li>
               <li className="nav-tab"><button className="navbutton navsign"><a href="/logout">logout</a></button></li>
               {/* <li className="nav-tab"><button className="navbutton navsign"><a href="/signup">sign up</a></button></li> */}
             </ul>

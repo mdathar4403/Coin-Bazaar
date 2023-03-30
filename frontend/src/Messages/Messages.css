@@ -15,4 +15,8 @@
     font-size: 2rem;
     padding: 2rem;
 }
-  
+@media screen and (max-width:600px) {
+    .card_news{
+        width:85%;
+    }
+}
