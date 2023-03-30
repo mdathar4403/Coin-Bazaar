@@ -78,7 +78,7 @@ function App() {
             }
           />
           <Route
-            path="/dashboard/sell"
+            path="/dashboard/sell/:coinId"
             element={
               <>
                 <Coin_sell />
@@ -98,6 +98,9 @@ function App() {
           <Route path='/coin' element={<Coin />}>
             <Route path=':coinId' element={<Coin />} />
           </Route>
+          
+  {/* <Route path="/dashboard/sell/:id" component={<Coin_sell/>} /> */}
+
 
         </Routes>
       </Router>

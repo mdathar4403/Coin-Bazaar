@@ -21,8 +21,7 @@ const Coin_sell = () => {
   const [value, setValue] = useState();
   let bitcoin = "bitcoin"
 
-  const url = `https://api.coingecko.com/api/v3/coins/bitcoin`;
-
+  const url = `https://api.coingecko.com/api/v3/coins/${params.coinId}?localization=false&tickers=true&market_data=true&community_data=false&developer_data=false&sparkline=false`
     useEffect(() => {
         axios.get(url).then((res) => {
             setCoin(res.data)
@@ -41,7 +40,7 @@ const Coin_sell = () => {
         }
         const userId = localStorage.getItem("userId");
         console.log(userId);
-        fetch("http://localhost:5000/api/user/stock/add", {
+        fetch("http://localhost:5000/api/user/stock/sell", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -83,7 +82,7 @@ const Coin_sell = () => {
                                     onChange={(e) => setValue(e.target.value)}
                                 />
                                 {/* </label> */}
-                                <input className='btn-sell' type="submit" value="Buy" style={{ border: "1px green" }}  onClick={handleBuy}/>
+                                <input className='btn-sell' type="submit" value="Sell" style={{ border: "1px green" }}  onClick={handleBuy}/>
                             </form>
                         </div>
 

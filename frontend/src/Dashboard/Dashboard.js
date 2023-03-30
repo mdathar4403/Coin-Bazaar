@@ -15,19 +15,11 @@ import { setConfig } from "dompurify";
 
 import { toast } from "react-toastify";
 import DataStats from "../DataStats/DataStats";
-
-
-
-
-
-
-
-
+import Singletable from "./singletable";
 
 function RenderingArrayOfObjects(props) {
   const [currentcoins, setcurrentcoins] = useState([]);
   const [listItems, setlistItems] = useState([]);
-
 
   const getdata = () => {
     const token = localStorage.getItem("token");
@@ -39,7 +31,7 @@ function RenderingArrayOfObjects(props) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + token,
+        Authorization: "Bearer " + token,
       },
       body: JSON.stringify({
         userId: userId,
@@ -52,34 +44,34 @@ function RenderingArrayOfObjects(props) {
         console.log(res);
         let newarr = [];
         console.log("hi");
+        // setbalance(Math.round(res.data.credits))
         res = res.data.stocks;
         for (let i = 0; i < res.length; i++) {
-
           const url = `https://api.coingecko.com/api/v3/coins/${res[i].stockId}`;
 
-          axios.get(url).then((resa) => {
-            res[i].imagesmall = resa.data.image.small;
-            res[i].current_market_price = resa.data.market_data.current_price.inr;
-          }).catch((error) => {
-            console.log(error)
-          })
+          axios
+            .get(url)
+            .then((resa) => {
+              res[i].imagesmall = resa.data.image.small;
+              res[i].current_market_price =
+                resa.data.market_data.current_price.inr;
+            })
+            .catch((error) => {
+              console.log(error);
+            });
         }
         console.log(res);
         return res;
-
       })
       .then((res) => {
         // showdata(res)
         setcurrentcoins(res);
-
       })
       .then(() => {
         return showdata(currentcoins);
-
       })
       .then((lists) => {
-        setlistItems(lists)
-
+        setlistItems(lists);
       })
       .catch((err) => {
         console.log(err);
@@ -95,32 +87,182 @@ function RenderingArrayOfObjects(props) {
   // console.log(data);
   // let listItems=[];
   const showdata = (datas) => {
-    let listItems1 = datas.map(
-      (element) => {
-        return (
-          <Single key={element.sto} stockId={element.stockId} imagesmall={element.imagesmall} total_amount={element.total_amount} current_market_price={element.current_market_price} current_cost={element.quantity * element.current_market_price} />
-
-        )
-      }
-    )
+    let listItems1 = datas.map((element) => {
+      return (
+        <Single
+          key={element.sto}
+          stockId={element.stockId}
+          imagesmall={element.imagesmall}
+          total_amount={element.total_amount}
+          current_market_price={element.current_market_price}
+          current_cost={element.quantity * element.current_market_price}
+        />
+      );
+    });
     return listItems1;
-  }
+  };
 
+  return <div>{listItems}</div>;
+}
+function RenderingArrayOfLists(props) {
+  const [currentcoins, setcurrentcoins] = useState([]);
+  const [listItems, setlistItems] = useState([]);
 
-  return (
-    <div>
-      {listItems}
-    </div>
-  )
+  const getdata = () => {
+    const token = localStorage.getItem("token");
+    var userId = localStorage.getItem("userId");
+    console.log(userId);
+    userId = userId.replace(/['"]+/g, "");
+    console.log(userId);
+    fetch("https://crytotrade-app.onrender.com/api/user/portfolio", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify({
+        userId: userId,
+      }),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        console.log(res);
+        let newarr = [];
+        console.log("hi");
+        // setbalance(Math.round(res.data.credits))
+        res = res.data.stocks;
+        for (let i = 0; i < res.length; i++) {
+          const url = `https://api.coingecko.com/api/v3/coins/${res[i].stockId}`;
+
+          axios
+            .get(url)
+            .then((resa) => {
+              res[i].imagesmall = resa.data.image.small;
+              res[i].current_market_price =
+                resa.data.market_data.current_price.inr;
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
+        console.log(res);
+        return res;
+      })
+      .then((res) => {
+        // showdata(res)
+        setcurrentcoins(res);
+      })
+      .then(() => {
+        return showdata(currentcoins);
+      })
+      .then((lists) => {
+        setlistItems(lists);
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Something went wrong");
+      });
+  };
+  //   getdata();
+  useEffect(() => {
+    getdata();
+  }, [currentcoins]);
+
+  // const data = {currentcoins};
+  // console.log(data);
+  // let listItems=[];
+  const showdata = (datas) => {
+    let listItems1 = datas.map((element) => {
+      return (
+        <Singletable
+          key={element.sto}
+          stockId={element.stockId}
+          imagesmall={element.imagesmall}
+          total_amount={element.total_amount}
+          current_market_price={element.current_market_price}
+          current_cost={element.quantity * element.current_market_price}
+        />
+      );
+    });
+    return listItems1;
+  };
+
+  return <>{listItems}</>;
 }
 
-
-
 const Dashboard = () => {
-
   const [name, setName] = React.useState("Admin");
 
-  const [alldivs, setalldivs] = useState([]);
+  const [balance, setbalance] = useState(0);
+  const [investment, setinvestment] = useState(0);
+  const [temp, settemp] = useState(0);
+
+  const getdata = () => {
+    const token = localStorage.getItem("token");
+    var userId = localStorage.getItem("userId");
+    console.log(userId);
+    userId = userId.replace(/['"]+/g, "");
+    console.log(userId);
+    fetch("https://crytotrade-app.onrender.com/api/user/portfolio", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+      body: JSON.stringify({
+        userId: userId,
+      }),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        console.log(res);
+        let newarr = [];
+        console.log("hi");
+        setbalance(Math.round(res.data.credits));
+
+        res = res.data.stocks;
+        let dummy = 0;
+        for (let i = 0; i < res.length; i++) {
+          const url = `https://api.coingecko.com/api/v3/coins/${res[i].stockId}`;
+
+          axios
+            .get(url)
+            .then((resa) => {
+              res[i].imagesmall = resa.data.image.small;
+              res[i].current_market_price =
+                resa.data.market_data.current_price.inr;
+              dummy +=
+                res[i].quantity * resa.data.market_data.current_price.inr;
+              console.log(dummy);
+              settemp(Math.round(dummy));
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+
+          // console.log(res[i].quantity);
+        }
+        // setinvestment(Math.round(temp));
+        console.log(dummy);
+        // setinvestment(temp)
+        return temp;
+      })
+      .then((temp) => {
+        setinvestment(temp);
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Something went wrong");
+      });
+  };
+  //   getdata();
+  useEffect(() => {
+    getdata();
+  }, []);
 
   // const currentdata=(coinobj,id,index)=>{
   //   const url = `https://api.coingecko.com/api/v3/coins/${id}`;
@@ -129,7 +271,6 @@ const Dashboard = () => {
   //             let dummy=coinobj;
   //             dummy.imagesmall=res.data.image.small;
   //             dummy.current_market_price=res.data.market_data.current_price.inr;
-
 
   //             console.log(dummy);
   //             return dummy;
@@ -140,12 +281,6 @@ const Dashboard = () => {
 
   // }
 
-
-
-
-
-
-
   useEffect(() => {
     if (!localStorage.getItem("token")) {
     }
@@ -154,7 +289,6 @@ const Dashboard = () => {
     console.log(name);
     setName(name);
   }, []);
-
 
   return (
     <div className="container1">
@@ -169,9 +303,6 @@ const Dashboard = () => {
         <div className="date">{/* <input type="date"> */}</div>
 
         <div className="insights">
-
-
-
           {/* 
           <div className="sales">
             <img src={currentcoins[0].imagesmall}></img>
@@ -195,24 +326,20 @@ const Dashboard = () => {
           </div>
  */}
 
-
-
-
-
-
           <div className="sales">
             <span className="material-icons-sharp">analytics</span>
             <div className="middle">
               <div className="left">
-                <h3>Total Sales</h3>
-                <h1>$25,024</h1>
+                <h3>Balance Reamaining</h3>
+                <h1>₹{balance}</h1>
               </div>
               <div className="progress">
                 <svg>
                   <circle cx="38" cy="38" r="36"></circle>
                 </svg>
                 <div className="number">
-                  <p>81%</p>
+
+                  <p>{balance / 10000}%</p>
                 </div>
               </div>
             </div>
@@ -223,15 +350,16 @@ const Dashboard = () => {
             <span className="material-icons-sharp">bar_chart</span>
             <div className="middle">
               <div className="left">
-                <h3>Total Expenses</h3>
-                <h1>$14,194</h1>
+                <h3>Total Investment</h3>
+                <h1>₹{1000000 - balance}</h1>
               </div>
               <div className="progress">
                 <svg>
                   <circle cx="38" cy="38" r="36"></circle>
                 </svg>
+                % investments 
                 <div className="number">
-                  <p>62%</p>
+                  <p> {((1000000-balance)/balance).toFixed(2)}%</p>
                 </div>
               </div>
             </div>
@@ -242,15 +370,21 @@ const Dashboard = () => {
             <span className="material-icons-sharp">stacked_line_chart</span>
             <div className="middle">
               <div className="left">
-                <h3>Total Incomes</h3>
-                <h1>$17,811</h1>
+                <h3>Current Price Of Investments</h3>
+                <h1>₹{temp}</h1>
               </div>
-              <div className="progress">
+              {/* <p>
+                 {((temp / (1000000 - balance)) * 100).toFixed(2)}%
+                </p> */}
+                <div className="progress">
                 <svg>
                   <circle cx="38" cy="38" r="36"></circle>
                 </svg>
+                % Profits
                 <div className="number">
-                  <p>47%</p>
+                <p>
+                 {((temp / (1000000 - balance)) * 100-100).toFixed(2)}%
+                </p>
                 </div>
               </div>
             </div>
@@ -263,7 +397,6 @@ const Dashboard = () => {
         {/* <DataStats/> */}
         <RenderingArrayOfObjects />
         {/* <RenderingArrayOfObjects /> */}
-
 
         {/* <!----------- END OF INSIGHTS -------------> */}
 
@@ -278,7 +411,8 @@ const Dashboard = () => {
                 <th>Status</th>
               </tr>
             </thead>
-            <tbody>
+            <RenderingArrayOfLists />
+            {/* <tbody>
               <tr>
                 <td>Foldable Mini Drone</td>
                 <td>81641</td>
@@ -322,7 +456,7 @@ const Dashboard = () => {
                 <td className="war">Pending</td>
                 <td className="primary">Details</td>
               </tr>
-            </tbody>
+            </tbody> */}
           </table>
           <a href="#">Show All</a>
         </div>
@@ -345,7 +479,9 @@ const Dashboard = () => {
               <p>
                 Hey, <b>{name}</b>
               </p>
-              <small className="text-muted" style={{ margin: "auto" }}>Admin</small>
+              <small className="text-muted" style={{ margin: "auto" }}>
+                Admin
+              </small>
             </div>
             <div className="profile-photo">
               <img src={profile1} alt="hero" />
