@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 function Singletable(props) {
   return (
 
+<a href={"/dashboard/sell/".concat(props.stockId)}>
 
         <tbody>
               <tr style={{display:'flex',justifyContent:"space-between" }}>
@@ -15,7 +16,7 @@ function Singletable(props) {
                 <td className="primary">Details</td>
               </tr>
         </tbody>
-
+</a>
   );
 }
 
