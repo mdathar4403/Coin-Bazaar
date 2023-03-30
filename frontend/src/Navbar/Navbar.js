@@ -45,7 +45,7 @@ const Navbar = () => {
                     </a>
                     <a href="/messages">
                         <span className="material-icons-sharp">mail_outline</span>
-                        <h3>Messages</h3>
+                        <h3>News(Updates)</h3>
                         <span className="message-count">26</span>
                     </a>
                     <a href="/">

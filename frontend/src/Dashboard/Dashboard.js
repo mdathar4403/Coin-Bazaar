@@ -116,23 +116,6 @@ function RenderingArrayOfObjects(props) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const Dashboard = () => {
 
   const [name, setName] = React.useState("Admin");

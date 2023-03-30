@@ -1,0 +1,18 @@
+
+.Messages{
+    text-align: center;
+    /* margin-left: 200px; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+.card_news{
+    width: 60%;
+    margin-bottom: 1.5rem;
+}
+.news_heading{
+    font-size: 2rem;
+    padding: 2rem;
+}
+  
