@@ -18,7 +18,7 @@ const Aboutrem = () => {
         data-aos-delay="50"
         data-aos-easing="ease-in-out"
         data-aos-duration="1000">
-        <h1 style={{ textAlign: "center", fontSize: "3vw" }}>A trading partner you can trust</h1>
+        <h1 style={{ textAlign: "center", fontSize: "300%" }}>A trading partner you can trust</h1>
         <p style={{ textAlign: "center", fontSize: "150%" }}>At Tradiant, we rigorously focus on quality and transparency. Our order execution quality is independently monitored. Order execution with high quality means: you save money with every investment you make with Tradiant.</p>
 
       </div>

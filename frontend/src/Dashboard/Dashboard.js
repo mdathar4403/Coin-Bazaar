@@ -25,8 +25,8 @@ import DataStats from "../DataStats/DataStats";
 
 
 function RenderingArrayOfObjects(props) {
-  const [currentcoins,setcurrentcoins]=useState([]);
-  const [listItems,setlistItems]=useState([]);
+  const [currentcoins, setcurrentcoins] = useState([]);
+  const [listItems, setlistItems] = useState([]);
 
 
   const getdata = () => {
@@ -50,43 +50,43 @@ function RenderingArrayOfObjects(props) {
       })
       .then((res) => {
         console.log(res);
-        let newarr=[];
+        let newarr = [];
         console.log("hi");
-        res=res.data.stocks;
-        for(let i=0;i<res.length;i++){
+        res = res.data.stocks;
+        for (let i = 0; i < res.length; i++) {
 
-            const url = `https://api.coingecko.com/api/v3/coins/${res[i].stockId}`;
+          const url = `https://api.coingecko.com/api/v3/coins/${res[i].stockId}`;
 
-            axios.get(url).then((resa) => {
-                res[i].imagesmall=resa.data.image.small;
-                res[i].current_market_price=resa.data.market_data.current_price.inr;
-            }).catch((error) => {
-                console.log(error)
-            })
+          axios.get(url).then((resa) => {
+            res[i].imagesmall = resa.data.image.small;
+            res[i].current_market_price = resa.data.market_data.current_price.inr;
+          }).catch((error) => {
+            console.log(error)
+          })
         }
         console.log(res);
         return res;
-        
+
       })
-      .then((res)=>{
+      .then((res) => {
         // showdata(res)
         setcurrentcoins(res);
-        
+
       })
-      .then(()=>{
+      .then(() => {
         return showdata(currentcoins);
-        
+
       })
-      .then((lists)=>{
+      .then((lists) => {
         setlistItems(lists)
-        
+
       })
       .catch((err) => {
         console.log(err);
         toast.error("Something went wrong");
       });
-  }; 
-//   getdata();
+  };
+  //   getdata();
   useEffect(() => {
     getdata();
   }, [currentcoins]);
@@ -94,23 +94,23 @@ function RenderingArrayOfObjects(props) {
   // const data = {currentcoins};
   // console.log(data);
   // let listItems=[];
-const showdata=(datas)=>{
- let listItems1 = datas.map(
+  const showdata = (datas) => {
+    let listItems1 = datas.map(
       (element) => {
-          return (
-<Single key={element.sto} stockId={element.stockId} imagesmall={element.imagesmall} total_amount={element.total_amount} current_market_price={element.current_market_price} current_cost={element.quantity*element.current_market_price}/>       
+        return (
+          <Single key={element.sto} stockId={element.stockId} imagesmall={element.imagesmall} total_amount={element.total_amount} current_market_price={element.current_market_price} current_cost={element.quantity * element.current_market_price} />
 
-)
+        )
       }
-  )
-return listItems1;
-    }
+    )
+    return listItems1;
+  }
 
 
   return (
-      <div>
-          {listItems}
-      </div>
+    <div>
+      {listItems}
+    </div>
   )
 }
 
@@ -137,25 +137,25 @@ const Dashboard = () => {
 
   const [name, setName] = React.useState("Admin");
 
-const [alldivs,setalldivs]=useState([]);
+  const [alldivs, setalldivs] = useState([]);
 
-// const currentdata=(coinobj,id,index)=>{
-//   const url = `https://api.coingecko.com/api/v3/coins/${id}`;
+  // const currentdata=(coinobj,id,index)=>{
+  //   const url = `https://api.coingecko.com/api/v3/coins/${id}`;
 
-//         axios.get(url).then((res) => {
-//             let dummy=coinobj;
-//             dummy.imagesmall=res.data.image.small;
-//             dummy.current_market_price=res.data.market_data.current_price.inr;
+  //         axios.get(url).then((res) => {
+  //             let dummy=coinobj;
+  //             dummy.imagesmall=res.data.image.small;
+  //             dummy.current_market_price=res.data.market_data.current_price.inr;
 
-            
-//             console.log(dummy);
-//             return dummy;
-//             // setCoin(res.data)
-//         }).catch((error) => {
-//             console.log(error)
-//         })
 
-// }
+  //             console.log(dummy);
+  //             return dummy;
+  //             // setCoin(res.data)
+  //         }).catch((error) => {
+  //             console.log(error)
+  //         })
+
+  // }
 
 
 
@@ -189,7 +189,7 @@ const [alldivs,setalldivs]=useState([]);
 
 
 
-{/* 
+          {/* 
           <div className="sales">
             <img src={currentcoins[0].imagesmall}></img>
             <span className="material-icons-sharp">analytics</span>
@@ -275,11 +275,15 @@ const [alldivs,setalldivs]=useState([]);
           </div>
           {/* <!-- END OF INCOME --> */}
         </div>
-         {/* <!----------- Data Stats-------------> */}
-         <h2>Recent Coins</h2>
-         <DataStats/>
-
- <RenderingArrayOfObjects  />
+        {/* <!----------- Data Stats-------------> */}
+        <h2>Recent Coins</h2>
+        {/* <DataStats/> */}
+        <div>
+          <div class="grid lg:grid-cols-3 md:grid-row-1 gap-6 w-full max-w-6xl">
+            <RenderingArrayOfObjects />
+            {/* <RenderingArrayOfObjects /> */}
+          </div>
+        </div>
 
 
         {/* <!----------- END OF INSIGHTS -------------> */}
