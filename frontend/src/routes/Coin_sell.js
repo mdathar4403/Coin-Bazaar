@@ -23,7 +23,8 @@ const Coin_sell = () => {
   const [value, setValue] = useState();
   const [avl,setAvl] = useState(0);
   const [quantity,setQuantity] = useState(0);
-  const [message,ShowMessage] = useState(false);
+  const [message,ShowMessage] = useState(0);
+  
   let bitcoin = "bitcoin"
   useEffect(() => {
     setQuantity(location.state.quantity);
@@ -43,7 +44,11 @@ const Coin_sell = () => {
         e.preventDefault();
         console.log("Going To Sell",value);
         if(value > avl){
-          ShowMessage(true);
+          ShowMessage(1);
+          return;
+        }
+        if(value<10){
+          ShowMessage(2);
           return;
         }
         console.log(coin.market_data?.current_price.inr);
@@ -54,7 +59,7 @@ const Coin_sell = () => {
         }
         const userId = localStorage.getItem("userId");
         console.log(userId);
-        fetch("http://localhost:5000/api/user/stock/remove", {
+        fetch("https://crytotrade-app.onrender.com/api/user/stock/remove", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -76,28 +81,31 @@ const Coin_sell = () => {
             // } else {
             //   toast.error("Please try again later");
             // }
-            if(response.success){
+            if (response.success) {
               toast.success("Stock Sold Successfully");
               console.log(response);
-              setAvl(response.data.amount_left)
+              setAvl(response.data.amount_left);
               // setQuantity(response.data.quan)
-              setQuantity(quantity - value / coin.market_data?.current_price.inr);
+              setQuantity(
+                quantity - value / coin.market_data?.current_price.inr
+              );
               setTimeout(() => {
                 window.location.href = "/dashboard";
-              },2000);
-            }
-            else{
+              }, 2000);
+            } else {
               toast.error("Please try again later");
             }
           });
     }
     useEffect(() => {
       if(value > avl){
-        ShowMessage(true);
+        ShowMessage(1);
         return;
+      }else if(value<10){
+        ShowMessage(2);
       }
       else{
-        ShowMessage(false);
+        ShowMessage(0);
       }
     }, [value]);
     return (
@@ -111,10 +119,15 @@ const Coin_sell = () => {
                 {Math.round((avl + Number.EPSILON) * 100) / 100}
               </p>
             </div>
-            {message ? (
+            {message==1 ? (
               <p className="text-red-500">
                 You Have Only {coin.name}s of value{" "}
                 {Math.round((avl + Number.EPSILON) * 100) / 100} to sell
+              </p>
+            ) : null}
+            {message==2 ? (
+              <p className="text-red-500">
+                You Can Only Sell Minimum Amount of 10Rs
               </p>
             ) : null}
 

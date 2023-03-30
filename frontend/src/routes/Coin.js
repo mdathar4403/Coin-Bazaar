@@ -69,7 +69,9 @@ const Coin = () => {
           console.log(response);
           if (response.success) {
             toast.success("Stock Bought Successfully");
-            toast.success("Credits Left: " + response.data.credits);
+            setTimeout(() => {
+              window.location.href = "/dashboard";
+            }, 2000);
             // console.log(response);
           } else {
             toast.error(response.data.message);

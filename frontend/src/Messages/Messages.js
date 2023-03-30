@@ -18,7 +18,7 @@ function Messages() {
   useEffect(() => {
     const loadNews = async () => {
       const response = await axios.get(
-        "https://newsapi.org/v2/everything?q=Crypto&apiKey=1889284d0378402db28cf4e94574aaba"
+        "https://gnews.io/api/v4/search?q=crypto&apikey=c7fd4e0ff18f821f40e99a86f732b6ad"
       );
       setNews(response.data.articles);
       console.log("news_is", response.data.articles)
@@ -38,13 +38,13 @@ function Messages() {
       <div className="Messages">
         <h1 className="news_heading">News Updates</h1>
 
-        {news.filter(new_img => new_img.urlToImage != null).map((item, index) => {
+        {news.filter(new_img => new_img.image != null).map((item, index) => {
           return (
             <Card
               key={index}
               hoverable
               className="card_news"
-              cover={<img alt="image" src={item.urlToImage} />}
+              cover={<img alt="image" src={item.image} />}
             >
               <Meta title={item.title} description={item.description} />
               <a href={item.url} target="_blank" rel="noopener noreferrer">
