@@ -9,6 +9,10 @@ import AChart from '../chart/chart'
 
 
 const Coins = (props) => {
+    // change theme
+    function changeColor() {
+        document.body.classList.toggle("dark-theme-variables");
+    }
     return (
         <div className='container3'>
             <div className="nav-show">
@@ -44,7 +48,7 @@ const Coins = (props) => {
                     <button id="menu-btn">
                         <span className="material-icons-sharp">menu</span>
                     </button>
-                    <div className="theme-toggler">
+                    <div className="theme-toggler" onClick={changeColor}>
                         <span className="material-icons-sharp" id="light">light_mode</span>
                         <span className="material-icons-sharp">dark_mode</span>
                     </div>
@@ -61,9 +65,9 @@ const Coins = (props) => {
                 {/* hi */}
                 {/* <!----------- END OF RECENT UPDATES -------> */}
                 <div className="updates">
-                <AChart />
+                    <AChart />
                 </div>
-                
+
                 <div className="sales-analytics1">
                     <h2>Sales Analytics</h2>
 
@@ -114,7 +118,7 @@ const Coins = (props) => {
                     </div>
                 </div>
                 {/* hi */}
-                
+
             </div>
         </div>
     )

@@ -9,7 +9,7 @@ aside{
     height: 100vh;
 }
 aside .top{
-    background: white;
+    background: var(--color-warning);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -28,7 +28,7 @@ aside .close{
 }
 /* SIDEBAR */
 aside .sidebar{
-    background: white;
+    background: var(--color-warning);
     display: flex;
     flex-direction: column;
     height: 86vh;

@@ -22,6 +22,7 @@ function RenderingArrayOfObjects(props) {
   const [currentcoins, setcurrentcoins] = useState([]);
   const [listItems, setlistItems] = useState([]);
 
+
   const getdata = () => {
     const token = localStorage.getItem("token");
     var userId = localStorage.getItem("userId");
@@ -198,6 +199,13 @@ const Dashboard = () => {
   const [balance, setbalance] = useState(0);
   const [investment, setinvestment] = useState(0);
   const [temp, settemp] = useState(0);
+  // change theme
+  function changeColor() {
+    document.body.classList.toggle("dark-theme-variables");
+    // document.querySelector("span:nth-child(1)").classList.toggle("active");
+    // document.querySelector("span:nth-child(2)").classList.toggle("active");
+  }
+ 
 
   const getdata = () => {
     const token = localStorage.getItem("token");
@@ -465,7 +473,7 @@ const Dashboard = () => {
           <button id="menu-btn">
             <span className="material-icons-sharp">menu</span>
           </button>
-          <div className="theme-toggler">
+          <div className="theme-toggler" onClick={changeColor}>
             <span className="material-icons-sharp" id="light">
               light_mode
             </span>

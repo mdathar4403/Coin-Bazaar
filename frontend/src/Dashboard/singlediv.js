@@ -1,4 +1,5 @@
 import "./Dashboard.css";
+import "./singlediv.css"
 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -7,22 +8,22 @@ function Single(props) {
     <>
       <div>
         {props.current_cost >= props.total_amount && (
-          <div className="flex items-center p-4 bg-white rounded my-3">
-            <div className="flex flex-shrink-0 items-center justify-center bg-white h-16 w-16 rounded">
+          <div className="show-amount flex items-center p-4  rounded my-3">
+            <div className="show-amount-img flex flex-shrink-0 items-center justify-center h-16 w-16 rounded">
               <img src={props.imagesmall} />
             </div>
             <div className="flex-grow justify-between flex flex-row ml-4">
-              <span class="text-gray-500 text-sm">Buy price</span>
+              <span class="text-amount text-sm">Buy price</span>
               <span className="text-gray-900 text-md">
                 Rs {Math.round(props.total_amount)}
               </span>
-              <span class="text-gray-500 text-sm">Current price</span>
+              <span class="text-amount text-sm">Current price</span>
               <span className="text-gray-900 text-md">
                 Rs {Math.round(props.current_cost)}
               </span>
               <div className="flex items-center justify-between">
                 {/* <img src={props.imagesmall}></img>{" "} */}
-                <span class="text-gray-500">{props.stockId}</span>
+                <span class="text-amount">{props.stockId}</span>
                 <span className="text-green-500 text-sm font-semibold ml-2">
                   +
                   {(
@@ -51,22 +52,22 @@ function Single(props) {
           </div>
         )}
         {props.current_cost < props.total_amount && (
-          <div className="flex items-center p-4 bg-white rounded my-3">
-            <div className="flex flex-shrink-0 items-center justify-center bg-white h-16 w-16 rounded">
+          <div className="show-amount flex items-center p-4 rounded my-3">
+            <div className="show-amount-img flex flex-shrink-0 items-center justify-center h-16 w-16 rounded">
               <img src={props.imagesmall} />
             </div>
             <div className="flex-grow justify-between flex flex-row ml-4">
-              <span class="text-gray-500 text-sm">Buy price</span>
+              <span class="text-amount text-sm">Buy price</span>
               <span className="text-gray-900 text-md">
                 Rs {Math.round(props.total_amount)}
               </span>
-              <span class="text-gray-500 text-sm">Current price</span>
+              <span class="text-amount text-sm">Current price</span>
               <span className="text-gray-900 text-md">
                 Rs {Math.round(props.current_cost)}
               </span>
               <div className="flex items-center justify-between">
                 {/* <img src={props.imagesmall}></img>{" "} */}
-                <span class="text-gray-500">{props.stockId}</span>
+                <span class="text-amount">{props.stockId}</span>
                 <span className="text-red-500 text-sm font-semibold ml-2">
                   {(
                     ((props.current_cost - props.total_amount) /
