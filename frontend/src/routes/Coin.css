@@ -21,7 +21,7 @@
 }
 .content h1{
     font-size: 1.6rem;
-    color: #504d4d;
+    color: var(--color-dark);
 }
 .btn-store{
     display: flex;
@@ -44,6 +44,7 @@
     padding: 8px 16px;
     margin: 8px 0;
     box-sizing: border-box;
+    background-color: var(--color-warning);
     border: 1px solid #504d4d;
   }
 
@@ -110,7 +111,7 @@ td, th {
 }
 
 .content th {
-    background-color: #eae9e9ef;
+    background-color: var(--color-warning)
 }
 
 .stats {

@@ -251,9 +251,9 @@ const Coin = () => {
             ></p>
           </div>
         </div>
-        <div className="graph">
+        {/* <div className="graph">
           <GAChart />
-        </div>
+        </div> */}
       </div>
     </div>
   );
