@@ -17,7 +17,8 @@ https://gnews.io/
 
 1) Sign In and Sign Up Pages with Crypto Coin Animation added.
 
-![Screenshot (266)](https://user-images.githubusercontent.com/100773023/229189235-3b300ae5-804b-42d1-9370-7b7e1883ee3c.png)
+
+![Screenshot (268)](https://user-images.githubusercontent.com/100773023/229191590-be7fc60d-760e-4a7c-a294-68788c25aa89.png)
 
 ![Screenshot (267)](https://user-images.githubusercontent.com/100773023/229189242-a6aa6caf-b265-4794-a1be-e5fa8df20531.png)
 
