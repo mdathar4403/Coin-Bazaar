@@ -32,10 +32,10 @@ const Navbar = () => {
 
 
                 <div className="sidebar">
-                    <a href="/">
+                    {/* <a href="/">
                         <span className="material-icons-sharp">grid_view</span>
                         <h3>Home</h3>
-                    </a>
+                    </a> */}
                     <a href="/dashboard" >
                         <span className="material-icons-sharp">person_outline</span>
                         <h3>Dashboard</h3>
