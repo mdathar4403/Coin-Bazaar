@@ -2,6 +2,7 @@ import React from "react";
 import "./mnavbar.css";
 import logo from '../SignIn/logo.png'
 import { BiMenu } from 'react-icons/bi';
+import { Link } from "react-router-dom";
 
 const Mnavbar = () => {
   const logout = () => {
@@ -10,7 +11,7 @@ const Mnavbar = () => {
     localStorage.removeItem('email');
     localStorage.removeItem('first_name');
     window.location.href = '/'
-}
+  }
   return (
     <>
       {/* <div className="nav-wrapper">  */}
@@ -28,14 +29,26 @@ const Mnavbar = () => {
         </label>
         <div className="nav-container123">
           <ul className="nav-tabs">
-            <li className="nav-tab"><a href="/">Home </a></li>
-            <li className="nav-tab"><a href="/dashboard">DashBoard</a></li>
+            {/* <Link to="/">
+              <li className="nav-tab"><a href="/">Home </a></li>
+            </Link> */}
+            <Link to="/dashboard">
+              <li className="nav-tab"><a href="/dashboard">DashBoard</a></li>
+            </Link>
+            <Link to="/market">
+              <li className="nav-tab"><a href="/market">Market</a></li>
+            </Link>
+            <Link to="/messages">
+              <li className="nav-tab"><a href="/messages">News-Info</a></li>
+            </Link>
+
+
             {/* <li className="nav-tab"><a href="/#why-us">Why </a></li> */}
-            <li className="nav-tab"><a href="/market">Market</a></li>
-            <li className="nav-tab"><a href="/messages">News-Info</a></li>
+
+
             <li className="nav-tab">
-              <button className="navbutton navsign">
-                <a onClick={logout}>logout</a>
+              <button onClick={logout} className="nav_btn">
+                <a >logout</a>
               </button>
             </li>
             {/* <li className="nav-tab"><button className="navbutton navsign"><a href="/signup">sign up</a></button></li> */}
