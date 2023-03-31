@@ -1,8 +1,17 @@
-# Getting Started with Create React App
+# Coin Bazaar
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The World's Fastest Growing Crypto Web App
+
+## API's Used
+
+https://www.coingecko.com/
+
+https://gnews.io/
 
 ## Available Scripts
+
+
+
 
 In the project directory, you can run:
 
