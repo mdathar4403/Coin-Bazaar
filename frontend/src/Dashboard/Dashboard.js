@@ -202,8 +202,8 @@ const Dashboard = () => {
   // change theme
   function changeColor() {
     document.body.classList.toggle("dark-theme-variables");
-    // document.querySelector("span:nth-child(1)").classList.toggle("active");
-    // document.querySelector("span:nth-child(2)").classList.toggle("active");
+    document.querySelector(".light-btn").classList.toggle("active");
+    document.querySelector(".dark-btn").classList.toggle("active");
   }
  
 
@@ -474,10 +474,10 @@ const Dashboard = () => {
             <span className="material-icons-sharp">menu</span>
           </button>
           <div className="theme-toggler" onClick={changeColor}>
-            <span className="material-icons-sharp" id="light">
+            <span className="material-icons-sharp light-btn active" >
               light_mode
             </span>
-            <span className="material-icons-sharp">dark_mode</span>
+            <span className="material-icons-sharp dark-btn">dark_mode</span>
           </div>
           <div className="profile">
             <div className="info">

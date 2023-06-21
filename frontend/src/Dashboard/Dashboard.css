@@ -276,11 +276,24 @@ main .orders a{
     align-items: center;
     justify-content: center;
 } 
-#light{
+/* .light-btn{
+    background-color: var(--color-primary);
+} */
+.right .theme-toggler span.active{
+    color: white;
+    background-color: var(--color-primary);
+    border-radius: var(--border-radius-1);
+}
+/* .right .theme-toggler span .light-btn.active1{
+    color: black;
+    background-color: grey;
+    border-radius: var(--border-radius-1);
+} */
+/* #light{
     background: var(--color-primary);
     color: white;
     border-radius: var(--border-radius-1);
-}
+} */
 .right .top .profile{
     display: flex;
     gap: 2rem;

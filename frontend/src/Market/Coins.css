@@ -91,11 +91,17 @@
     align-items: center;
     justify-content: center;
 } 
-#light{
+.right .theme-toggler span.active{
+    color: white;
+    background-color: var(--color-primary);
+    border-radius: var(--border-radius-1);
+}
+
+/* #light{
     background: var(--color-primary);
     color: white;
     border-radius: var(--border-radius-1);
-}
+} */
 .right .top .profile{
     display: flex;
     gap: 2rem;
