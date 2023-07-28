@@ -53,10 +53,10 @@ const Navbar = () => {
                         <span className="material-icons-sharp">inventory</span>
                         <h3>Wallet</h3>
                     </a> */}
-                    <a href="/">
+                    {/* <a href="/">
                         <span className="material-icons-sharp">settings</span>
                         <h3>Settings</h3>
-                    </a>
+                    </a> */}
                     {/* <a href="/">
                         <span className="material-icons-sharp">add</span>
                         <h3>Add Products</h3>
