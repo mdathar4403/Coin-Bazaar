@@ -5,6 +5,10 @@
 2) Shubham Jaiswal
 3) Mamalesh Rajkumar Hake
 
+Video Demo:
+
+https://github.com/mdathar4403/Coin-Bazaar/assets/100773023/f40e2f00-ad22-428d-9bc9-724141ab8c67
+
 
 
 ## API's Used
