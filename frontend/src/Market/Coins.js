@@ -12,7 +12,11 @@ const Coins = (props) => {
     // change theme
     function changeColor() {
         document.body.classList.toggle("dark-theme-variables");
-    }
+        document.querySelector(".light-btn").classList.toggle("active");
+        document.querySelector(".dark-btn").classList.toggle("active");
+      }
+    
+   
     return (
         <div className='container3'>
             <div className="nav-show">
@@ -49,8 +53,10 @@ const Coins = (props) => {
                         <span className="material-icons-sharp">menu</span>
                     </button>
                     <div className="theme-toggler" onClick={changeColor}>
-                        <span className="material-icons-sharp" id="light">light_mode</span>
-                        <span className="material-icons-sharp">dark_mode</span>
+                        <span className="material-icons-sharp light-btn active" >
+                            light_mode
+                        </span>
+                        <span className="material-icons-sharp dark-btn">dark_mode</span>
                     </div>
                     <div className="profile">
                         <div className="info">
